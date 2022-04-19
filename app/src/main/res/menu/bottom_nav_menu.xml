@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_fill"
+        android:title="Home" />
+
+    <!--    <item-->
+    <!--        android:id="@+id/jelajahFragment"-->
+    <!--        android:icon="@drawable/ic_compass_fill"-->
+    <!--        android:title="Jelajah" />-->
+
+    <!--    <item-->
+    <!--        android:id="@+id/bacaanFragment"-->
+    <!--        android:icon="@drawable/ic_menu_book"-->
+    <!--        android:title="Bacaan" />-->
+
+    <item
+        android:id="@+id/tokoActivity"
+        android:icon="@drawable/ic_shop"
+        android:title="Market" />
+
+
+    <item
+        android:id="@+id/sayaFragment"
+        android:icon="@drawable/ic_account_circle"
+        android:title="Saya" />
+
+</menu>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.azwar.uinamfind">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_uinamfind"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_uinamfind_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.UINAMFind">
+        <activity
+            android:name=".ui.loker.LokerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.beasiswa.BeasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.magang.SearchMagangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.magang.DetailMagangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.magang.MagangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.SearchHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.notifikasi.NotifikasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.organisasi.SearchOrganisasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.organisasi.DetailOrganisasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.organisasi.OrganisasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.loker.DetailLokerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mahasiswa.DetailMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ukm.UKMActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.chat.RoomChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lembaga.DetailLembagaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lembaga.SearchLembagaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lembaga.LembagaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mahasiswa.MahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.toko.TokoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tamu.PertanyaanPendaftaran4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tamu.PertanyaanPendaftaran3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tamu.PertanyaanPendaftaran2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tamu.PertanyaanPendaftaran1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DaftarTamuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginTamuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MasukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"></activity>
+    </application>
+
+</manifest>

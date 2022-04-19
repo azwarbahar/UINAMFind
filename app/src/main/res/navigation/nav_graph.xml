@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.azwar.uinamfind.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/jelajahFragment"
+        android:name="com.azwar.uinamfind.ui.jelajah.JelajahFragment"
+        android:label="JelajahFragment" />
+    <fragment
+        android:id="@+id/bacaanFragment"
+        android:name="com.azwar.uinamfind.ui.bacaan.BacaanFragment"
+        android:label="BacaanFragment" />
+    <fragment
+        android:id="@+id/sayaFragment"
+        android:name="com.azwar.uinamfind.ui.saya.SayaFragment"
+        android:label="SayaFragment" />
+    <activity
+        android:id="@+id/tokoActivity"
+        android:name="com.azwar.uinamfind.ui.toko.TokoActivity"
+        android:label="activity_toko"
+        tools:layout="@layout/activity_toko" />
+</navigation>

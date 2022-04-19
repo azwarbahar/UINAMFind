@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_black_gradien_trans.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_black_trans_30_radius_16.xml" value="0.138" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_header_loker.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_corner_16.xml" value="0.138" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_corner_6.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_stroke_16.xml" value="0.138" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_trans_10_stroke_16.xml" value="0.134" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_trans_corner_16.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_trans_corner_8.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_white_corner_8.xml" value="0.166" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_white_corner_top_20.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/circle_primary_trans_10.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/circle_red.xml" value="0.166" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/circle_white.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/header_lembaga_default.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/header_mahasiswa_default.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/ic_domain.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/ic_header_lembaga_default.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/ic_lable_alumni.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/ic_lembaga_default.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/ic_location_alt_fill.xml" value="0.122" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout-w1240dp/activity_room_chat.xml" value="0.158203125" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout-w936dp/activity_room_chat.xml" value="0.19775390625" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_beasiswa.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_chat.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_daftar_tamu.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_lembaga.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_loker.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_magang.xml" value="0.11655405405405406" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_mahasiswa.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_organisasi.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_lembaga.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_login_mahasiswa.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_login_tamu.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_loker.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_loker_detail.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_magang.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_mahasiswa.xml" value="0.12" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_main.xml" value="0.30793157076205285" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_masuk.xml" value="0.19375" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_organisasi.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_pertanyaan_pendaftaran.xml" value="0.19375" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_pertanyaan_pendaftaran1.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_pesan.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_room_chat.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_home.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_lembaga.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_magang.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_splash.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_toko.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_ukmactivity.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/bottom_sheet_menu_home.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/content_search_home.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_bacaan.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_first.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_home.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_jelajah.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_saya.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_toko.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_beasiswa.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_beasiswa_terbaru_home.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_fakultas_lembaga.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_keahlian.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_lembaga.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_loker.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_loker_home.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_magang_bersertifikat.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_magang_terbaru.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_mahasiswa1.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_mahasiswa2.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_market.xml" value="0.12" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_organisasi.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_organisasi_mahasiswa.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_pendaftaran_terbuka_ukm.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_pendidikan.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_pengalaman.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_ukm.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.14666666666666667" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="12dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="6dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_logo_ukm_pendaftaran_terbuka"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/circle_primary_trans_10"
+            android:padding="8dp"
+            android:src="@drawable/logo_washilah" />
+
+        <TextView
+            android:id="@+id/tv_nama_ukm_pendaftaran_terbuka"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@id/img_logo_ukm_pendaftaran_terbuka"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="Washilah"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_batas_ukm_pendaftaran_terbuka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_nama_ukm_pendaftaran_terbuka"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@id/img_logo_ukm_pendaftaran_terbuka"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="Batas : 10 Jan 2022"
+            android:textColor="@color/grey_hint"
+            android:textSize="12sp" />
+
+        <View
+            android:id="@+id/view1_ukm_pendaftaran_terbuka"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/img_logo_ukm_pendaftaran_terbuka"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view1_ukm_pendaftaran_terbuka"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="8dp"
+            android:text="Daftar"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
