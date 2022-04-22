@@ -624,11 +624,56 @@
                     tools:itemCount="1"
                     tools:listitem="@layout/item_loker_home" />
 
+                <RelativeLayout
+                    android:id="@+id/rl_list_profil_terbaru"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:paddingVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/rv_rekomendasi_loker_home"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_title_profil_terbaru_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Baru saja memperbarui profilnya"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/tv_lihat_semua_profil_terbaru_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_title_profil_terbaru_home"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginHorizontal="16dp"
+                        android:text="Lihat semua"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        android:textStyle="italic|bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_profil_terbaru_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_title_profil_terbaru_home"
+                        android:layout_marginTop="5dp"
+                        android:clipToPadding="false"
+                        android:paddingLeft="6dp"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_card_mahasiswa" />
+
+                </RelativeLayout>
+
                 <TextView
                     android:id="@+id/tv_title_beasiswa_terbaru_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/rv_rekomendasi_loker_home"
+                    android:layout_below="@id/rl_list_profil_terbaru"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="20dp"
                     android:text="Beasiswa Terbaru"

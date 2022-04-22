@@ -75,8 +75,8 @@
                     android:id="@+id/rv_beasiswa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_beasiswa"
-                    android:layout_below="@id/tv1_beasiswa" />
+                    android:layout_below="@id/tv1_beasiswa"
+                    tools:listitem="@layout/item_beasiswa" />
 
             </RelativeLayout>
 

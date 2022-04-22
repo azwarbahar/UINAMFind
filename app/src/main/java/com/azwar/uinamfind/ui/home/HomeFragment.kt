@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.databinding.FragmentHomeBinding
 import com.azwar.uinamfind.models.BeasiswaModel
 import com.azwar.uinamfind.models.LokerModel
+import com.azwar.uinamfind.models.Mahasiswa
 import com.azwar.uinamfind.ui.beasiswa.BeasiswaActivity
 import com.azwar.uinamfind.ui.home.adapter.BeasiswaTerbaruAdapter
+import com.azwar.uinamfind.ui.home.adapter.CardMahasiswaAdapter
 import com.azwar.uinamfind.ui.home.adapter.LokerHomeAdapter
 import com.azwar.uinamfind.ui.lembaga.LembagaActivity
 import com.azwar.uinamfind.ui.loker.LokerActivity
@@ -33,6 +35,9 @@ class HomeFragment : Fragment() {
 
     lateinit var beasiswaTerbaruAdapter: BeasiswaTerbaruAdapter
     lateinit var beasiswaModel: List<BeasiswaModel>
+
+    private lateinit var cardMahasiswaAdapter: CardMahasiswaAdapter
+    private lateinit var mahasiswa: List<Mahasiswa>
 
     private lateinit var bottomSheetBehaviorMenuLainnya: BottomSheetBehavior<FrameLayout>
 
@@ -127,6 +132,13 @@ class HomeFragment : Fragment() {
             startActivity(intent_search_home)
         }
 
+
+        // list profile terbaru
+        val layoutManagerProfileTerbaru: RecyclerView.LayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        homeBinding.rvProfilTerbaruHome.layoutManager = layoutManagerProfileTerbaru
+        cardMahasiswaAdapter = CardMahasiswaAdapter()
+        homeBinding.rvProfilTerbaruHome.adapter = cardMahasiswaAdapter
 
         // List rekomendasi loker
         val layoutManagerRekomendasiLoker: RecyclerView.LayoutManager =
