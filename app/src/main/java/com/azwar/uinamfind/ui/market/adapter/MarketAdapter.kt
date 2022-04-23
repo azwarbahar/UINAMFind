@@ -1,4 +1,4 @@
-package com.azwar.uinamfind.ui.toko.adapter
+package com.azwar.uinamfind.ui.market.adapter
 
 import android.view.LayoutInflater
 import android.view.View

@@ -5,12 +5,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azwar.uinamfind.R
-import com.azwar.uinamfind.ui.mahasiswa.adapter.MahasiswaHorizontalAdapter
-import com.azwar.uinamfind.ui.toko.adapter.MarketAdapter
 import com.azwar.uinamfind.ui.ukm.adapter.PendaftaranUKMAdapter
 import com.azwar.uinamfind.ui.ukm.adapter.UKMAdapter
-import kotlinx.android.synthetic.main.activity_mahasiswa.*
-import kotlinx.android.synthetic.main.activity_toko.*
 import kotlinx.android.synthetic.main.activity_ukm.*
 
 class UKMActivity : AppCompatActivity() {

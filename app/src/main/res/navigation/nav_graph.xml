@@ -23,7 +23,7 @@
         android:label="SayaFragment" />
     <activity
         android:id="@+id/tokoActivity"
-        android:name="com.azwar.uinamfind.ui.toko.TokoActivity"
+        android:name="com.azwar.uinamfind.ui.market.MarketActivity"
         android:label="activity_toko"
-        tools:layout="@layout/activity_toko" />
+        tools:layout="@layout/activity_market" />
 </navigation>
