@@ -6,7 +6,6 @@
     android:background="@color/colorBackgroundActivity"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
         android:id="@+id/rl_toolbar_saya"
         android:layout_width="match_parent"
@@ -224,7 +223,7 @@
                 android:weightSum="1">
 
                 <RelativeLayout
-                    android:id="@+id/rl_kirim_pesan_detail_mahasiswa"
+                    android:id="@+id/rl_edit_profil_detail_mahasiswa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"

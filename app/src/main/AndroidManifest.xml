@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UINAMFind">
         <activity
+            android:name=".ui.saya.EditProfilMahasiswaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ukm.DetailUkmActivity"
             android:exported="false" />
         <activity

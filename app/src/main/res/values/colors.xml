@@ -16,6 +16,7 @@
 
     <color name="transparan">#00FFFFFF</color>
     <color name="colorPrimary">#136C40</color>
+    <color name="colorAccent">#E0A736</color>
     <color name="colorPrimaryDark">#011F10</color>
     <color name="colorBackgroundActivity">#F2F2F2</color>
     <color name="colorPrimaryTrans_10">#1A136C40</color>

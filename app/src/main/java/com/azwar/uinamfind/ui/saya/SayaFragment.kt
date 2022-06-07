@@ -1,13 +1,12 @@
 package com.azwar.uinamfind.ui.saya
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.azwar.uinamfind.R
 import com.azwar.uinamfind.databinding.FragmentSayaBinding
-import com.azwar.uinamfind.ui.home.HomeFragment
 import com.azwar.uinamfind.ui.mahasiswa.adapter.KeahlianAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PendidikanAdapter
@@ -38,7 +37,10 @@ class SayaFragment : Fragment() {
 
         _sayaBinding = FragmentSayaBinding.inflate(inflater, container, false)
 
-
+        sayaBinding.rlEditProfilDetailMahasiswa.setOnClickListener {
+            val intent_edit_profil = Intent(context, EditProfilMahasiswaActivity::class.java)
+            startActivity(intent_edit_profil)
+        }
 
         return sayaBinding.root
     }

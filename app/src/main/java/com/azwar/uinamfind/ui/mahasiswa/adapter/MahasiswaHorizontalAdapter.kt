@@ -16,7 +16,6 @@ class MahasiswaHorizontalAdapter() :
 
     class MyHolderView(itemMahasiswa1Binding: ItemMahasiswa1Binding) :
         RecyclerView.ViewHolder(itemMahasiswa1Binding.root) {
-
         fun bind() {
             with(itemView) {
                 rl_pesan_item_mahasiswa.setOnClickListener {
