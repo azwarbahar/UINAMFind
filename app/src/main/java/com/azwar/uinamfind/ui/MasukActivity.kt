@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.ui.login.LoginMahasiswaActivity
 import kotlinx.android.synthetic.main.activity_masuk.*
 
 class MasukActivity : AppCompatActivity() {

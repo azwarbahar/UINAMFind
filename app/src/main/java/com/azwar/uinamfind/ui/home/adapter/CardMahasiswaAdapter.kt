@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.databinding.ItemCardMahasiswaBinding
-import com.azwar.uinamfind.models.Mahasiswa
 import com.azwar.uinamfind.ui.mahasiswa.DetailMahasiswaActivity
 import kotlinx.android.synthetic.main.item_card_mahasiswa.view.*
 

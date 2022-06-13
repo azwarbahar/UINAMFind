@@ -1,9 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.SearchHomeActivity">
+    tools:context=".ui.pencarian.SearchHomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <FrameLayout
+                android:id="@+id/toolbar_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Pencarian" />
+
+                <com.ferfalk.simplesearchview.SimpleSearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary" />
+            </FrameLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout_pencarian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="start"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabInlineLabel="true"
+                app:tabMode="scrollable"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_mahasiswa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mahasiswa" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_loker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loker" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_beasiswa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beasiswa" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_magang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/magang" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_lembaga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lembaga" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_ukm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ukm" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_organisasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/organisasi" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/coordinator1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dvdsfsdf" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_aktivitas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

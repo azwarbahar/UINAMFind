@@ -9,9 +9,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/continer_loker_detail"
-        android:layout_above="@+id/rl_bottom_detail_loker"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_bottom_detail_loker">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar_loker_detail"
@@ -384,28 +384,28 @@
 
     <RelativeLayout
         android:id="@+id/rl_bottom_detail_loker"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:background="@color/white2"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white2">
 
         <RelativeLayout
-            android:background="@drawable/bg_primary_corner_16"
-            android:layout_marginVertical="16dp"
-            android:layout_marginHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/bg_primary_corner_16"
+            android:paddingVertical="12dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textStyle="bold"
+                android:text="Lamar Sekarang"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                android:text="Lamar Sekarang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

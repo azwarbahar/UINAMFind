@@ -4,14 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundActivity"
     tools:context=".ui.chat.ChatActivity">
 
-    <TextView
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:layout_centerInParent="true"
-        android:text="Chatting Soon.."
+    <RelativeLayout
+        android:id="@+id/rl_toolbar_chat"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_back_chat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_toolbar_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/img_back_chat"
+            android:text="Obrolan"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/img_search_chat"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentRight="true"-->
+        <!--            android:layout_centerVertical="true"-->
+        <!--            android:layout_marginHorizontal="16dp"-->
+        <!--            android:src="@drawable/ic_search_alt" />-->
+
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mulai Ngobrol"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_primary_corner_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/white"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="Temukan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

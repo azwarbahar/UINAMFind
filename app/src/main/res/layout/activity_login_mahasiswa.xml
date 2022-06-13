@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
-    tools:context=".ui.LoginMahasiswaActivity">
+    tools:context=".ui.login.LoginMahasiswaActivity">
 
     <LinearLayout
         android:id="@+id/ll_btn_kembali_login_mahasiswa"

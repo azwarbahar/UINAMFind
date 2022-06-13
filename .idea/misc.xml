@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_activated_1.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_activated_2.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_black_gradien_trans.xml" value="0.122" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_black_trans_30_radius_16.xml" value="0.138" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_grey_trans_corner.xml" value="0.154" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_header_loker.xml" value="0.122" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_corner_16.xml" value="0.138" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/bg_primary_corner_6.xml" value="0.122" />
@@ -27,7 +31,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout-w1240dp/activity_room_chat.xml" value="0.158203125" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout-w936dp/activity_room_chat.xml" value="0.19775390625" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_beasiswa.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_chat.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_chat.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_daftar_tamu.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_lembaga.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_loker.xml" value="0.16666666666666666" />
@@ -50,7 +54,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_pertanyaan_pendaftaran1.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_pesan.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_room_chat.xml" value="0.10666666666666667" />
-        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_home.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_home.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_lembaga.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_search_magang.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_splash.xml" value="0.12567567567567567" />

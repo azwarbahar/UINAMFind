@@ -23,5 +23,6 @@
     <color name="red_notif">#FF4848</color>
     <color name="grey_hint">#808080</color>
     <color name="grey">#4D4D4D</color>
+    <color name="greyTrans10">#1A4D4D4D</color>
 
 </resources>

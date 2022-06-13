@@ -1,9 +1,10 @@
-package com.azwar.uinamfind.ui
+package com.azwar.uinamfind.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_login_mahasiswa.*
 
 class LoginMahasiswaActivity : AppCompatActivity() {

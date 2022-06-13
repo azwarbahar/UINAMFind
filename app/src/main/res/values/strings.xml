@@ -1,4 +1,11 @@
 <resources>
+
+    <string name="selected_item">Selected item:</string>
+    <string-array name="jenis_kelamin">
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
     <string name="app_name">UINAM Find</string>
     <string name="title_search_home">Telusuri UIN Alauddin Makassar</string>
     <string name="subtitle_search_home">Penelusuran akan menghasilkan informasi seperti kegiatan, talent, atau peluang sesuai pencarian</string>
@@ -24,4 +31,11 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="semua_menu">Semua Menu</string>
+    <string name="mahasiswa">Mahasiswa</string>
+    <string name="loker">Loker</string>
+    <string name="beasiswa">Beasiswa</string>
+    <string name="magang">Magang</string>
+    <string name="lembaga">Lembaga</string>
+    <string name="ukm">UKM</string>
+    <string name="organisasi">Organisasi</string>
 </resources>

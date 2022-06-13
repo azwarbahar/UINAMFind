@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.databinding.FragmentHomeBinding
-import com.azwar.uinamfind.models.BeasiswaModel
-import com.azwar.uinamfind.models.LokerModel
-import com.azwar.uinamfind.models.Mahasiswa
+import com.azwar.uinamfind.data.models.BeasiswaModel
+import com.azwar.uinamfind.data.models.LokerModel
+import com.azwar.uinamfind.data.models.Mahasiswa
 import com.azwar.uinamfind.ui.beasiswa.BeasiswaActivity
 import com.azwar.uinamfind.ui.home.adapter.BeasiswaTerbaruAdapter
 import com.azwar.uinamfind.ui.home.adapter.CardMahasiswaAdapter
@@ -22,6 +22,7 @@ import com.azwar.uinamfind.ui.loker.LokerActivity
 import com.azwar.uinamfind.ui.magang.MagangActivity
 import com.azwar.uinamfind.ui.mahasiswa.MahasiswaActivity
 import com.azwar.uinamfind.ui.organisasi.OrganisasiActivity
+import com.azwar.uinamfind.ui.pencarian.SearchHomeActivity
 import com.azwar.uinamfind.ui.ukm.UKMActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 

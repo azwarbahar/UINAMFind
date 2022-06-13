@@ -4,6 +4,7 @@
     package="com.azwar.uinamfind">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -34,7 +35,7 @@
             android:name=".ui.magang.MagangActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.SearchHomeActivity"
+            android:name=".ui.pencarian.SearchHomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.notifikasi.NotifikasiActivity"
@@ -60,11 +61,6 @@
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.chat.RoomChatActivity"
@@ -106,14 +102,22 @@
             android:name=".ui.LoginTamuActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginMahasiswaActivity"
-            android:exported="false" />
+            android:name=".ui.login.LoginMahasiswaActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.MasukActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
     </application>
 
 </manifest>
