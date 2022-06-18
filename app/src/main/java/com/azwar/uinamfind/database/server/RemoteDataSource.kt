@@ -2,7 +2,6 @@ package com.azwar.uinamfind.database.server
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.azwar.uinamfind.data.models.Mahasiswa
 
 class RemoteDataSource constructor(private val apiService: ApiService) {
     companion object {
@@ -14,13 +13,13 @@ class RemoteDataSource constructor(private val apiService: ApiService) {
             }
     }
 
-    fun getAllMahasiswa(): LiveData<ArrayList<Mahasiswa>>{
-        val resultData = MutableLiveData<ArrayList<Mahasiswa>>()
-
-
-
-        return resultData
-
-    }
+//    fun getAllMahasiswa(): LiveData<ArrayList<Mahasiswa>>{
+//        val resultData = MutableLiveData<ArrayList<Mahasiswa>>()
+//
+//
+//
+//        return resultData
+//
+//    }
 
 }

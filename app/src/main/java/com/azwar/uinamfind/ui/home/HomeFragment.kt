@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.databinding.FragmentHomeBinding
 import com.azwar.uinamfind.data.models.BeasiswaModel
 import com.azwar.uinamfind.data.models.LokerModel
-import com.azwar.uinamfind.data.models.Mahasiswa
 import com.azwar.uinamfind.ui.beasiswa.BeasiswaActivity
 import com.azwar.uinamfind.ui.home.adapter.BeasiswaTerbaruAdapter
 import com.azwar.uinamfind.ui.home.adapter.CardMahasiswaAdapter
