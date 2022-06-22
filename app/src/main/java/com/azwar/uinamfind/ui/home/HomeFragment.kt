@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     lateinit var beasiswaModel: List<BeasiswaModel>
 
     private lateinit var cardMahasiswaAdapter: CardMahasiswaAdapter
-    private lateinit var mahasiswa: List<Mahasiswa>
+//    private lateinit var mahasiswa: List<Mahasiswa>
 
     private lateinit var bottomSheetBehaviorMenuLainnya: BottomSheetBehavior<FrameLayout>
 
@@ -87,9 +87,9 @@ class HomeFragment : Fragment() {
             startActivity(intent_mahasiswa)
         }
 
-        homeBinding.llMenuLembagaHome.setOnClickListener {
-            val intent_lembaga = Intent(context, LembagaActivity::class.java)
-            startActivity(intent_lembaga)
+            homeBinding.llMenuLembagaHome.setOnClickListener {
+                val intent_lembaga = Intent(context, LembagaActivity::class.java)
+                startActivity(intent_lembaga)
         }
 
         homeBinding.llMenuUkmHome.setOnClickListener {

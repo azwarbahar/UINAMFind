@@ -1,44 +1,35 @@
 package com.azwar.uinamfind.database.server
 
-import okhttp3.ConnectionSpec
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
-import java.util.concurrent.TimeUnit
 
-class ApiClient {
-    private lateinit var interceptor: HttpLoggingInterceptor
-    private lateinit var okHttpClient: OkHttpClient
-    private var retrofit: Retrofit? = null
+object ApiClient {
 
-    val client: Retrofit
-        get() {
-            interceptor = HttpLoggingInterceptor()
-            interceptor.level = HttpLoggingInterceptor.Level.BODY
-            okHttpClient = OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .connectionSpecs(
-                    Arrays.asList(
-                    ConnectionSpec.MODERN_TLS,
-                    ConnectionSpec.COMPATIBLE_TLS))
-                .followRedirects(true)
-                .followSslRedirects(true)
-                .retryOnConnectionFailure(true)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .cache(null)
+    private val interceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    private val client = OkHttpClient.Builder().apply {
+        addInterceptor(Interceptor { chain ->
+            val originalRequest: Request = chain.request()
+            val newRequest: Request = originalRequest.newBuilder()
+//                .header("Content-Type", "application/json")
                 .build()
-            if (retrofit == null) {
-                retrofit = Retrofit.Builder()
-                    .baseUrl("http://192.168.1.12/api_uinamfind/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(okHttpClient)
-                    .build()
-            }
-            return retrofit!!
+            chain.proceed(newRequest)
+        })
+        addInterceptor(interceptor)
+    }.build()
 
-        }
+    val instances: ApiService by lazy {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://192.168.1.3/api_uinamfind/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        retrofit.create(ApiService::class.java)
+    }
 }

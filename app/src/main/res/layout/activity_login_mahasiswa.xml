@@ -65,7 +65,7 @@
         android:textSize="10sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email_login_mahasiswa"
+        android:id="@+id/til_nim_login_mahasiswa"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,12 +78,12 @@
         app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tie_email_login_mahasiswa"
+            android:id="@+id/tie_nim_login_mahasiswa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:hint="Email"
+            android:hint="NIM/Username"
             android:inputType="text"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
@@ -94,7 +94,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/til_email_login_mahasiswa"
+        android:layout_below="@id/til_nim_login_mahasiswa"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:textColorHint="@color/white"

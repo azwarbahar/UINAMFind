@@ -84,4 +84,7 @@ dependencies {
     //search
     implementation 'com.github.Ferfalk:SimpleSearchView:0.2.0'
 
+    // Allert
+    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+
 }

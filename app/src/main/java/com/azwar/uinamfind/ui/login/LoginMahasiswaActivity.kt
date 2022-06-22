@@ -1,26 +1,126 @@
 package com.azwar.uinamfind.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
-import com.azwar.uinamfind.R
+import androidx.appcompat.app.AppCompatActivity
+import cn.pedant.SweetAlert.SweetAlertDialog
+import com.azwar.uinamfind.data.models.User
+import com.azwar.uinamfind.data.response.Responses
+import com.azwar.uinamfind.database.local.PreferencesHelper
+import com.azwar.uinamfind.database.server.ApiClient
+import com.azwar.uinamfind.databinding.ActivityLoginMahasiswaBinding
 import com.azwar.uinamfind.ui.MainActivity
-import kotlinx.android.synthetic.main.activity_login_mahasiswa.*
+import com.azwar.uinamfind.utils.Constanta
+import com.google.android.material.snackbar.Snackbar
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginMahasiswaActivity : AppCompatActivity() {
+
+    private lateinit var sharedPref: PreferencesHelper
+
+    private lateinit var loginMahasiswaBinding: ActivityLoginMahasiswaBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_mahasiswa)
+        loginMahasiswaBinding = ActivityLoginMahasiswaBinding.inflate(layoutInflater)
+        setContentView(loginMahasiswaBinding.root)
 
-        ll_btn_kembali_login_mahasiswa.setOnClickListener {
+        sharedPref = PreferencesHelper(this)
+
+        loginMahasiswaBinding.llBtnKembaliLoginMahasiswa.setOnClickListener {
             finish()
         }
 
-        rl_btn_masuk_mahasiswa.setOnClickListener {
-            val inten_main = Intent(this, MainActivity::class.java)
-            startActivity(inten_main)
+        loginMahasiswaBinding.rlBtnMasukMahasiswa.setOnClickListener {
+            val nim = loginMahasiswaBinding.tieNimLoginMahasiswa.text.toString()
+            val password = loginMahasiswaBinding.tiePasswordLoginMahasiswa.text.toString()
+
+            if (nim.isEmpty()) {
+                val snack =
+                    Snackbar.make(it, "Lengkapi NIM atau Username anda!", Snackbar.LENGTH_LONG)
+                snack.show()
+            } else if (password.isEmpty()) {
+                val snack = Snackbar.make(it, "Lengkapi Password anda!", Snackbar.LENGTH_LONG)
+                snack.show()
+            } else {
+                setLogin(nim, password)
+            }
+
+//            Toast.makeText(this, "NIM " + nim, Toast.LENGTH_SHORT).show()
+
+//            val inten_main = Intent(this, MainActivity::class.java)
+//            startActivity(inten_main)
         }
 
 
+    }
+
+    private fun setLogin(nim: String, password: String) {
+        // show progress loading
+        val dialogProgress = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+        dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
+        dialogProgress.titleText = "Loading"
+        dialogProgress.setCancelable(false)
+        dialogProgress.show()
+
+        ApiClient.instances.login(nim, password)
+            ?.enqueue(object : Callback<Responses.LoginUserResponse> {
+                override fun onResponse(
+                    call: Call<Responses.LoginUserResponse?>,
+                    response: Response<Responses.LoginUserResponse?>
+                ) {
+                    dialogProgress.dismiss()
+
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    val role = response.body()?.role
+                    val data = response.body()?.data
+
+                    if (response.isSuccessful) {
+                        if (kode.equals("1")) {
+                            setLoginSuccess(role!!, data!!)
+                        } else {
+
+                            SweetAlertDialog(
+                                this@LoginMahasiswaActivity,
+                                SweetAlertDialog.ERROR_TYPE
+                            )
+                                .setTitleText("Uups..")
+                                .setContentText(message)
+                                .show()
+
+                        }
+                    } else {
+                        SweetAlertDialog(this@LoginMahasiswaActivity, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Uups..")
+                            .setContentText(pesanRespon)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Responses.LoginUserResponse?>, t: Throwable) {
+                    dialogProgress.dismiss()
+                    SweetAlertDialog(this@LoginMahasiswaActivity, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Uups..")
+                        .setContentText(t.localizedMessage)
+                        .show()
+                }
+
+            })
+
+    }
+
+    private fun setLoginSuccess(role: String, data: User) {
+        sharedPref.put(Constanta.IS_LOGIN, true)
+
+        sharedPref.put(Constanta.ROLE, role)
+        sharedPref.put(Constanta.ID_USER, data.id)
+
+        startActivity(Intent(this, MainActivity::class.java))
+
+        finish()
     }
 }

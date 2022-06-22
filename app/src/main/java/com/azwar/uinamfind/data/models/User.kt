@@ -6,8 +6,8 @@ data class User(
     val email: String,
     val email_uinam: String,
     val fakultas: String,
-    val foto: Any,
-    val foto_sampul: Any,
+    val foto: String,
+    val foto_sampul: String,
     val id: String,
     val jenis_kelamin: String,
     val jurusan: String,
@@ -25,5 +25,6 @@ data class User(
     val telpon: String,
     val tempat_lahir: String,
     val tentang_user: String,
-    val updated_at: String
+    val updated_at: String,
+    val username: String
 )
