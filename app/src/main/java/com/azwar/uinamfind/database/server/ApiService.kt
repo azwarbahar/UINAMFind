@@ -26,4 +26,10 @@ interface ApiService {
         @Query("user_id") user_id: String?
     ): Call<Responses.ResponseMotto>?
 
+    //Organisasi
+    @GET("mahasiswa/organisasi/getOrganisasiUser.php")
+    fun getOrganisasiUser(
+        @Query("user_id") user_id: String?
+    ): Call<Responses.ResponseOrganisasiMahasiswa>?
+
 }

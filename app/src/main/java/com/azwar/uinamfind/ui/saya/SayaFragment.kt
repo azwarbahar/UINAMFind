@@ -8,9 +8,12 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.azwar.uinamfind.R
@@ -20,13 +23,15 @@ import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentSayaBinding
 import com.azwar.uinamfind.ui.mahasiswa.adapter.KeahlianAdapter
-import com.azwar.uinamfind.ui.mahasiswa.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PendidikanAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PengalamanAdapter
+import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.utils.Constanta
+import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -76,9 +81,62 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             android.R.color.holo_orange_dark,
             android.R.color.holo_green_dark
         )
-        swipe_saya.post(Runnable { loadDataSaya(id) })
+        swipe_saya.post(Runnable {
+            loadDataSaya(id)
+            laodDataOrganisasi(id)
+        })
 
         return sayaBinding.root
+    }
+
+    private fun laodDataOrganisasi(id: String) {
+
+        ApiClient.instances.getOrganisasiUser(id)
+            ?.enqueue(object : Callback<Responses.ResponseOrganisasiMahasiswa> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseOrganisasiMahasiswa>,
+                    response: Response<Responses.ResponseOrganisasiMahasiswa>
+                ) {
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    val data = response.body()?.organisasi_data
+
+                    if (response.isSuccessful) {
+                        if (kode.equals("1")) {
+                            if (data!!.size > 0) {
+                                val rv_org = sayaBinding.rvOrganisasiMahasiswaDetailMahasiswa
+                                rv_org.layoutManager = LinearLayoutManager(activity)
+                                organisasiMahasiswaAdapter = OrganisasiMahasiswaAdapter(data)
+
+                                val dividerItemDecoration: ItemDecoration = DividerItemDecorator(
+                                    ContextCompat.getDrawable(
+                                        context!!, R.drawable.divider
+                                    )
+                                )
+                                rv_org.addItemDecoration(dividerItemDecoration)
+                                rv_org.adapter = organisasiMahasiswaAdapter
+                            } else {
+
+                            }
+                        } else {
+                            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+                override fun onFailure(
+                    call: Call<Responses.ResponseOrganisasiMahasiswa>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
     }
 
     private fun loadDataSaya(id: String) {

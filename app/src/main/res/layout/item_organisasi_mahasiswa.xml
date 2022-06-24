@@ -29,7 +29,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/tv_nama_sekolah_item_pendidikan"
+        android:id="@+id/tv_nama_item_organisasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -42,10 +42,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_nama_kantor_item_pendidikan"
+        android:id="@+id/tv_jabatan_item_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nama_sekolah_item_pendidikan"
+        android:layout_below="@id/tv_nama_item_organisasi"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@id/cv_org_mhs_item"
@@ -56,9 +56,10 @@
         android:textSize="12sp" />
 
     <TextView
+        android:id="@+id/tv_masa_item_organisasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nama_kantor_item_pendidikan"
+        android:layout_below="@id/tv_jabatan_item_pendidikan"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/cv_org_mhs_item"

@@ -95,10 +95,10 @@
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"
                                 android:maxLines="2"
-                                tools:text="Muhammad Azwar Bahar"
                                 android:textColor="@color/black"
                                 android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:text="Muhammad Azwar Bahar" />
 
                             <TextView
                                 android:id="@+id/tv_motto_card_detail_mahasiswa"
@@ -139,9 +139,9 @@
                                     android:layout_below="@id/tv_motto_card_detail_mahasiswa"
                                     android:layout_marginLeft="5dp"
                                     android:layout_toEndOf="@id/img_icon_jurusan_detail_mahasiswa"
-                                    tools:text="Sistem Informasi, Sains dan Teknologi"
                                     android:textColor="@color/grey_hint"
-                                    android:textSize="10sp" />
+                                    android:textSize="10sp"
+                                    tools:text="Sistem Informasi, Sains dan Teknologi" />
 
                             </LinearLayout>
 
@@ -167,9 +167,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
-                                    tools:text="Makassar, Indonesia"
                                     android:textColor="@color/colorPrimary"
-                                    android:textSize="10sp" />
+                                    android:textSize="10sp"
+                                    tools:text="Makassar, Indonesia" />
 
                             </LinearLayout>
 
@@ -296,8 +296,8 @@
                             android:background="@color/white">
 
                             <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
@@ -348,9 +348,9 @@
                                     android:layout_toLeftOf="@id/kutip2"
                                     android:layout_toRightOf="@id/kutip1"
                                     android:gravity="center"
-                                    tools:text="@string/lorem_ipsum"
                                     android:textColor="@color/grey_hint"
-                                    android:textSize="12sp" />
+                                    android:textSize="12sp"
+                                    tools:text="@string/lorem_ipsum" />
 
                             </RelativeLayout>
 
@@ -373,8 +373,8 @@
 
                             <ImageView
                                 android:id="@+id/img_edit_organisasi_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="12dp"
@@ -383,8 +383,8 @@
 
                             <ImageView
                                 android:id="@+id/img_add_organisasi_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="20dp"
                                 android:layout_toLeftOf="@id/img_edit_organisasi_saya"
@@ -408,8 +408,6 @@
                                 android:layout_below="@id/tv1_organisasi_mahasiswa_detail_mahasiswa"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="8dp"
-                                android:clipToPadding="false"
-                                android:paddingLeft="16dp"
                                 tools:itemCount="1"
                                 tools:listitem="@layout/item_organisasi_mahasiswa" />
 
@@ -433,8 +431,8 @@
 
                             <ImageView
                                 android:id="@+id/img_edit_pengalaman_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="12dp"
@@ -443,8 +441,8 @@
 
                             <ImageView
                                 android:id="@+id/img_add_pengalaman_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="20dp"
                                 android:layout_toLeftOf="@id/img_edit_pengalaman_saya"
@@ -489,8 +487,8 @@
 
                             <ImageView
                                 android:id="@+id/img_edit_keahlian_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="12dp"
@@ -499,8 +497,8 @@
 
                             <ImageView
                                 android:id="@+id/img_add_keahlian_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="20dp"
                                 android:layout_toLeftOf="@id/img_edit_keahlian_saya"
@@ -548,8 +546,8 @@
 
                             <ImageView
                                 android:id="@+id/img_edit_pendidikan_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="12dp"
@@ -558,8 +556,8 @@
 
                             <ImageView
                                 android:id="@+id/img_add_pendidikan_saya"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginRight="20dp"
                                 android:layout_toLeftOf="@id/img_edit_pendidikan_saya"
