@@ -36,11 +36,19 @@
         android:layout_marginHorizontal="16dp"
         android:layout_toRightOf="@id/cv_org_mhs_item"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:layout_toLeftOf="@+id/img_edit_item_organisasi"
         android:text="UIN Alauddin Makassar"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_edit_item_organisasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:tint="@color/black" />
 
     <TextView
         android:id="@+id/tv_jabatan_item_pendidikan"

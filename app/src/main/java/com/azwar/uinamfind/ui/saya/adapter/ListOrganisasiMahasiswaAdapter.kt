@@ -1,49 +1,54 @@
 package com.azwar.uinamfind.ui.saya.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.data.models.OrganisasiMahasiswa
-import com.azwar.uinamfind.databinding.ItemOrganisasiMahasiswaBinding
-import com.azwar.uinamfind.utils.ui.MyTextViewDesc
+import com.azwar.uinamfind.databinding.ItemOrganisasiMahasiswaEditBinding
+import com.azwar.uinamfind.ui.saya.organisasi.EditOrganisasiMahasiswaActivity
 import java.text.SimpleDateFormat
 
-
-class OrganisasiMahasiswaAdapter(private val list: List<OrganisasiMahasiswa>) :
-    RecyclerView.Adapter<OrganisasiMahasiswaAdapter.MyHolderView>() {
-    class MyHolderView(private val itemOrganisasiMahasiswaBinding: ItemOrganisasiMahasiswaBinding) :
-        RecyclerView.ViewHolder(itemOrganisasiMahasiswaBinding.root) {
+class ListOrganisasiMahasiswaAdapter(
+    private val list: List<OrganisasiMahasiswa>
+) :
+    RecyclerView.Adapter<ListOrganisasiMahasiswaAdapter.MyHolderView>() {
+    class MyHolderView(private val itemOrganisasiMahasiswaEditBinding: ItemOrganisasiMahasiswaEditBinding) :
+        RecyclerView.ViewHolder(itemOrganisasiMahasiswaEditBinding.root) {
 
         fun bind(list: OrganisasiMahasiswa) {
 
-            with(itemOrganisasiMahasiswaBinding) {
+            with(itemView) {
 
-                itemOrganisasiMahasiswaBinding.tvNamaItemOrganisasi.text = list.nama_organisasi
-                itemOrganisasiMahasiswaBinding.tvJabatanItemPendidikan.text = list.jabatan
+                itemOrganisasiMahasiswaEditBinding.tvNamaItemOrganisasi.text = list.nama_organisasi
+                itemOrganisasiMahasiswaEditBinding.tvJabatanItemPendidikan.text = list.jabatan
                 var tgl_mulai = list.tanggal_mulai
                 var tgl_berakhir = list.tanggal_berakhir
                 var status = list.status_organisasi_user
                 if (status.equals("Berjalan")) {
-                    itemOrganisasiMahasiswaBinding.tvMasaItemOrganisasi.text =
+                    itemOrganisasiMahasiswaEditBinding.tvMasaItemOrganisasi.text =
                         convertDate(tgl_mulai) + " - Sekarang"
                 } else {
-                    itemOrganisasiMahasiswaBinding.tvMasaItemOrganisasi.text =
+                    itemOrganisasiMahasiswaEditBinding.tvMasaItemOrganisasi.text =
                         convertDate(tgl_mulai) +
                                 " - " + convertDate(tgl_berakhir)
                 }
                 var deskripsi = list.deskripsi
-                var tv_desc = itemOrganisasiMahasiswaBinding.tvDescItemOrganisasiMahasiswa
+                var tv_desc = itemOrganisasiMahasiswaEditBinding.tvDescItemOrganisasiMahasiswa
                 if (deskripsi == null) {
                     tv_desc.visibility = View.GONE
                 } else {
                     tv_desc.visibility = View.VISIBLE
                     tv_desc.text = deskripsi
-//                    if (tv_desc.lineCount > 2) {
-                    val myTextViewDesc = MyTextViewDesc()
-                    myTextViewDesc.makeTextViewResizable(tv_desc, 2, ".. Lihat lengkap", true)
-//                    }
                 }
+
+                itemOrganisasiMahasiswaEditBinding.imgEditItemOrganisasi.setOnClickListener {
+                    val intent = Intent(context, EditOrganisasiMahasiswaActivity::class.java)
+                    context.startActivity(intent)
+                }
+
             }
         }
 
@@ -57,12 +62,12 @@ class OrganisasiMahasiswaAdapter(private val list: List<OrganisasiMahasiswa>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolderView {
-        val itemOrganisasiMahasiswaBinding = ItemOrganisasiMahasiswaBinding.inflate(
+        val itemOrganisasiMahasiswaEditBinding = ItemOrganisasiMahasiswaEditBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
 
 
-        return MyHolderView(itemOrganisasiMahasiswaBinding)
+        return MyHolderView(itemOrganisasiMahasiswaEditBinding)
     }
 
     override fun onBindViewHolder(holder: MyHolderView, position: Int) =

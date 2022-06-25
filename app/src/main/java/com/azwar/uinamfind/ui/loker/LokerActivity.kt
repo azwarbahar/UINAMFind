@@ -20,7 +20,6 @@ class LokerActivity : AppCompatActivity() {
 
         val rv_loker = lokerBinding.rvLoker
 
-
         val layoutManagerLoker: RecyclerView.LayoutManager = LinearLayoutManager(this)
         rv_loker.layoutManager = layoutManagerLoker
         lokerAdapter = LokerAdapter()

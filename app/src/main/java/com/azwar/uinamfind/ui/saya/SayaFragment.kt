@@ -26,6 +26,7 @@ import com.azwar.uinamfind.ui.mahasiswa.adapter.KeahlianAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PendidikanAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PengalamanAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.organisasi.ListOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
@@ -64,10 +65,17 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         _sayaBinding = FragmentSayaBinding.inflate(inflater, container, false)
         sharedPref = PreferencesHelper(context)
         id = sharedPref.getString(Constanta.ID_USER).toString()
+
         sayaBinding.rlEditProfilDetailMahasiswa.setOnClickListener {
             val intent_edit_profil = Intent(context, EditProfilMahasiswaActivity::class.java)
             startActivity(intent_edit_profil)
         }
+
+        sayaBinding.imgEditOrganisasiSaya.setOnClickListener {
+            val intent = Intent(context, ListOrganisasiMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // logo back trans in card
         val img_back_logo_card = sayaBinding.imgBaclLogoCard

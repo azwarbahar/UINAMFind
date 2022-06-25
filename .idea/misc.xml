@@ -40,8 +40,10 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_mahasiswa.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_organisasi.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_ukm.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_edit_organisasi_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_edit_profil_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_lembaga.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_list_organisasi_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_login_mahasiswa.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_login_tamu.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_loker.xml" value="0.14666666666666667" />
@@ -84,6 +86,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_market.xml" value="0.12" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_organisasi.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_organisasi_mahasiswa.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_organisasi_mahasiswa_edit.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_pendaftaran_terbuka_ukm.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_pendidikan.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_pengalaman.xml" value="0.22" />
