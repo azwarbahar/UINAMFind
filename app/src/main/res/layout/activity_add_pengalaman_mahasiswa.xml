@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundActivity"
-    tools:context=".ui.saya.organisasi.EditOrganisasiMahasiswaActivity">
+    tools:context=".ui.saya.pengalaman.AddPengalamanMahasiswaActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_toolbar_edit_organisasi"
+        android:id="@+id/rl_toolbar_pengalaman"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
@@ -16,7 +16,7 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:id="@+id/img_back_edit_organisasi"
+            android:id="@+id/img_back_pengalaman"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -25,40 +25,30 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/tv_toolbar_edit_organisasi"
+            android:id="@+id/tv_toolbar_pengalaman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/img_back_edit_organisasi"
-            android:text="Edit Organisasi"
+            android:layout_toRightOf="@id/img_back_pengalaman"
+            android:text="Tambah Pengalaman"
             android:textColor="@color/white"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/img_delete_organisasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginHorizontal="16dp"
-            android:src="@drawable/ic_trash"
-            app:tint="@color/white" />
 
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/rl_bottom_add_organisasi"
-        android:layout_below="@id/rl_toolbar_edit_organisasi">
+        android:layout_above="@id/rl_bottom_pengalaman"
+        android:layout_below="@id/rl_toolbar_pengalaman">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv1_add_organisasi"
+                android:id="@+id/tv1_pengalaman"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -69,10 +59,10 @@
                 android:textStyle="italic" />
 
             <LinearLayout
-                android:id="@+id/ll_nama_organisasi"
+                android:id="@+id/ll_posisi_pengalaman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv1_add_organisasi"
+                android:layout_below="@id/tv1_pengalaman"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
@@ -81,12 +71,70 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nama Organisasi*"
+                    android:text="Posisi*"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_nama_organisasi"
+                    android:id="@+id/et_posisi_pengalaman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="Misal : Data Analyst"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jenis_pengalaman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_posisi_pengalaman"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Pekerjaan*"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/sp_jenis_pengalaman"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_nama_tempat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_jenis_pengalaman"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Perusahaan*"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_nama_tempat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"
@@ -99,28 +147,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_posisi"
+                android:id="@+id/ll_lokasi_pengalaman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_nama_organisasi"
+                android:layout_below="@id/ll_nama_tempat"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Posisi yang dipegang"
+                    android:text="Kota/Kabupaten*"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_posisi_organisasi"
+                    android:id="@+id/et_lokasi_pengalaman"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"
-                    android:hint=""
+                    android:hint="Misal : Makassar, Indonesia"
                     android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@color/black"
@@ -132,11 +180,11 @@
                 android:id="@+id/cb_masih_menjadi_anggota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll_posisi"
+                android:layout_below="@id/ll_lokasi_pengalaman"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:paddingLeft="10dp"
-                android:text="Saat ini masi menjadi anggota"
+                android:text="Saat ini masih bekerja disini"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:buttonTint="@color/colorPrimary" />
@@ -158,15 +206,15 @@
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_tanggal_mulai_organisasi"
+                    android:id="@+id/et_tanggal_mulai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv1_tgl_mulai"
                     android:backgroundTint="@color/colorPrimary"
+                    android:layout_toLeftOf="@id/img_date"
                     android:focusableInTouchMode="false"
                     android:hint=""
                     android:inputType="text"
-                    android:layout_toLeftOf="@id/img_date"
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -199,7 +247,7 @@
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_tanggal_berakhir_organisasi"
+                    android:id="@+id/et_tanggal_berakhir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv1_tgl_berakhir"
@@ -223,26 +271,14 @@
 
             </RelativeLayout>
 
-            <CheckBox
-                android:id="@+id/cb_internal_organisasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_tanggal_berakhir"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:paddingLeft="10dp"
-                android:text="Organisasi Internal Kampus UINAM"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:buttonTint="@color/colorPrimary" />
-
             <LinearLayout
                 android:id="@+id/ll_deskripsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cb_internal_organisasi"
+                android:layout_below="@id/ll_tanggal_berakhir"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -254,7 +290,7 @@
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_deskripsi_organisasi"
+                    android:id="@+id/et_deskripsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"
@@ -269,8 +305,9 @@
 
     </androidx.core.widget.NestedScrollView>
 
+
     <RelativeLayout
-        android:id="@+id/rl_bottom_add_organisasi"
+        android:id="@+id/rl_bottom_pengalaman"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

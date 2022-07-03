@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginVertical="10dp"
+        android:src="@drawable/img_empty_data" />
+
+    <TextView
+        android:id="@+id/tv_message_empty_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/grey_hint"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Data tidak ditemukan!" />
+
+</LinearLayout>

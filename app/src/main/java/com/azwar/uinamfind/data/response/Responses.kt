@@ -2,6 +2,7 @@ package com.azwar.uinamfind.data.response
 
 import com.azwar.uinamfind.data.models.Motto
 import com.azwar.uinamfind.data.models.OrganisasiMahasiswa
+import com.azwar.uinamfind.data.models.PengalamanMahasiswa
 import com.azwar.uinamfind.data.models.User
 
 class Responses {
@@ -28,6 +29,12 @@ class Responses {
 
     data class ResponseOrganisasiMahasiswa(
         val `organisasi_data`: List<OrganisasiMahasiswa>?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponsePengalamanMahasiswa(
+        val `pengalaman_data`: List<PengalamanMahasiswa>?,
         val kode: String?,
         val pesan: String?
     )

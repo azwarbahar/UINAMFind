@@ -16,7 +16,7 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:id="@+id/img_back_loker"
+            android:id="@+id/img_back_organisasi"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/img_back_loker"
+            android:layout_toRightOf="@id/img_back_organisasi"
             android:text="Organisasi"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -45,6 +45,14 @@
             android:src="@drawable/ic_baseline_add_24" />
 
     </RelativeLayout>
+
+    <include
+        android:id="@+id/continer_empty"
+        layout="@layout/layout_data_kosong"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/rl_toolbar_loker" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_organisasi"

@@ -80,8 +80,8 @@
         android:id="@+id/tv_desc_item_organisasi_mahasiswa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cv_org_mhs_item"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/tv_masa_item_organisasi"
+        android:layout_marginTop="16dp"
         android:textColor="@color/black"
         android:textSize="12sp"
         tools:text="@string/lorem_ipsum_long" />

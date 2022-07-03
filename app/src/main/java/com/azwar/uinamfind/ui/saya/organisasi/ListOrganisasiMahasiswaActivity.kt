@@ -1,7 +1,9 @@
 package com.azwar.uinamfind.ui.saya.organisasi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,6 +40,8 @@ class ListOrganisasiMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.
         sharedPref = PreferencesHelper(this)
         id = sharedPref.getString(Constanta.ID_USER).toString()
 
+        binding.continerEmpty.root.visibility = View.GONE
+
         swipe_organisasi = binding.swipeOrganisasi
         swipe_organisasi.setOnRefreshListener(this)
         swipe_organisasi.setColorSchemeResources(
@@ -53,7 +57,12 @@ class ListOrganisasiMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.
 
         val img_add_organisasi = binding.imgAddOrganisasi
         img_add_organisasi.setOnClickListener {
+            val intent = Intent(this, AddOrganisasiMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
 
+        binding.imgBackOrganisasi.setOnClickListener {
+            finish()
         }
 
     }
@@ -66,6 +75,7 @@ class ListOrganisasiMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.
                     call: Call<Responses.ResponseOrganisasiMahasiswa>,
                     response: Response<Responses.ResponseOrganisasiMahasiswa>
                 ) {
+                    swipe_organisasi.isRefreshing = false
                     val pesanRespon = response.message()
                     val message = response.body()?.pesan
                     val kode = response.body()?.kode
@@ -74,25 +84,49 @@ class ListOrganisasiMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.
                     if (response.isSuccessful) {
                         if (kode.equals("1")) {
                             if (data!!.size > 0) {
+                                binding.continerEmpty.root.visibility = View.GONE
                                 val rv_org = binding.rvOrganisasiSaya
-                                rv_org.layoutManager = LinearLayoutManager(this@ListOrganisasiMahasiswaActivity)
-                                listOrganisasiMahasiswaAdapter = ListOrganisasiMahasiswaAdapter(data)
+                                rv_org.visibility = View.VISIBLE
+                                rv_org.layoutManager =
+                                    LinearLayoutManager(this@ListOrganisasiMahasiswaActivity)
+                                listOrganisasiMahasiswaAdapter =
+                                    ListOrganisasiMahasiswaAdapter(data)
 
-                                val dividerItemDecoration: RecyclerView.ItemDecoration = DividerItemDecorator(
-                                    ContextCompat.getDrawable(
-                                        this@ListOrganisasiMahasiswaActivity, R.drawable.divider
+                                val dividerItemDecoration: RecyclerView.ItemDecoration =
+                                    DividerItemDecorator(
+                                        ContextCompat.getDrawable(
+                                            this@ListOrganisasiMahasiswaActivity, R.drawable.divider
+                                        )
                                     )
-                                )
                                 rv_org.addItemDecoration(dividerItemDecoration)
                                 rv_org.adapter = listOrganisasiMahasiswaAdapter
                             } else {
-
+                                binding.continerEmpty.root.visibility = View.VISIBLE
+                                binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
+                                val rv_org = binding.rvOrganisasiSaya
+                                rv_org.visibility = View.VISIBLE
                             }
                         } else {
-                            Toast.makeText(this@ListOrganisasiMahasiswaActivity, message, Toast.LENGTH_SHORT).show()
+                            binding.continerEmpty.root.visibility = View.VISIBLE
+                            binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
+                            val rv_org = binding.rvOrganisasiSaya
+                            rv_org.visibility = View.VISIBLE
+                            Toast.makeText(
+                                this@ListOrganisasiMahasiswaActivity,
+                                message,
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     } else {
-                        Toast.makeText(this@ListOrganisasiMahasiswaActivity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                        binding.continerEmpty.root.visibility = View.VISIBLE
+                        binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
+                        val rv_org = binding.rvOrganisasiSaya
+                        rv_org.visibility = View.VISIBLE
+                        Toast.makeText(
+                            this@ListOrganisasiMahasiswaActivity,
+                            "Server Tidak Merespon",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 }
@@ -101,13 +135,26 @@ class ListOrganisasiMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.
                     call: Call<Responses.ResponseOrganisasiMahasiswa>,
                     t: Throwable
                 ) {
-                    Toast.makeText(this@ListOrganisasiMahasiswaActivity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                    binding.continerEmpty.root.visibility = View.VISIBLE
+                    binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
+                    val rv_org = binding.rvOrganisasiSaya
+                    rv_org.visibility = View.VISIBLE
+                    swipe_organisasi.isRefreshing = false
+                    Toast.makeText(
+                        this@ListOrganisasiMahasiswaActivity,
+                        "Server Tidak Merespon",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
             })
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        laodDataOrganisasi(id)
+    }
 
     override fun onRefresh() {
         laodDataOrganisasi(id)

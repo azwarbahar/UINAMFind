@@ -12,7 +12,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_uinamfind_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.UINAMFind">
+        android:theme="@style/Theme.UINAMFind"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".ui.saya.pengalaman.AddPengalamanMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.organisasi.AddOrganisasiMahasiswaActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.saya.organisasi.EditOrganisasiMahasiswaActivity"
             android:exported="false" />
@@ -111,7 +119,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.MasukActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

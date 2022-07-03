@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundActivity"
-    tools:context=".ui.saya.organisasi.EditOrganisasiMahasiswaActivity">
+    tools:context=".ui.saya.organisasi.AddOrganisasiMahasiswaActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_toolbar_edit_organisasi"
+        android:id="@+id/rl_toolbar_add_organisasi"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
@@ -16,7 +16,7 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:id="@+id/img_back_edit_organisasi"
+            android:id="@+id/img_back_add_organisasi"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -25,33 +25,24 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/tv_toolbar_edit_organisasi"
+            android:id="@+id/tv_toolbar_add_organisasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/img_back_edit_organisasi"
-            android:text="Edit Organisasi"
+            android:layout_toRightOf="@id/img_back_add_organisasi"
+            android:text="Tambah Organisasi"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/img_delete_organisasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginHorizontal="16dp"
-            android:src="@drawable/ic_trash"
-            app:tint="@color/white" />
-
     </RelativeLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/rl_bottom_add_organisasi"
-        android:layout_below="@id/rl_toolbar_edit_organisasi">
+        android:layout_below="@id/rl_toolbar_add_organisasi">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -158,15 +149,15 @@
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_tanggal_mulai_organisasi"
+                    android:id="@+id/et_tanggal_mulai_add_organisasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv1_tgl_mulai"
                     android:backgroundTint="@color/colorPrimary"
+                    android:layout_toLeftOf="@id/img_date"
                     android:focusableInTouchMode="false"
                     android:hint=""
                     android:inputType="text"
-                    android:layout_toLeftOf="@id/img_date"
                     android:maxLines="1"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -199,7 +190,7 @@
                     android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_tanggal_berakhir_organisasi"
+                    android:id="@+id/et_tanggal_berakhir_add_organisasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv1_tgl_berakhir"

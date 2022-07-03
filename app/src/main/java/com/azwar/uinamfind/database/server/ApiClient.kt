@@ -1,11 +1,13 @@
 package com.azwar.uinamfind.database.server
 
+import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 object ApiClient {
 
@@ -25,10 +27,13 @@ object ApiClient {
     }.build()
 
     val instances: ApiService by lazy {
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.3/api_uinamfind/")
+            .baseUrl("http://192.168.1.6/api_uinamfind/")
             .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
         retrofit.create(ApiService::class.java)
     }

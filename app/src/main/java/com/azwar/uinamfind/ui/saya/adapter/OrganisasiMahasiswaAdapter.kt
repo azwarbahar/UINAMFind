@@ -34,12 +34,12 @@ class OrganisasiMahasiswaAdapter(private val list: List<OrganisasiMahasiswa>) :
                 }
                 var deskripsi = list.deskripsi
                 var tv_desc = itemOrganisasiMahasiswaBinding.tvDescItemOrganisasiMahasiswa
-                if (deskripsi == null) {
+                if (deskripsi.equals("") || deskripsi!!.isEmpty()) {
                     tv_desc.visibility = View.GONE
                 } else {
                     tv_desc.visibility = View.VISIBLE
                     tv_desc.text = deskripsi
-//                    if (tv_desc.lineCount > 2) {
+//                    if (itemOrganisasiMahasiswaBinding.tvDescItemOrganisasiMahasiswa.lineCount > 2) {
                     val myTextViewDesc = MyTextViewDesc()
                     myTextViewDesc.makeTextViewResizable(tv_desc, 2, ".. Lihat lengkap", true)
 //                    }
@@ -47,7 +47,7 @@ class OrganisasiMahasiswaAdapter(private val list: List<OrganisasiMahasiswa>) :
             }
         }
 
-        private fun convertDate(date: String): String {
+        private fun convertDate(date: String?): String {
             val parser = SimpleDateFormat("dd-MM-yyyy")
             val formatter = SimpleDateFormat("MMM yyyy")
             val output = formatter.format(parser.parse(date))
@@ -60,8 +60,6 @@ class OrganisasiMahasiswaAdapter(private val list: List<OrganisasiMahasiswa>) :
         val itemOrganisasiMahasiswaBinding = ItemOrganisasiMahasiswaBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-
-
         return MyHolderView(itemOrganisasiMahasiswaBinding)
     }
 

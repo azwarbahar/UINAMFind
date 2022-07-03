@@ -2,8 +2,7 @@ package com.azwar.uinamfind.database.server
 
 import com.azwar.uinamfind.data.response.Responses
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 interface ApiService {
@@ -26,10 +25,64 @@ interface ApiService {
         @Query("user_id") user_id: String?
     ): Call<Responses.ResponseMotto>?
 
-    //Organisasi
+    //ORGANISASI
     @GET("mahasiswa/organisasi/getOrganisasiUser.php")
     fun getOrganisasiUser(
         @Query("user_id") user_id: String?
     ): Call<Responses.ResponseOrganisasiMahasiswa>?
+
+    @GET("mahasiswa/organisasi/deleteOrganisasiUser.php")
+    fun deleteOrganisasiUser(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseOrganisasiMahasiswa>?
+
+    @FormUrlEncoded
+    @POST("mahasiswa/organisasi/addOrganisasiUser.php")
+    fun addOrganisasiUser(
+        @Field("nama_organisasi") nama_organisasi: String?,
+        @Field("jabatan") jabatan: String?,
+        @Field("tanggal_mulai") tanggal_mulai: String?,
+        @Field("tanggal_berakhir") tanggal_berakhir: String?,
+        @Field("status_organisasi_user") status_organisasi_user: String?,
+        @Field("kedudukan_organisasi") kedudukan_organisasi: String?,
+        @Field("organisasi_id") organisasi_id: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("user_id") user_id: String?
+    ): Call<Responses.ResponseOrganisasiMahasiswa>?
+
+    @FormUrlEncoded
+    @POST("mahasiswa/organisasi/updateOrgnaisasiUser.php")
+    fun updateOrgnaisasiUser(
+        @Field("nama_organisasi") nama_organisasi: String?,
+        @Field("jabatan") jabatan: String?,
+        @Field("tanggal_mulai") tanggal_mulai: String?,
+        @Field("tanggal_berakhir") tanggal_berakhir: String?,
+        @Field("status_organisasi_user") status_organisasi_user: String?,
+        @Field("kedudukan_organisasi") kedudukan_organisasi: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("user_id") user_id: String?,
+        @Field("id") id: String?
+    ): Call<Responses.ResponseOrganisasiMahasiswa>?
+
+
+    // PENGALAMAN
+    @GET("mahasiswa/pengalaman/getPengalamanUser.php")
+    fun getPengalamanUser(
+        @Query("user_id") user_id: String?
+    ): Call<Responses.ResponsePengalamanMahasiswa>?
+
+    @FormUrlEncoded
+    @POST("mahasiswa/pengalaman/addPengalamanUser.php")
+    fun addPengalamanUser(
+        @Field("nama") nama: String?,
+        @Field("jenis_pengalaman") jenis_pengalaman: String?,
+        @Field("nama_tempat") nama_tempat: String?,
+        @Field("lokasi_tempat") lokasi_tempat: String?,
+        @Field("tanggal_mulai") tanggal_mulai: String?,
+        @Field("tanggal_berakhir") tanggal_berakhir: String?,
+        @Field("status_pengalaman") status_pengalaman: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("user_id") user_id: String?
+    ): Call<Responses.ResponsePengalamanMahasiswa>?
 
 }

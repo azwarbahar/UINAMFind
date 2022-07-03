@@ -26,7 +26,10 @@ import com.azwar.uinamfind.ui.mahasiswa.adapter.KeahlianAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PendidikanAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PengalamanAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.adapter.PengalamanMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.organisasi.AddOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.organisasi.ListOrganisasiMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
@@ -50,8 +53,11 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var pengalamanAdapter: PengalamanAdapter
     private lateinit var pendidikanAdapter: PendidikanAdapter
     private lateinit var organisasiMahasiswaAdapter: OrganisasiMahasiswaAdapter
+    private lateinit var pengalamanMahasiswaAdapter: PengalamanMahasiswaAdapter
 
     private var id: String = ""
+
+    private lateinit var dialogProgress: SweetAlertDialog
 
     companion object {
         fun newInstance() = SayaFragment()
@@ -71,8 +77,19 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             startActivity(intent_edit_profil)
         }
 
+        //organisasi
+        sayaBinding.imgAddOrganisasiSaya.setOnClickListener {
+            val intent = Intent(context, AddOrganisasiMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
         sayaBinding.imgEditOrganisasiSaya.setOnClickListener {
             val intent = Intent(context, ListOrganisasiMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Pengalaman
+        sayaBinding.imgAddPengalamanSaya.setOnClickListener {
+            val intent = Intent(context, AddPengalamanMahasiswaActivity::class.java)
             startActivity(intent)
         }
 
@@ -80,6 +97,14 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         // logo back trans in card
         val img_back_logo_card = sayaBinding.imgBaclLogoCard
         img_back_logo_card.alpha = 0.1f
+
+        // show progress loading
+
+        dialogProgress = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
+        dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
+        dialogProgress.titleText = "Loading.."
+        dialogProgress.setCancelable(false)
+        dialogProgress.show()
 
         swipe_saya = sayaBinding.swipeSaya
         swipe_saya.setOnRefreshListener(this)
@@ -90,11 +115,62 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             android.R.color.holo_green_dark
         )
         swipe_saya.post(Runnable {
-            loadDataSaya(id)
-            laodDataOrganisasi(id)
+            loadData()
         })
 
         return sayaBinding.root
+    }
+
+    private fun loadData() {
+        loadDataSaya(id)
+        laodDataOrganisasi(id)
+        loadDataPengalaman(id)
+    }
+
+    private fun loadDataPengalaman(id: String) {
+        ApiClient.instances.getPengalamanUser(id)?.enqueue(object :
+            Callback<Responses.ResponsePengalamanMahasiswa> {
+            override fun onResponse(
+                call: Call<Responses.ResponsePengalamanMahasiswa>,
+                response: Response<Responses.ResponsePengalamanMahasiswa>
+            ) {
+                val pesanRespon = response.message()
+                val message = response.body()?.pesan
+                val kode = response.body()?.kode
+                val data = response.body()?.pengalaman_data
+                if (response.isSuccessful) {
+                    if (kode.equals("1")) {
+                        if (data!!.size > 0) {
+                            val rv_pengalaman = sayaBinding.rvPengalamanDetailMahasiswa
+                            rv_pengalaman.layoutManager = LinearLayoutManager(activity)
+                            pengalamanMahasiswaAdapter = PengalamanMahasiswaAdapter(data)
+
+                            val dividerItemDecoration: ItemDecoration = DividerItemDecorator(
+                                ContextCompat.getDrawable(
+                                    context!!, R.drawable.divider
+                                )
+                            )
+                            rv_pengalaman.addItemDecoration(dividerItemDecoration)
+                            rv_pengalaman.adapter = pengalamanMahasiswaAdapter
+                        } else {
+
+                        }
+                    } else {
+                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(
+                call: Call<Responses.ResponsePengalamanMahasiswa>,
+                t: Throwable
+            ) {
+                Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     private fun laodDataOrganisasi(id: String) {
@@ -149,12 +225,6 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun loadDataSaya(id: String) {
         swipe_saya.isRefreshing = false
-        // show progress loading
-        val dialogProgress = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
-        dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
-        dialogProgress.titleText = "Loading.."
-        dialogProgress.setCancelable(false)
-        dialogProgress.show()
 
         ApiClient.instances.getMahasiswaID(id)
             ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
@@ -286,6 +356,12 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
-        loadDataSaya(id)
+        loadData()
     }
+
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
 }

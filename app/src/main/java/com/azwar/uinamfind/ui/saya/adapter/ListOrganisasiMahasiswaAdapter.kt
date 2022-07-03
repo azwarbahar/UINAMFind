@@ -46,13 +46,14 @@ class ListOrganisasiMahasiswaAdapter(
 
                 itemOrganisasiMahasiswaEditBinding.imgEditItemOrganisasi.setOnClickListener {
                     val intent = Intent(context, EditOrganisasiMahasiswaActivity::class.java)
+                    intent.putExtra("organisasi", list)
                     context.startActivity(intent)
                 }
 
             }
         }
 
-        private fun convertDate(date: String): String {
+        private fun convertDate(date: String?): String {
             val parser = SimpleDateFormat("dd-MM-yyyy")
             val formatter = SimpleDateFormat("MMM yyyy")
             val output = formatter.format(parser.parse(date))
