@@ -35,12 +35,24 @@ data class PengalamanMahasiswa(
     ) {
     }
 
-    override fun describeContents(): Int {
-        TODO("Not yet implemented")
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(created_at)
+        parcel.writeString(deskripsi)
+        parcel.writeString(id)
+        parcel.writeString(jenis_pengalaman)
+        parcel.writeString(lokasi_tempat)
+        parcel.writeString(nama)
+        parcel.writeString(nama_tempat)
+        parcel.writeString(slug_pengalaman)
+        parcel.writeString(status_pengalaman)
+        parcel.writeString(tanggal_berakhir)
+        parcel.writeString(tanggal_mulai)
+        parcel.writeString(updated_at)
+        parcel.writeString(user_id)
     }
 
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        TODO("Not yet implemented")
+    override fun describeContents(): Int {
+        return 0
     }
 
     companion object CREATOR : Parcelable.Creator<PengalamanMahasiswa> {

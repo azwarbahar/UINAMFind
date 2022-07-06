@@ -85,4 +85,24 @@ interface ApiService {
         @Field("user_id") user_id: String?
     ): Call<Responses.ResponsePengalamanMahasiswa>?
 
+    @GET("mahasiswa/pengalaman/deletePengalamanUser.php")
+    fun deletePengalamanUser(
+        @Query("id") id: String?
+    ): Call<Responses.ResponsePengalamanMahasiswa>?
+
+    @FormUrlEncoded
+    @POST("mahasiswa/pengalaman/updatePengalamanUser.php")
+    fun updatePengalamanUser(
+        @Field("id") id: String?,
+        @Field("user_id") user_id: String?,
+        @Field("nama") nama: String?,
+        @Field("jenis_pengalaman") jenis_pengalaman: String?,
+        @Field("nama_tempat") nama_tempat: String?,
+        @Field("lokasi_tempat") lokasi_tempat: String?,
+        @Field("tanggal_mulai") tanggal_mulai: String?,
+        @Field("tanggal_berakhir") tanggal_berakhir: String?,
+        @Field("status_pengalaman") status_pengalaman: String?,
+        @Field("deskripsi") deskripsi: String?
+    ): Call<Responses.ResponsePengalamanMahasiswa>?
+
 }

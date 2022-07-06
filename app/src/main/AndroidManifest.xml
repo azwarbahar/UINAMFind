@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.saya.pengalaman.EditPengalamanMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.pengalaman.ListPengalamanMahasiswaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.saya.pengalaman.AddPengalamanMahasiswaActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="12dp">
+
+    <ImageView
+        android:id="@+id/img_kantor_item_pengalaman"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/circle_primary_trans_10"
+        android:padding="12dp"
+        android:src="@drawable/ic_kantor_mobil" />
+
+    <TextView
+        android:id="@+id/tv_judul_item_pengalaman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Software Engineer"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_edit_item_pengalaman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_nama_kantor_item_pengalaman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_judul_item_pengalaman"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:ellipsize="end"
+        android:text="CV. UINAM Find"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_masa_item_pengalaman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nama_kantor_item_pengalaman"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:text="Feb 2022 - Sekarang"
+        android:textColor="@color/grey_hint"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_desc_item_pengalaman_mahasiswa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_masa_item_pengalaman"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        tools:text="@string/lorem_ipsum_long" />
+
+</RelativeLayout>

@@ -25,11 +25,14 @@ import com.azwar.uinamfind.databinding.FragmentSayaBinding
 import com.azwar.uinamfind.ui.mahasiswa.adapter.KeahlianAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PendidikanAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.PengalamanAdapter
+import com.azwar.uinamfind.ui.saya.adapter.ListPengalamanMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.PengalamanMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.organisasi.AddOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.organisasi.ListOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.pengalaman.EditPengalamanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
@@ -90,6 +93,11 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         // Pengalaman
         sayaBinding.imgAddPengalamanSaya.setOnClickListener {
             val intent = Intent(context, AddPengalamanMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        sayaBinding.imgEditPengalamanSaya.setOnClickListener {
+            val intent = Intent(context, ListPengalamanMahasiswaActivity::class.java)
             startActivity(intent)
         }
 

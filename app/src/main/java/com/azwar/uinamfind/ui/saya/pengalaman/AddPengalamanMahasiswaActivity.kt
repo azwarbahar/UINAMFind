@@ -84,7 +84,7 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
         var berjalan = "Berjalan"
         if (binding.cbMasihMenjadiAnggota.isChecked) {
             berjalan = "Berjalan"
-            tgl_berakhir = null
+//            tgl_berakhir = null
         } else {
             berjalan = "Berakhir"
         }
@@ -142,9 +142,18 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
         dialogProgress.setCancelable(false)
         dialogProgress.show()
 
-        ApiClient.instances.addPengalamanUser(posisi.toString(), jenis, namaPerusahaan.toString(),
-        lokasi.toString(), tglMulai.toString(), tglBerakhir.toString(), berjalan, deskripsi.toString(), id)?.enqueue(object :
-            Callback<Responses.ResponsePengalamanMahasiswa>{
+        ApiClient.instances.addPengalamanUser(
+            posisi.toString(),
+            jenis,
+            namaPerusahaan.toString(),
+            lokasi.toString(),
+            tglMulai.toString(),
+            tglBerakhir.toString(),
+            berjalan,
+            deskripsi.toString(),
+            id
+        )?.enqueue(object :
+            Callback<Responses.ResponsePengalamanMahasiswa> {
             override fun onResponse(
                 call: Call<Responses.ResponsePengalamanMahasiswa>,
                 response: Response<Responses.ResponsePengalamanMahasiswa>
@@ -269,7 +278,6 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
         val arrayAdapterJenisPengalaman =
             ArrayAdapter(this, R.layout.simple_list_item_1, arrayJenisPengalaman)
         spinnerJenisPengalaman.adapter = arrayAdapterJenisPengalaman
-
 
         spinnerJenisPengalaman?.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {

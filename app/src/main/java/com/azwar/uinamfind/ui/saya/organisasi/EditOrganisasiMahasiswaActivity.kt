@@ -351,7 +351,6 @@ class EditOrganisasiMahasiswaActivity : AppCompatActivity() {
         dpd.show()
     }
 
-
     private fun initDataIntent(organisasiMahasiswa: OrganisasiMahasiswa) {
         organisasi_id = organisasiMahasiswa.id.toString()
         var nama = organisasiMahasiswa.nama_organisasi
