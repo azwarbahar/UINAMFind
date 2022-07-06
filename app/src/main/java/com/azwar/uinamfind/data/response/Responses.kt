@@ -1,9 +1,6 @@
 package com.azwar.uinamfind.data.response
 
-import com.azwar.uinamfind.data.models.Motto
-import com.azwar.uinamfind.data.models.OrganisasiMahasiswa
-import com.azwar.uinamfind.data.models.PengalamanMahasiswa
-import com.azwar.uinamfind.data.models.User
+import com.azwar.uinamfind.data.models.*
 
 class Responses {
 
@@ -35,6 +32,12 @@ class Responses {
 
     data class ResponsePengalamanMahasiswa(
         val `pengalaman_data`: List<PengalamanMahasiswa>?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseKeahlianMahasiswa(
+        val `keahlian_data`: List<KeahlianMahasiswa>?,
         val kode: String?,
         val pesan: String?
     )

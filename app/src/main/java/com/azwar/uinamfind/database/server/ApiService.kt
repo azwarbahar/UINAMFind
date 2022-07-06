@@ -66,11 +66,13 @@ interface ApiService {
 
 
     // PENGALAMAN
+    //get
     @GET("mahasiswa/pengalaman/getPengalamanUser.php")
     fun getPengalamanUser(
         @Query("user_id") user_id: String?
     ): Call<Responses.ResponsePengalamanMahasiswa>?
 
+    //add
     @FormUrlEncoded
     @POST("mahasiswa/pengalaman/addPengalamanUser.php")
     fun addPengalamanUser(
@@ -85,11 +87,13 @@ interface ApiService {
         @Field("user_id") user_id: String?
     ): Call<Responses.ResponsePengalamanMahasiswa>?
 
+    //delete
     @GET("mahasiswa/pengalaman/deletePengalamanUser.php")
     fun deletePengalamanUser(
         @Query("id") id: String?
     ): Call<Responses.ResponsePengalamanMahasiswa>?
 
+    //update
     @FormUrlEncoded
     @POST("mahasiswa/pengalaman/updatePengalamanUser.php")
     fun updatePengalamanUser(
@@ -104,5 +108,39 @@ interface ApiService {
         @Field("status_pengalaman") status_pengalaman: String?,
         @Field("deskripsi") deskripsi: String?
     ): Call<Responses.ResponsePengalamanMahasiswa>?
+
+
+    // KEAHLIAN
+    //get
+    @GET("mahasiswa/keahlian/getKeahlianUser.php")
+    fun getKeahlianUser(
+        @Query("user_id") user_id: String?
+    ): Call<Responses.ResponseKeahlianMahasiswa>?
+
+    //add
+    @FormUrlEncoded
+    @POST("mahasiswa/keahlian/addKeahlianUser.php")
+    fun addKeahlianUser(
+        @Field("user_id") user_id: String?,
+        @Field("nama_skill") nama_skill: String?,
+        @Field("level_skill") level_skill: String?
+    ): Call<Responses.ResponseKeahlianMahasiswa>?
+
+    //delete
+    @GET("mahasiswa/keahlian/deleteKeahlianUser.php")
+    fun deleteKeahlianUser(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseKeahlianMahasiswa>?
+
+    //update
+    @FormUrlEncoded
+    @POST("mahasiswa/keahlian/updateKeahlianUser.php")
+    fun updateKeahlianUser(
+        @Field("id") id: String?,
+        @Field("user_id") user_id: String?,
+        @Field("nama_skill") nama_skill: String?,
+        @Field("level_skill") level_skill: String?
+    ): Call<Responses.ResponseKeahlianMahasiswa>?
+
 
 }

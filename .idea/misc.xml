@@ -31,6 +31,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/drawable/ic_location_alt_fill.xml" value="0.122" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout-w1240dp/activity_room_chat.xml" value="0.158203125" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout-w936dp/activity_room_chat.xml" value="0.19775390625" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_add_keahlian_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_add_organisasi_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_add_pengalaman_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_beasiswa.xml" value="0.16666666666666666" />
@@ -42,10 +43,12 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_mahasiswa.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_organisasi.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_detail_ukm.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_edit_keahlian_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_edit_organisasi_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_edit_pengalaman_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_edit_profil_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_lembaga.xml" value="0.12567567567567567" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_list_keahlian_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_list_organisasi_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_list_pengalaman_mahasiswa.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_login_mahasiswa.xml" value="0.14666666666666667" />
@@ -82,6 +85,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_card_mahasiswa.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_fakultas_lembaga.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_keahlian.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_keahlian_mahasiswa_edit.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_lembaga.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_loker.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_loker_home.xml" value="0.22" />

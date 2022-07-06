@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="12dp">
+
+    <TextView
+        android:id="@+id/tv_nama_item_keahlian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/img_edit_item_keahlian"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Mobile Developer" />
+
+    <ImageView
+        android:id="@+id/img_edit_item_keahlian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:tint="@color/black" />
+
+    <RelativeLayout
+        android:id="@+id/rl_progress_level"
+        android:background="@color/colorPrimaryTrans_10"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_nama_item_keahlian"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progress_level"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/black"
+            android:indeterminateTintMode="src_in"
+            android:max="5"
+            tools:progress="1" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_nama_level_skill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_progress_level"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        tools:text="Level : Expert" />
+
+</RelativeLayout>

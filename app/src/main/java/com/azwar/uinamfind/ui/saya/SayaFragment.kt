@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -22,16 +21,14 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentSayaBinding
-import com.azwar.uinamfind.ui.mahasiswa.adapter.KeahlianAdapter
-import com.azwar.uinamfind.ui.mahasiswa.adapter.PendidikanAdapter
-import com.azwar.uinamfind.ui.mahasiswa.adapter.PengalamanAdapter
-import com.azwar.uinamfind.ui.saya.adapter.ListPengalamanMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.adapter.KeahlianMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.PengalamanMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.keahlian.AddKeahlianMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.keahlian.ListKeahlianMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.organisasi.AddOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.organisasi.ListOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
-import com.azwar.uinamfind.ui.saya.pengalaman.EditPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
@@ -52,11 +49,9 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var user: User
 
     // adapter
-    private lateinit var keahlianAdapter: KeahlianAdapter
-    private lateinit var pengalamanAdapter: PengalamanAdapter
-    private lateinit var pendidikanAdapter: PendidikanAdapter
     private lateinit var organisasiMahasiswaAdapter: OrganisasiMahasiswaAdapter
     private lateinit var pengalamanMahasiswaAdapter: PengalamanMahasiswaAdapter
+    private lateinit var keahlianMahasiswaAdapter: KeahlianMahasiswaAdapter
 
     private var id: String = ""
 
@@ -101,6 +96,17 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             startActivity(intent)
         }
 
+        // Keahlian
+        sayaBinding.imgAddKeahlianSaya.setOnClickListener {
+            val intent = Intent(context, AddKeahlianMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        sayaBinding.imgEditKeahlianSaya.setOnClickListener {
+            val intent = Intent(context, ListKeahlianMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // logo back trans in card
         val img_back_logo_card = sayaBinding.imgBaclLogoCard
@@ -133,6 +139,52 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         loadDataSaya(id)
         laodDataOrganisasi(id)
         loadDataPengalaman(id)
+        loadDataKeahlian(id)
+    }
+
+    private fun loadDataKeahlian(id: String) {
+        ApiClient.instances.getKeahlianUser(id)?.enqueue(object :
+            Callback<Responses.ResponseKeahlianMahasiswa> {
+            override fun onResponse(
+                call: Call<Responses.ResponseKeahlianMahasiswa>,
+                response: Response<Responses.ResponseKeahlianMahasiswa>
+            ) {
+                val pesanRespon = response.message()
+                val message = response.body()?.pesan
+                val kode = response.body()?.kode
+                val data = response.body()?.keahlian_data
+                if (response.isSuccessful) {
+                    if (kode.equals("1")) {
+                        if (data!!.size > 0) {
+                            val rv_keahlian = sayaBinding.rvKeahlianDetailMahasiswa
+                            rv_keahlian.layoutManager =
+                                LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                            keahlianMahasiswaAdapter = KeahlianMahasiswaAdapter(data)
+//                            val dividerItemDecoration: ItemDecoration = DividerItemDecorator(
+//                                ContextCompat.getDrawable(
+//                                    context!!, R.drawable.divider
+//                                )
+//                            )
+//                            rv_keahlian.addItemDecoration(dividerItemDecoration)
+                            rv_keahlian.adapter = keahlianMahasiswaAdapter
+                        } else {
+
+                        }
+                    } else {
+                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(
+                call: Call<Responses.ResponseKeahlianMahasiswa>,
+                t: Throwable
+            ) {
+                Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun loadDataPengalaman(id: String) {
@@ -177,7 +229,6 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             ) {
                 Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 

@@ -16,6 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.saya.keahlian.EditKeahlianMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.keahlian.AddKeahlianMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.keahlian.ListKeahlianMahasiswaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.saya.pengalaman.EditPengalamanMahasiswaActivity"
             android:exported="false" />
         <activity

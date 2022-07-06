@@ -1,10 +1,10 @@
 package com.azwar.uinamfind.ui.saya.organisasi
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +14,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityListOrganisasiMahasiswaBinding
-import com.azwar.uinamfind.databinding.ItemOrganisasiMahasiswaBinding
 import com.azwar.uinamfind.ui.saya.adapter.ListOrganisasiMahasiswaAdapter
-import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
@@ -146,7 +144,6 @@ class ListOrganisasiMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
             })
 
     }

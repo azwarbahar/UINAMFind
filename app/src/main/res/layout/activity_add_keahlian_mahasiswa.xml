@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundActivity"
+    tools:context=".ui.saya.keahlian.AddKeahlianMahasiswaActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_toolbar_add_keahlian"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_back_add_keahlian"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_toolbar_add_keahlian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/img_back_add_keahlian"
+            android:text="Tambah Keahlian"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_bottom_add_keahlian"
+        android:layout_below="@id/rl_toolbar_add_keahlian">
+
+        <TextView
+            android:id="@+id/tv1_add_keahlian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="* Wajib isi"
+            android:textColor="@color/grey_hint"
+            android:textSize="11sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/ll_nama_keahlian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1_add_keahlian"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Keahlian*"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/et_nama_keahlian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:hint="Misal : Desain atau Leadership"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_level_keahlian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_nama_keahlian"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level Keahlian*"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/sp_level_keahlian"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom_add_keahlian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white2">
+
+        <RelativeLayout
+            android:id="@+id/rl_simpan_perubahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:background="@drawable/bg_primary_corner_16">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="10dp"
+                android:text="Simpan Pembaruan"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
