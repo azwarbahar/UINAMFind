@@ -8,28 +8,29 @@
     android:layout_marginVertical="12dp">
 
     <ImageView
-        android:id="@+id/img_kantor_item_pengalaman"
+        android:id="@+id/img_sekolah_item_pendidikan"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/circle_primary_trans_10"
         android:padding="12dp"
-        android:src="@drawable/ic_kantor_mobil" />
+        android:src="@drawable/ic_toga" />
 
     <TextView
-        android:id="@+id/tv_judul_item_pengalaman"
+        android:id="@+id/tv_nama_jurusan_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:layout_toLeftOf="@id/img_edit_item_pendidikan"
+        android:layout_toRightOf="@id/img_sekolah_item_pendidikan"
         android:ellipsize="end"
-        android:maxLines="1"
-        android:text="Software Engineer"
+        android:maxLines="2"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="UIN Alauddin Makassar" />
 
     <ImageView
-        android:id="@+id/img_edit_item_pengalaman"
+        android:id="@+id/img_edit_item_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -37,40 +38,29 @@
         app:tint="@color/black" />
 
     <TextView
-        android:id="@+id/tv_nama_kantor_item_pengalaman"
+        android:id="@+id/tv_nama_sekolah_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_judul_item_pengalaman"
+        android:layout_below="@id/tv_nama_jurusan_pendidikan"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="3dp"
-        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:layout_toRightOf="@id/img_sekolah_item_pendidikan"
         android:ellipsize="end"
-        android:text="CV. UINAM Find"
-        android:textColor="@color/black"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/tv_masa_item_pengalaman"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nama_kantor_item_pengalaman"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
-        android:text="Feb 2022 - Sekarang"
-        android:textColor="@color/grey_hint"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:id="@+id/tv_desc_item_pengalaman_mahasiswa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_masa_item_pengalaman"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_toRightOf="@id/img_kantor_item_pengalaman"
+        android:maxLines="2"
         android:textColor="@color/black"
         android:textSize="14sp"
-        tools:text="@string/lorem_ipsum_long" />
+        tools:text="CV. UINAM Find" />
+
+    <TextView
+        android:id="@+id/tv_tahun_masa_pendidikan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nama_sekolah_pendidikan"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/img_sekolah_item_pendidikan"
+        android:textColor="@color/grey_hint"
+        android:textSize="14sp"
+        tools:text="2016 - 2022" />
 
 </RelativeLayout>

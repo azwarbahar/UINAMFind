@@ -1,6 +1,7 @@
 package com.azwar.uinamfind.ui.saya
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -9,6 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.databinding.ActivityEditProfilMahasiswaBinding
+import com.azwar.uinamfind.ui.saya.keahlian.ListKeahlianMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.organisasi.ListOrganisasiMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.pendidikan.AddPendidikanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.pendidikan.ListPendidikanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
 import kotlinx.android.synthetic.main.activity_edit_profil_mahasiswa.*
 import java.util.*
 
@@ -22,6 +28,8 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
         editProfilMahasiswaBinding = ActivityEditProfilMahasiswaBinding.inflate(layoutInflater)
         setContentView(editProfilMahasiswaBinding.root)
 
+        setupSpinner()
+
         editProfilMahasiswaBinding.etTanggalLahirEditProfil.setOnClickListener {
             showDatPickerDialig()
         }
@@ -30,7 +38,25 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
             finish()
         }
 
-        setupSpinner()
+        editProfilMahasiswaBinding.rlPengalanKerja.setOnClickListener {
+            val intent = Intent(this, ListPengalamanMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        editProfilMahasiswaBinding.rlKeahlian.setOnClickListener {
+            val intent = Intent(this, ListKeahlianMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        editProfilMahasiswaBinding.rlPendidikan.setOnClickListener {
+            val intent = Intent(this, ListPendidikanMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        editProfilMahasiswaBinding.rlOrganisasi.setOnClickListener {
+            val intent = Intent(this, ListOrganisasiMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -47,7 +73,12 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
 
             }
 
-            override fun onItemSelected( parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
 //                Toast.makeText(
 //                    applicationContext,
 //                    getString(R.string.selected_item) + " " + arrayJenisKelamin[position],

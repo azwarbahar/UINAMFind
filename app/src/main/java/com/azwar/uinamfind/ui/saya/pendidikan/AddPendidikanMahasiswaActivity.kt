@@ -1,6 +1,5 @@
-package com.azwar.uinamfind.ui.saya.pengalaman
+package com.azwar.uinamfind.ui.saya.pendidikan
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.res.ColorStateList
@@ -15,10 +14,11 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
-import com.azwar.uinamfind.databinding.ActivityAddPengalamanMahasiswaBinding
+import com.azwar.uinamfind.databinding.ActivityAddPendidikanMahasiswaBinding
 import com.azwar.uinamfind.utils.Constanta
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,18 +26,16 @@ import retrofit2.Response
 import java.util.*
 
 
-class AddPengalamanMahasiswaActivity : AppCompatActivity() {
+class AddPendidikanMahasiswaActivity : AppCompatActivity() {
     private lateinit var sharedPref: PreferencesHelper
     private var id: String = ""
-    private var jenis_pekerjaan: String = ""
+    private var pendidikan_pilih: String = ""
 
-    private lateinit var binding: ActivityAddPengalamanMahasiswaBinding
-
-    private lateinit var et_tanggal_berakhir: EditText
+    private lateinit var binding: ActivityAddPendidikanMahasiswaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddPengalamanMahasiswaBinding.inflate(layoutInflater)
+        binding = ActivityAddPendidikanMahasiswaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPref = PreferencesHelper(this)
         id = sharedPref.getString(Constanta.ID_USER).toString()
@@ -50,9 +48,9 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
 
         binding.etTanggalMulai.setOnClickListener {
             showDatPickerDialig(binding.etTanggalMulai)
+//            show()
         }
 
-        et_tanggal_berakhir = binding.etTanggalBerakhir
         binding.cbMasihMenjadiAnggota.setOnCheckedChangeListener { button, isChecked ->
             if (isChecked) {
                 berjalan()
@@ -61,44 +59,32 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
             }
         }
 
-        binding.imgBackPengalaman.setOnClickListener { finish() }
+        binding.imgBackPendidikan.setOnClickListener { finish() }
 
         binding.rlSimpanPerubahan.setOnClickListener {
             clickSimpan()
         }
-
     }
 
     private fun clickSimpan() {
-        val posisi = binding.etPosisiPengalaman.text
-        var jenis = "-"
-        if (jenis_pekerjaan.equals("-- Pilih --")) {
-            jenis = "-"
-        } else {
-            jenis = jenis_pekerjaan
-        }
-        val nama_perusahaan = binding.etNamaTempat.text
-        val lokasi = binding.etLokasiPengalaman.text
+        val tempat = binding.etNamaTempatPendidikan.text
+        val jurusan = binding.etJurusanPendidikan.text
         val tgl_mulai = binding.etTanggalMulai.text
         var tgl_berakhir = binding.etTanggalBerakhir.text
-        var berjalan = "Berjalan"
+        var berjalan = "Masih"
         if (binding.cbMasihMenjadiAnggota.isChecked) {
-            berjalan = "Berjalan"
+            berjalan = "Masih"
 //            tgl_berakhir = null
         } else {
-            berjalan = "Berakhir"
+            berjalan = "Selesai"
         }
-        val deskripsi = binding.etDeskripsi.text
 
         when {
-            posisi.isEmpty() -> {
-                binding.etPosisiPengalaman.error = "Lengkapi"
+            tempat.isEmpty() -> {
+                binding.etNamaTempatPendidikan.error = "Lengkapi"
             }
-            nama_perusahaan.isEmpty() -> {
-                binding.etNamaTempat.error = "Lengkapi"
-            }
-            lokasi.isEmpty() -> {
-                binding.etLokasiPengalaman.error = "Lengkapi"
+            jurusan.isEmpty() -> {
+                binding.etJurusanPendidikan.error = "Lengkapi"
             }
             tgl_mulai.isEmpty() -> {
                 binding.etTanggalMulai.error = "Lengkapi"
@@ -108,14 +94,12 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
             }
             else -> {
                 startAddData(
-                    posisi,
-                    jenis,
-                    nama_perusahaan,
-                    lokasi,
+                    pendidikan_pilih,
+                    tempat,
+                    jurusan,
                     tgl_mulai,
                     tgl_berakhir,
                     berjalan,
-                    deskripsi,
                     id
                 )
             }
@@ -124,14 +108,12 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
     }
 
     private fun startAddData(
-        posisi: Editable?,
-        jenis: String,
-        namaPerusahaan: Editable?,
-        lokasi: Editable?,
+        pendidikanPilih: String,
+        tempat: Editable?,
+        jurusan: Editable?,
         tglMulai: Editable?,
         tglBerakhir: Editable?,
         berjalan: String,
-        deskripsi: Editable?,
         id: String
     ) {
         // show progress loading
@@ -141,21 +123,19 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
         dialogProgress.setCancelable(false)
         dialogProgress.show()
 
-        ApiClient.instances.addPengalamanUser(
-            posisi.toString(),
-            jenis,
-            namaPerusahaan.toString(),
-            lokasi.toString(),
+        ApiClient.instances.addPendidikanUser(
+            pendidikanPilih,
+            tempat.toString(),
+            jurusan.toString(),
             tglMulai.toString(),
             tglBerakhir.toString(),
             berjalan,
-            deskripsi.toString(),
             id
         )?.enqueue(object :
-            Callback<Responses.ResponsePengalamanMahasiswa> {
+            Callback<Responses.ResponsePendidikanMahasiswa> {
             override fun onResponse(
-                call: Call<Responses.ResponsePengalamanMahasiswa>,
-                response: Response<Responses.ResponsePengalamanMahasiswa>
+                call: Call<Responses.ResponsePendidikanMahasiswa>,
+                response: Response<Responses.ResponsePendidikanMahasiswa>
             ) {
                 dialogProgress.dismiss()
                 val pesanRespon = response.message()
@@ -165,7 +145,7 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
                     if (kode.equals("1")) {
 
                         SweetAlertDialog(
-                            this@AddPengalamanMahasiswaActivity,
+                            this@AddPendidikanMahasiswaActivity,
                             SweetAlertDialog.SUCCESS_TYPE
                         )
                             .setTitleText("Success..")
@@ -179,7 +159,7 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
                             .show()
                     } else {
                         SweetAlertDialog(
-                            this@AddPengalamanMahasiswaActivity,
+                            this@AddPendidikanMahasiswaActivity,
                             SweetAlertDialog.ERROR_TYPE
                         )
                             .setTitleText("Gagal..")
@@ -188,7 +168,7 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
                     }
                 } else {
                     SweetAlertDialog(
-                        this@AddPengalamanMahasiswaActivity,
+                        this@AddPendidikanMahasiswaActivity,
                         SweetAlertDialog.ERROR_TYPE
                     )
                         .setTitleText("Gagal..")
@@ -198,18 +178,17 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
             }
 
             override fun onFailure(
-                call: Call<Responses.ResponsePengalamanMahasiswa>,
+                call: Call<Responses.ResponsePendidikanMahasiswa>,
                 t: Throwable
             ) {
                 dialogProgress.dismiss()
-                SweetAlertDialog(this@AddPengalamanMahasiswaActivity, SweetAlertDialog.ERROR_TYPE)
+                SweetAlertDialog(this@AddPendidikanMahasiswaActivity, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText("Gagal..")
                     .setContentText("Server tidak merespon")
                     .show()
             }
 
         })
-
     }
 
     private fun showDatPickerDialig(et: EditText) {
@@ -262,20 +241,24 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
 
         val colorStateList = ColorStateList.valueOf(com.azwar.uinamfind.R.color.grey_hint)
         binding.etTanggalBerakhir.backgroundTintList = colorStateList
-        binding.etTanggalBerakhir.setText("Berjalan")
+        binding.etTanggalBerakhir.setText("Masih")
         binding.etTanggalBerakhir.isEnabled = false
 
 
     }
 
     private fun setupSpinner() {
-        val arrayJenisPengalaman = arrayOf(
-            "-- Pilih --", "Purnawaktu", "Paruh Waktu", "Wiraswasta",
-            "Pekerjaan Lepas", "Kontrak", "Magang"
+        val arrayPendidikan = arrayOf(
+            "Sekolah Dasar",
+            "Menengah Pertama",
+            "Menengah Atas/Kejuruan",
+            "Sarjana",
+            "Magister",
+            "Doktor"
         )
-        val spinnerJenisPengalaman = binding.spJenisPengalaman
+        val spinnerJenisPengalaman = binding.spPendidikan
         val arrayAdapterJenisPengalaman =
-            ArrayAdapter(this, R.layout.simple_list_item_1, arrayJenisPengalaman)
+            ArrayAdapter(this, R.layout.simple_list_item_1, arrayPendidikan)
         spinnerJenisPengalaman.adapter = arrayAdapterJenisPengalaman
 
         spinnerJenisPengalaman?.onItemSelectedListener =
@@ -290,9 +273,10 @@ class AddPengalamanMahasiswaActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    jenis_pekerjaan = arrayJenisPengalaman[position]
+                    pendidikan_pilih = arrayPendidikan[position]
 //                Toast.makeText(applicationContext, arrayJenisPengalaman[position], Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
 }

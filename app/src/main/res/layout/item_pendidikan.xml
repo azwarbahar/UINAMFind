@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="12dp">
 
@@ -14,41 +15,42 @@
         android:src="@drawable/ic_toga" />
 
     <TextView
-        android:id="@+id/tv_nama_sekolah_item_pendidikan"
+        android:id="@+id/tv_nama_jurusan_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_toRightOf="@id/img_sekolah_item_pendidikan"
         android:ellipsize="end"
-        android:maxLines="1"
-        android:text="UIN Alauddin Makassar"
+        android:maxLines="2"
         android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="UIN Alauddin Makassar" />
 
     <TextView
-        android:id="@+id/tv_nama_kantor_item_pendidikan"
+        android:id="@+id/tv_nama_sekolah_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nama_sekolah_item_pendidikan"
+        android:layout_below="@id/tv_nama_jurusan_pendidikan"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="3dp"
         android:layout_toRightOf="@id/img_sekolah_item_pendidikan"
         android:ellipsize="end"
-        android:maxLines="1"
-        android:text="CV. UINAM Find"
+        android:maxLines="2"
         android:textColor="@color/black"
-        android:textSize="12sp" />
+        android:textSize="14sp"
+        tools:text="CV. UINAM Find" />
 
     <TextView
+        android:id="@+id/tv_tahun_masa_pendidikan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_nama_kantor_item_pendidikan"
+        android:layout_below="@id/tv_nama_sekolah_pendidikan"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/img_sekolah_item_pendidikan"
-        android:text="2016 - 2022"
         android:textColor="@color/grey_hint"
-        android:textSize="12sp" />
+        android:textSize="14sp"
+        tools:text="2016 - 2022" />
 
 </RelativeLayout>

@@ -24,7 +24,7 @@
         android:maxLines="1"
         android:text="Software Engineer"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:ellipsize="end"
         android:text="CV. UINAM Find"
         android:textColor="@color/black"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_masa_item_pengalaman"
@@ -50,7 +50,7 @@
         android:layout_toRightOf="@id/img_kantor_item_pengalaman"
         android:text="Feb 2022 - Sekarang"
         android:textColor="@color/grey_hint"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_desc_item_pengalaman_mahasiswa"
@@ -61,7 +61,7 @@
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@id/img_kantor_item_pengalaman"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         tools:text="@string/lorem_ipsum_long" />
 
 </RelativeLayout>

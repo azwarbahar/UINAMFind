@@ -39,7 +39,7 @@
         android:maxLines="1"
         android:text="UIN Alauddin Makassar"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
@@ -54,7 +54,7 @@
         android:maxLines="1"
         android:text="CV. UINAM Find"
         android:textColor="@color/black"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_masa_item_organisasi"
@@ -66,7 +66,7 @@
         android:layout_toRightOf="@id/cv_org_mhs_item"
         android:text="2016 - 2022"
         android:textColor="@color/grey_hint"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_desc_item_organisasi_mahasiswa"
@@ -75,7 +75,7 @@
         android:layout_below="@id/tv_masa_item_organisasi"
         android:layout_marginTop="16dp"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         tools:text="@string/lorem_ipsum_long" />
 
 </RelativeLayout>

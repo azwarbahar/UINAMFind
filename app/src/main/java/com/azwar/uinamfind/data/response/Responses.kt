@@ -42,4 +42,10 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponsePendidikanMahasiswa(
+        val `pendidikan_data`: List<PendidikanMahasiswa>?,
+        val kode: String?,
+        val pesan: String?
+    )
+
 }

@@ -143,4 +143,45 @@ interface ApiService {
     ): Call<Responses.ResponseKeahlianMahasiswa>?
 
 
+    // PENDIDIKAN
+    //get
+    @GET("mahasiswa/pendidikan/getPendidikanUser.php")
+    fun getPendidikanUser(
+        @Query("user_id") user_id: String?
+    ): Call<Responses.ResponsePendidikanMahasiswa>?
+
+    //add
+    @FormUrlEncoded
+    @POST("mahasiswa/pendidikan/addPendidikanUser.php")
+    fun addPendidikanUser(
+        @Field("pendidikan") pendidikan: String?,
+        @Field("nama_tempat") nama_tempat: String?,
+        @Field("jurusan") jurusan: String?,
+        @Field("tanggal_masuk") tanggal_masuk: String?,
+        @Field("tanggal_berakhir") tanggal_berakhir: String?,
+        @Field("status_pendidikan") status_pendidikan: String?,
+        @Field("user_id") user_id: String?
+    ): Call<Responses.ResponsePendidikanMahasiswa>?
+
+    //delete
+    @GET("mahasiswa/pendidikan/deletePendidikanUser.php")
+    fun deletePendidikanUser(
+        @Query("id") id: String?
+    ): Call<Responses.ResponsePendidikanMahasiswa>?
+
+    //update
+    @FormUrlEncoded
+    @POST("mahasiswa/pendidikan/updatePendidikanUser.php")
+    fun updatePendidikanUser(
+        @Field("id") id: String?,
+        @Field("pendidikan") pendidikan: String?,
+        @Field("nama_tempat") nama_tempat: String?,
+        @Field("jurusan") jurusan: String?,
+        @Field("tanggal_masuk") tanggal_masuk: String?,
+        @Field("tanggal_berakhir") tanggal_berakhir: String?,
+        @Field("status_pendidikan") status_pendidikan: String?,
+        @Field("user_id") user_id: String?
+    ): Call<Responses.ResponsePendidikanMahasiswa>?
+
+
 }
