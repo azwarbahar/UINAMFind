@@ -225,6 +225,7 @@
                     <LinearLayout
                         android:id="@+id/ll2_detail_mahasiswa"
                         android:layout_width="match_parent"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/ll1_detail_mahasiswa"
                         android:layout_marginHorizontal="16dp"
@@ -296,6 +297,7 @@
                             android:background="@color/white">
 
                             <ImageView
+                                android:id="@+id/img_edit_tentang_saya"
                                 android:layout_width="26dp"
                                 android:layout_height="26dp"
                                 android:layout_alignParentRight="true"

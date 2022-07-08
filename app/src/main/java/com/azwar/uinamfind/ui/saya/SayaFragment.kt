@@ -21,7 +21,10 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentSayaBinding
-import com.azwar.uinamfind.ui.saya.adapter.*
+import com.azwar.uinamfind.ui.saya.adapter.KeahlianMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.adapter.PendidikanMahasiswaAdapter
+import com.azwar.uinamfind.ui.saya.adapter.PengalamanMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.keahlian.AddKeahlianMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.keahlian.ListKeahlianMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.organisasi.AddOrganisasiMahasiswaActivity
@@ -30,6 +33,7 @@ import com.azwar.uinamfind.ui.saya.pendidikan.AddPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pendidikan.ListPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
@@ -55,6 +59,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var pendidikanMahasiswaAdapter: PendidikanMahasiswaAdapter
 
     private var id: String = ""
+    private var tentang_user: String = ""
 
     private lateinit var dialogProgress: SweetAlertDialog
 
@@ -116,6 +121,13 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         sayaBinding.imgEditPendidikanSaya.setOnClickListener {
             val intent = Intent(context, ListPendidikanMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Tetnag
+        sayaBinding.imgEditTentangSaya.setOnClickListener {
+            val intent = Intent(context, EditTentangMahasiswaActivity::class.java)
+            intent.putExtra("tentang", tentang_user)
             startActivity(intent)
         }
 
@@ -402,9 +414,9 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
 
         // tentang saya
-        var tentang_user = user.tentang_user
+        tentang_user = user.tentang_user
         var text_tentang_saya = sayaBinding.tvTentangSayaDetailMahasiswa
-        if (tentang_user == null) {
+        if (tentang_user.isEmpty()) {
             text_tentang_saya.setTypeface(text_tentang_saya.getTypeface(), Typeface.ITALIC)
             text_tentang_saya.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,

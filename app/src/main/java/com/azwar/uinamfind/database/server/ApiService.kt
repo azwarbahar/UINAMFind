@@ -19,6 +19,13 @@ interface ApiService {
         @Query("id") id: String?
     ): Call<Responses.ResponseMahasiswa>?
 
+    @FormUrlEncoded
+    @POST("mahasiswa/updateTentangSaya.php")
+    fun updateTentangSaya(
+        @Field("tentang_user") tentang_user: String?,
+        @Field("id") id: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
     //Motto
     @GET("mahasiswa/motto/getMottoId.php")
     fun getMottoId(

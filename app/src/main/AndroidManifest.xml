@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.saya.tentang.EditTentangMahasiswaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.saya.pendidikan.EditPendidikanMahasiswaActivity"
             android:exported="false" />
         <activity
