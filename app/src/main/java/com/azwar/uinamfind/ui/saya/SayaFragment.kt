@@ -8,6 +8,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -36,6 +37,7 @@ import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -156,7 +158,23 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             loadData()
         })
 
+        sayaBinding.imgMoreSaya.setOnClickListener {
+            showDialogMore()
+        }
+
         return sayaBinding.root
+    }
+
+    private fun showDialogMore() {
+        val dialog = BottomSheetDialog(requireActivity())
+        val view = layoutInflater.inflate(R.layout.dialog_bottom_sheet_menu_saya, null)
+//        val img_close = view.findViewById(R.id.img_close)
+//        img_close.setOnClickListener {
+//            dialog.dismiss()
+//        }
+        dialog.setCancelable(true)
+        dialog.setContentView(view)
+        dialog.show()
     }
 
     private fun loadData() {

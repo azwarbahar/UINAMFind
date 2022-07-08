@@ -24,6 +24,7 @@ import com.azwar.uinamfind.ui.organisasi.OrganisasiActivity
 import com.azwar.uinamfind.ui.pencarian.SearchHomeActivity
 import com.azwar.uinamfind.ui.ukm.UKMActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class HomeFragment : Fragment() {
 
@@ -62,6 +63,7 @@ class HomeFragment : Fragment() {
             startActivity(intent_mahasiswa)
 
         }
+//        val dialog = BottomSheetDialog(this)
 
         homeBinding.rlLembagaBottomSheetMenuHome.setOnClickListener {
             bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
