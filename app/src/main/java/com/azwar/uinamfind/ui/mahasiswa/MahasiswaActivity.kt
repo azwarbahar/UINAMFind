@@ -5,34 +5,86 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.data.models.User
+import com.azwar.uinamfind.data.response.Responses
+import com.azwar.uinamfind.database.local.PreferencesHelper
+import com.azwar.uinamfind.database.server.ApiClient
+import com.azwar.uinamfind.databinding.ActivityMahasiswaBinding
 import com.azwar.uinamfind.ui.mahasiswa.adapter.MahasiswaGridAdapter
 import com.azwar.uinamfind.ui.mahasiswa.adapter.MahasiswaHorizontalAdapter
-import kotlinx.android.synthetic.main.activity_mahasiswa.*
+import com.azwar.uinamfind.utils.Constanta
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MahasiswaActivity : AppCompatActivity() {
+    private lateinit var sharedPref: PreferencesHelper
+    private var id: String = ""
+    private var fakultas: String = ""
 
+    private lateinit var binding: ActivityMahasiswaBinding
+
+    private lateinit var mahasiswaFakultas: List<User>
     private lateinit var mahasiswaHorizontalAdapter: MahasiswaHorizontalAdapter
-
     private lateinit var mahasiswaGridAdapter: MahasiswaGridAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mahasiswa)
+        binding = ActivityMahasiswaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // List Data Mahasiswa Sefakultas
-        rv_mahasiswa_sefakultas.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        mahasiswaHorizontalAdapter = MahasiswaHorizontalAdapter()
-        rv_mahasiswa_sefakultas.adapter = mahasiswaHorizontalAdapter
+        sharedPref = PreferencesHelper(this)
+        id = sharedPref.getString(Constanta.ID_USER).toString()
+        fakultas = sharedPref.getString(Constanta.FAKULTAS_USER).toString()
+
 
         // List data mahasiswa random
-        rv_mahasiswa_random.layoutManager = GridLayoutManager(this, 2)
+        binding.rvMahasiswaRandom.layoutManager = GridLayoutManager(this, 2)
         mahasiswaGridAdapter = MahasiswaGridAdapter()
-        rv_mahasiswa_random.adapter = mahasiswaGridAdapter
+        binding.rvMahasiswaRandom.adapter = mahasiswaGridAdapter
 
 
-        img_back_mahasiswa.setOnClickListener {
+        binding.imgBackMahasiswa.setOnClickListener {
             finish()
         }
+
+        loadData()
+
+    }
+
+    private fun loadData() {
+        mahasiswaSefakultas()
+    }
+
+    private fun mahasiswaSefakultas() {
+
+        ApiClient.instances.getMahasiswaFakultas(fakultas, id)
+            ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseMahasiswa>,
+                    response: Response<Responses.ResponseMahasiswa>
+                ) {
+                    if (response.isSuccessful) {
+                        mahasiswaFakultas = response.body()?.mahasiswa_data!!
+                        // List Data Mahasiswa Sefakultas
+                        binding.rvMahasiswaSefakultas.layoutManager =
+                            LinearLayoutManager(
+                                this@MahasiswaActivity,
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                        mahasiswaHorizontalAdapter =
+                            MahasiswaHorizontalAdapter(mahasiswaFakultas)
+                        binding.rvMahasiswaSefakultas.adapter = mahasiswaHorizontalAdapter
+
+                    }
+                }
+
+                override fun onFailure(call: Call<Responses.ResponseMahasiswa>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
     }
 }

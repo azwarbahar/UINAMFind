@@ -118,6 +118,8 @@ class LoginMahasiswaActivity : AppCompatActivity() {
 
         sharedPref.put(Constanta.ROLE, role)
         sharedPref.put(Constanta.ID_USER, data.id)
+        sharedPref.put(Constanta.FAKULTAS_USER, data.fakultas)
+        sharedPref.put(Constanta.JURUSAN_USER, data.jurusan)
 
         startActivity(Intent(this, MainActivity::class.java))
 

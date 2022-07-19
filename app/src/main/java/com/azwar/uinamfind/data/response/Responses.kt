@@ -11,6 +11,17 @@ class Responses {
         val role: String
     )
 
+    data class ResponseCheckProfilMahasiswa(
+        val kode: String?,
+        val pesan: String?,
+        val foto: String?,
+        val tentang_user: String?,
+        val pendidikan: Int?,
+        val keahlian: Int?,
+        val pengalaman: Int?,
+        val organisasi: Int?
+    )
+
     data class ResponseMahasiswa(
         val `mahasiswa_data`: List<User>?,
         val `result_mahasiswa`: User?,

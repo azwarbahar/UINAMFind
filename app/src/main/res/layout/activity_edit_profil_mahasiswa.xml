@@ -163,12 +163,11 @@
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/et_lokasi_edit_profil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"
-                    android:focusableInTouchMode="false"
                     android:hint=""
                     android:inputType="text"
                     android:maxLines="1"
@@ -229,11 +228,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv1_tgl_lahir"
                     android:backgroundTint="@color/colorPrimary"
+                    android:drawableRight="@drawable/ic_baseline_add_24"
                     android:focusableInTouchMode="false"
                     android:hint=""
                     android:inputType="text"
                     android:maxLines="1"
-                    android:drawableRight="@drawable/ic_baseline_add_24"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 

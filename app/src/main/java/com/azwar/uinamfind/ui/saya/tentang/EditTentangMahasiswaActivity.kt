@@ -35,7 +35,6 @@ class EditTentangMahasiswaActivity : AppCompatActivity() {
         binding.imgSimpanPengalaman.setOnClickListener {
             sendData()
         }
-
     }
 
     private fun sendData() {

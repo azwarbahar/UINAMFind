@@ -8,7 +8,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -37,14 +37,13 @@ import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
-
     private lateinit var sharedPref: PreferencesHelper
     private var _sayaBinding: FragmentSayaBinding? = null
     private val sayaBinding get() = _sayaBinding!!
@@ -65,6 +64,8 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var dialogProgress: SweetAlertDialog
 
+    private lateinit var bottomSheetBehaviorMenu: BottomSheetBehavior<RelativeLayout>
+
     companion object {
         fun newInstance() = SayaFragment()
     }
@@ -73,10 +74,15 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _sayaBinding = FragmentSayaBinding.inflate(inflater, container, false)
         sharedPref = PreferencesHelper(context)
         id = sharedPref.getString(Constanta.ID_USER).toString()
+        // Bottom Sheet Menu
+        bottomSheetBehaviorMenu =
+            BottomSheetBehavior.from(sayaBinding.continerBottomSheetMenuSaya)
+
+        sayaBinding.imgLableMahasiswa.visibility = View.GONE
 
         sayaBinding.rlEditProfilDetailMahasiswa.setOnClickListener {
             val intent_edit_profil = Intent(context, EditProfilMahasiswaActivity::class.java)
@@ -166,15 +172,27 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun showDialogMore() {
-        val dialog = BottomSheetDialog(requireActivity())
-        val view = layoutInflater.inflate(R.layout.dialog_bottom_sheet_menu_saya, null)
+
+//        val state =
+//            if (bottomSheetBehaviorMenu.state == BottomSheetBehavior.STATE_EXPANDED)
+//                BottomSheetBehavior.STATE_COLLAPSED
+//            else
+//                BottomSheetBehavior.STATE_EXPANDED
+//        bottomSheetBehaviorMenu.state = state
+
+        var dialogMoreFragment = DialogMoreFragment()
+        dialogMoreFragment.show(getParentFragmentManager(), "")
+
+//        val dialog = BottomSheetDialog(requireActivity())
+//        val view = layoutInflater.inflate(R.layout.dialog_bottom_sheet_menu_saya, null)
+//        val btn1 = view.findViewById(R.id.ll_pengaturan_dialog)
 //        val img_close = view.findViewById(R.id.img_close)
 //        img_close.setOnClickListener {
 //            dialog.dismiss()
 //        }
-        dialog.setCancelable(true)
-        dialog.setContentView(view)
-        dialog.show()
+//        dialog.setCancelable(true)
+//        dialog.setContentView(view)
+//        dialog.show()
     }
 
     private fun loadData() {
@@ -210,8 +228,6 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                             )
                             rv_pendidikan.addItemDecoration(dividerItemDecoration)
                             rv_pendidikan.adapter = pendidikanMahasiswaAdapter
-                        } else {
-
                         }
                     } else {
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
@@ -256,10 +272,10 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 //                            rv_keahlian.addItemDecoration(dividerItemDecoration)
                             rv_keahlian.adapter = keahlianMahasiswaAdapter
                         } else {
-
+                            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, pesanRespon, Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
@@ -274,6 +290,12 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             }
         })
     }
+
+//    fun onBackPressed() {
+//        if (bottomSheetBehaviorMenu.state == BottomSheetBehavior.STATE_EXPANDED) {
+//            bottomSheetBehaviorMenu.state = BottomSheetBehavior.STATE_COLLAPSED
+//        }
+//    }
 
     private fun loadDataPengalaman(id: String) {
         ApiClient.instances.getPengalamanUser(id)?.enqueue(object :
@@ -406,6 +428,14 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initDataUser(user: User) {
+
+        val lable = user.status_kemahasiswaan
+        if (lable.equals("Lulus")){
+            sayaBinding.imgLableMahasiswa.visibility = View.VISIBLE
+        } else {
+            sayaBinding.imgLableMahasiswa.visibility = View.GONE
+        }
+
         var nim = user.nim
 
         // username

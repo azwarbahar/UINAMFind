@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/select_dialog_item.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_activated_1.xml" value="0.17222222222222222" />
         <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_activated_2.xml" value="0.17222222222222222" />
@@ -60,7 +61,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_loker.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_loker_detail.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_magang.xml" value="0.12567567567567567" />
-        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_mahasiswa.xml" value="0.12" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_mahasiswa.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_main.xml" value="0.30793157076205285" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_masuk.xml" value="0.19375" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/activity_organisasi.xml" value="0.12567567567567567" />
@@ -82,9 +83,9 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/dialog_tahun_picker.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_bacaan.xml" value="0.17447916666666666" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_first.xml" value="0.12567567567567567" />
-        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_jelajah.xml" value="0.17447916666666666" />
-        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_saya.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_saya.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/fragment_toko.xml" value="0.17447916666666666" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_beasiswa.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_beasiswa_terbaru_home.xml" value="0.3333333333333333" />
@@ -97,7 +98,7 @@
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_loker_home.xml" value="0.22" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_magang_bersertifikat.xml" value="0.12567567567567567" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_magang_terbaru.xml" value="0.12567567567567567" />
-        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_mahasiswa1.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_mahasiswa1.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_mahasiswa2.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_market.xml" value="0.12" />
         <entry key="..\:/Users/Hilda/Documents/Azwar/ProjectSkirpsi/UINAMFind/app/src/main/res/layout/item_organisasi.xml" value="0.12567567567567567" />

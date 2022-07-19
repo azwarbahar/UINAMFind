@@ -581,7 +581,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Profil Saya"
+                            android:text="Lihat Lengkap"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
@@ -626,12 +626,12 @@
 
                 <RelativeLayout
                     android:id="@+id/rl_list_profil_terbaru"
-                    android:background="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:paddingVertical="10dp"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/rv_rekomendasi_loker_home"
-                    android:layout_height="wrap_content">
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:paddingVertical="10dp">
 
                     <TextView
                         android:id="@+id/tv_title_profil_terbaru_home"
@@ -714,7 +714,7 @@
     <FrameLayout
         android:id="@+id/continer_bottom_sheet_menu_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/bg_white_corner_top_20"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"

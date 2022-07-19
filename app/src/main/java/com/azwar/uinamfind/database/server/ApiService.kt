@@ -19,6 +19,35 @@ interface ApiService {
         @Query("id") id: String?
     ): Call<Responses.ResponseMahasiswa>?
 
+    // mahasiswa se fakultas
+    @GET("mahasiswa/getMahasiswaFakultas.php")
+    fun getMahasiswaFakultas(
+        @Query("fakultas") fakultas: String?,
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
+    //Mahasiswa Update Terbaru
+    @GET("mahasiswa/getMahasiswaNewUpdate.php")
+    fun getMahasiswaNewUpdate(): Call<Responses.ResponseMahasiswa>?
+
+    @GET("mahasiswa/checkProfilMahasiswa.php")
+    fun checkProfilMahasiswa(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseCheckProfilMahasiswa>?
+
+    //update
+    @FormUrlEncoded
+    @POST("mahasiswa/updateMahasiswa.php")
+    fun updateMahasiswa(
+        @Field("id") id: String?,
+        @Field("nama_depan") nama_depan: String?,
+        @Field("nama_belakang") nama_belakang: String?,
+        @Field("alamat") alamat: String?,
+        @Field("jenis_kelamin") jenis_kelamin: String?,
+        @Field("lokasi") lokasi: String?,
+        @Field("tanggal_lahir") tanggal_lahir: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
     @FormUrlEncoded
     @POST("mahasiswa/updateTentangSaya.php")
     fun updateTentangSaya(

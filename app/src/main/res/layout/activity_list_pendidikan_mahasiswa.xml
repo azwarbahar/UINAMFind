@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/img_back_pendidikan"
-            android:text="Organisasi"
+            android:text="Pendidikan"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
