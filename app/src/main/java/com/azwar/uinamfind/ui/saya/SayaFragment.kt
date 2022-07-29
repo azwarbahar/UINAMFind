@@ -37,6 +37,7 @@ import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import retrofit2.Call
 import retrofit2.Callback
@@ -172,27 +173,8 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun showDialogMore() {
-
-//        val state =
-//            if (bottomSheetBehaviorMenu.state == BottomSheetBehavior.STATE_EXPANDED)
-//                BottomSheetBehavior.STATE_COLLAPSED
-//            else
-//                BottomSheetBehavior.STATE_EXPANDED
-//        bottomSheetBehaviorMenu.state = state
-
         var dialogMoreFragment = DialogMoreFragment()
         dialogMoreFragment.show(getParentFragmentManager(), "")
-
-//        val dialog = BottomSheetDialog(requireActivity())
-//        val view = layoutInflater.inflate(R.layout.dialog_bottom_sheet_menu_saya, null)
-//        val btn1 = view.findViewById(R.id.ll_pengaturan_dialog)
-//        val img_close = view.findViewById(R.id.img_close)
-//        img_close.setOnClickListener {
-//            dialog.dismiss()
-//        }
-//        dialog.setCancelable(true)
-//        dialog.setContentView(view)
-//        dialog.show()
     }
 
     private fun loadData() {
@@ -291,12 +273,6 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         })
     }
 
-//    fun onBackPressed() {
-//        if (bottomSheetBehaviorMenu.state == BottomSheetBehavior.STATE_EXPANDED) {
-//            bottomSheetBehaviorMenu.state = BottomSheetBehavior.STATE_COLLAPSED
-//        }
-//    }
-
     private fun loadDataPengalaman(id: String) {
         ApiClient.instances.getPengalamanUser(id)?.enqueue(object :
             Callback<Responses.ResponsePengalamanMahasiswa> {
@@ -393,14 +369,13 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun loadDataSaya(id: String) {
-        swipe_saya.isRefreshing = false
-
         ApiClient.instances.getMahasiswaID(id)
             ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
                 override fun onResponse(
                     call: Call<Responses.ResponseMahasiswa>,
                     response: Response<Responses.ResponseMahasiswa>
                 ) {
+                    swipe_saya.isRefreshing = false
                     dialogProgress.dismiss()
                     val pesanRespon = response.message()
                     val message = response.body()?.pesan
@@ -428,9 +403,8 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initDataUser(user: User) {
-
         val lable = user.status_kemahasiswaan
-        if (lable.equals("Lulus")){
+        if (lable.equals("Lulus")) {
             sayaBinding.imgLableMahasiswa.visibility = View.VISIBLE
         } else {
             sayaBinding.imgLableMahasiswa.visibility = View.GONE
@@ -462,7 +436,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
 
         // tentang saya
-        tentang_user = user.tentang_user
+        tentang_user = user.tentang_user!!
         var text_tentang_saya = sayaBinding.tvTentangSayaDetailMahasiswa
         if (tentang_user.isEmpty()) {
             text_tentang_saya.setTypeface(text_tentang_saya.getTypeface(), Typeface.ITALIC)
@@ -486,6 +460,24 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         var text_lokasi = sayaBinding.tvLokasiCardDetailMahasiswa
         var lokasi = user.lokasi
         text_lokasi.text = lokasi
+
+        var foto = user.foto
+        if (foto !== null) {
+            Glide.with(this)
+                .load(foto)
+                .into(sayaBinding.imgPhotoCardDetailMahasiswa)
+        } else {
+
+        }
+
+        val sampul = user.foto_sampul
+        if (sampul !== null){
+            Glide.with(this)
+                .load(sampul)
+                .into(sayaBinding.imgHeaderCardDetailMahasiswa)
+        } else {
+
+        }
 
         // motto
         loadMotto(id)

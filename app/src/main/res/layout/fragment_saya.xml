@@ -70,18 +70,18 @@
 
                                 <RelativeLayout
                                     android:id="@+id/rl_photo_card_detail_mahasiswa"
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="85dp"
+                                    android:layout_height="85dp"
                                     android:layout_below="@id/img_header_card_detail_mahasiswa"
                                     android:layout_marginHorizontal="12dp"
-                                    android:layout_marginTop="-40dp"
+                                    android:layout_marginTop="-45dp"
                                     android:background="@drawable/circle_white">
 
                                     <androidx.cardview.widget.CardView
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_margin="3dp"
-                                        app:cardCornerRadius="27dp">
+                                        app:cardCornerRadius="42dp">
 
                                         <RelativeLayout
                                             android:layout_width="match_parent"

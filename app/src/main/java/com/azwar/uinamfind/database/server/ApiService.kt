@@ -26,9 +26,17 @@ interface ApiService {
         @Query("id") id: String?
     ): Call<Responses.ResponseMahasiswa>?
 
+    // mahasiswa Random
+    @GET("mahasiswa/getMahasiswaRandom.php")
+    fun getMahasiswaRandom(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
     //Mahasiswa Update Terbaru
     @GET("mahasiswa/getMahasiswaNewUpdate.php")
-    fun getMahasiswaNewUpdate(): Call<Responses.ResponseMahasiswa>?
+    fun getMahasiswaNewUpdate(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMahasiswa>?
 
     @GET("mahasiswa/checkProfilMahasiswa.php")
     fun checkProfilMahasiswa(

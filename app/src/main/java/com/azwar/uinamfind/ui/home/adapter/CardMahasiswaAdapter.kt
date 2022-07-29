@@ -12,6 +12,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ItemCardMahasiswaBinding
 import com.azwar.uinamfind.ui.mahasiswa.DetailMahasiswaActivity
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +29,7 @@ class CardMahasiswaAdapter(private val list: List<User>) :
                 binding.imgBaclLogoCard.alpha = 0.1f
                 itemView.setOnClickListener {
                     val intent_mahasiswa = Intent(context, DetailMahasiswaActivity::class.java)
+                    intent_mahasiswa.putExtra("mahasiswa", get)
                     context.startActivity(intent_mahasiswa)
                 }
 
@@ -60,13 +62,31 @@ class CardMahasiswaAdapter(private val list: List<User>) :
                 var fakultas = get.fakultas
                 text_jurusan.text = jurusan + ", " + fakultas
 
+                val foto = get.foto
+                if (foto !== null) {
+                    Glide.with(this)
+                        .load(foto)
+                        .into(binding.imgPhotoCardItemMahasiswa)
+                } else {
+
+                }
+
+                val sampul = get.foto_sampul
+                if (sampul !== null){
+                    Glide.with(this)
+                        .load(sampul)
+                        .into(binding.imgHeaderCardItemMahasiswa)
+                } else {
+
+                }
+
                 // lokasi
                 var text_lokasi = binding.tvLokasiCardItemMahasiswa
                 var lokasi = get.lokasi
                 text_lokasi.text = lokasi
 
                 // motto
-                loadMotto(get.id, binding.tvMottoCardItemMahasiswa)
+                loadMotto(get.id!!, binding.tvMottoCardItemMahasiswa)
 
             }
         }

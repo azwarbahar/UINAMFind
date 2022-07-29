@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 
 class RemoteDataSource constructor(private val apiService: ApiService) {
     companion object {
-        private var instance:RemoteDataSource? = null
+        private var instance: RemoteDataSource? = null
 
         fun getInstance(apiService: ApiService): RemoteDataSource =
-            instance ?: synchronized(this){
+            instance ?: synchronized(this) {
                 RemoteDataSource(apiService).apply { instance = this }
             }
     }

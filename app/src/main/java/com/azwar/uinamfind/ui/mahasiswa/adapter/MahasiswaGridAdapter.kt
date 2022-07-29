@@ -4,30 +4,123 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.azwar.uinamfind.R
+import com.azwar.uinamfind.data.models.User
+import com.azwar.uinamfind.data.response.Responses
+import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ItemMahasiswa2Binding
 import com.azwar.uinamfind.ui.chat.RoomChatActivity
 import com.azwar.uinamfind.ui.mahasiswa.DetailMahasiswaActivity
-import kotlinx.android.synthetic.main.item_mahasiswa2.view.*
+import com.bumptech.glide.Glide
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MahasiswaGridAdapter() : RecyclerView.Adapter<MahasiswaGridAdapter.MyHolderView>() {
+class MahasiswaGridAdapter(private val list: List<User>) : RecyclerView.Adapter<MahasiswaGridAdapter.MyHolderView>() {
 
-    class MyHolderView(itemMahasiswa2Binding: ItemMahasiswa2Binding) :
-        RecyclerView.ViewHolder(itemMahasiswa2Binding.root) {
+    class MyHolderView(private val binding: ItemMahasiswa2Binding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind() {
+        fun bind(get: User) {
             with(itemView) {
-                tv_pesan_item_mahasiswa2.setOnClickListener {
+
+                val lable = get.status_kemahasiswaan
+                if (lable.equals("Lulus")) {
+                    binding.imgLableItemMahasiswa2.visibility = View.VISIBLE
+                } else {
+                    binding.imgLableItemMahasiswa2.visibility = View.GONE
+                }
+
+                var nim = get.nim
+                //nama
+                var nama_depan = get.nama_depan
+                var nama_belakang = get.nama_belakang
+                var text_nama_lengkap = binding.tvNamaItemMahasiswa2
+                if (nama_depan == null) {
+                    text_nama_lengkap.text = nim
+                } else if (nama_belakang == null) {
+                    var nama_lengkap = get.nama_depan
+                    text_nama_lengkap.text = nama_lengkap
+                } else {
+                    var nama_lengkap = get.nama_depan + " " + get.nama_belakang
+                    text_nama_lengkap.text = nama_lengkap
+                }
+
+                val foto = get.foto
+                if (foto !== null) {
+                    Glide.with(this)
+                        .load(foto)
+                        .into(binding.imgPhotoItemMahasiswa2)
+                } else {
+
+                }
+
+                val sampul = get.foto_sampul
+                if (sampul !== null){
+                    Glide.with(this)
+                        .load(sampul)
+                        .into(binding.imgHeaderItemMahasiswa2)
+                } else {
+
+                }
+
+
+                // jurusan
+                var text_jurusan = binding.tvJurusanItemMahasiswa2
+                var jurusan = get.jurusan
+                text_jurusan.text = jurusan
+
+                // motto
+                loadMotto(get.id!!, binding.tvMottoItemMahasiswa2)
+
+
+                binding.tvPesanItemMahasiswa2.setOnClickListener {
                     val intent_room_chat = Intent(context, RoomChatActivity::class.java)
                     context.startActivity(intent_room_chat)
                 }
 
                 itemView.setOnClickListener {
                     val intent_detail_mahasiswa = Intent(context, DetailMahasiswaActivity::class.java)
+                    intent_detail_mahasiswa.putExtra("mahasiswa", get)
                     context.startActivity(intent_detail_mahasiswa)
                 }
             }
+        }
+
+        private fun loadMotto(id: String, tvMottoItemMahasiswa2: TextView) {
+
+            ApiClient.instances.getMottoId(id)
+                ?.enqueue(object : Callback<Responses.ResponseMotto> {
+                    override fun onResponse(
+                        call: Call<Responses.ResponseMotto>,
+                        response: Response<Responses.ResponseMotto>
+                    ) {
+                        val message = response.body()?.pesan
+                        val kode = response.body()?.kode
+                        val motto = response.body()?.result_motto
+                        if (response.isSuccessful) {
+                            if (kode.equals("1")) {
+                                val motto_ = motto?.motto_profesional
+                                if (motto_ == null) {
+                                    tvMottoItemMahasiswa2.text = "  -"
+                                } else {
+                                    tvMottoItemMahasiswa2.text = motto_
+                                }
+                            } else {
+                                tvMottoItemMahasiswa2.text = "  -"
+                            }
+                        } else {
+                            tvMottoItemMahasiswa2.text = "  -"
+                        }
+                    }
+
+                    override fun onFailure(call: Call<Responses.ResponseMotto>, t: Throwable) {
+                        tvMottoItemMahasiswa2.text = "  -"
+                    }
+
+                })
+
         }
 
     }
@@ -42,7 +135,7 @@ class MahasiswaGridAdapter() : RecyclerView.Adapter<MahasiswaGridAdapter.MyHolde
 
     }
 
-    override fun onBindViewHolder(holder: MyHolderView, position: Int) = holder.bind()
+    override fun onBindViewHolder(holder: MyHolderView, position: Int) = holder.bind(list.get(position))
 
-    override fun getItemCount() = 20
+    override fun getItemCount() = list.size
 }

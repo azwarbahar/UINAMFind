@@ -12,6 +12,7 @@ import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ItemMahasiswa1Binding
 import com.azwar.uinamfind.ui.chat.RoomChatActivity
 import com.azwar.uinamfind.ui.mahasiswa.DetailMahasiswaActivity
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,11 +51,20 @@ class MahasiswaHorizontalAdapter(private val list: List<User>) :
                 // jurusan
                 var text_jurusan = itemMahasiswa1Binding.tvJurusanItemMahasiswa1
                 var jurusan = get.jurusan
-                var fakultas = get.fakultas
-                text_jurusan.text = jurusan + ", " + fakultas
+                text_jurusan.text = jurusan
+
+                val foto = get.foto
+                if (foto !== null) {
+                    Glide.with(this)
+                        .load(foto)
+                        .into(itemMahasiswa1Binding.imgPhotoItemMahasiswa1)
+                } else {
+
+                }
+
 
                 // motto
-                loadMotto(get.id, itemMahasiswa1Binding.tvMottoItemMahasiswa1)
+                loadMotto(get.id!!, itemMahasiswa1Binding.tvMottoItemMahasiswa1)
 
 
                 itemMahasiswa1Binding.rlPesanItemMahasiswa.setOnClickListener {
@@ -65,6 +75,7 @@ class MahasiswaHorizontalAdapter(private val list: List<User>) :
                 itemView.setOnClickListener {
                     val intent_detail_mahasiswa =
                         Intent(context, DetailMahasiswaActivity::class.java)
+                    intent_detail_mahasiswa.putExtra("mahasiswa", get)
                     context.startActivity(intent_detail_mahasiswa)
                 }
             }

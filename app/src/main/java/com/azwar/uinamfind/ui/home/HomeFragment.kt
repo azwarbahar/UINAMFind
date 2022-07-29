@@ -185,7 +185,7 @@ class HomeFragment : Fragment() {
 
     private fun loadMahasiswaNewUPdate() {
 
-        ApiClient.instances.getMahasiswaNewUpdate()
+        ApiClient.instances.getMahasiswaNewUpdate(id)
             ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
                 override fun onResponse(
                     call: Call<Responses.ResponseMahasiswa>,

@@ -46,102 +46,109 @@
 
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/rl_toolbar_mahasiswa">
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv1_mahasiswa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Orang - orang yang se-Fakultas"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_lihat_lainnya_sefakultas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/tv1_mahasiswa"
-                android:layout_alignParentRight="true"
-                android:layout_marginHorizontal="16dp"
-                android:text="Lihat lainnya"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="italic|bold" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_sefakultas"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv1_mahasiswa"
-                android:layout_marginTop="12dp"
-                app:cardElevation="6dp">
+                android:layout_height="match_parent">
 
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/tv1_mahasiswa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Orang - orang yang se-Fakultas"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_lihat_lainnya_sefakultas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv1_mahasiswa"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="Lihat lainnya"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="italic|bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_sefakultas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white">
+                    android:layout_below="@id/tv1_mahasiswa"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="6dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_mahasiswa_sefakultas"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clipToPadding="false"
-                        android:paddingEnd="16dp"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/item_mahasiswa1" />
+                        android:background="@color/white">
 
-                </RelativeLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_mahasiswa_sefakultas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingEnd="16dp"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/item_mahasiswa1" />
 
-            </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv2_mahasiswa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cv_sefakultas"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="20dp"
-                android:text="Random Mahasiswa dan Alumni"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_random_mahasiswa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv2_mahasiswa"
-                android:layout_marginTop="12dp"
-                app:cardElevation="6dp">
+                <TextView
+                    android:id="@+id/tv2_mahasiswa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cv_sefakultas"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Mahasiswa dan Alumni"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-                <RelativeLayout
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_random_mahasiswa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white">
+                    android:layout_below="@id/tv2_mahasiswa"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="6dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_mahasiswa_random"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clipToPadding="false"
-                        android:paddingBottom="16dp"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/item_mahasiswa2" />
+                        android:background="@color/white">
 
-                </RelativeLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_mahasiswa_random"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clipToPadding="false"
+                            android:paddingBottom="16dp"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/item_mahasiswa2" />
 
-            </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
 
-        </RelativeLayout>
+                </androidx.cardview.widget.CardView>
 
-    </androidx.core.widget.NestedScrollView>
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

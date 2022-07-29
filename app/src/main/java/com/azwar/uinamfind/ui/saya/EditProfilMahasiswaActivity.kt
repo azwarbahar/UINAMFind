@@ -260,8 +260,8 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
     private fun initDataUser(user: User) {
         binding.etNamaDepanEditProfil.setText(user.nama_depan)
         binding.etNamaBelakangEditProfil.setText(user.nama_belakang)
-        setupSpinnerInit(user.jenis_kelamin)
-        lokasi_pilih = user.lokasi
+        setupSpinnerInit(user.jenis_kelamin!!)
+        lokasi_pilih = user.lokasi!!
         setupAutoCompletLokasi(user.lokasi)
         binding.etAlamatEditProfil.setText(user.alamat)
         binding.etTanggalLahirEditProfil.setText(user.tanggal_lahir)

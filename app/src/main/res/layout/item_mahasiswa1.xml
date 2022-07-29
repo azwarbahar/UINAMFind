@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="130dp"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginVertical="16dp"
     android:layout_marginLeft="16dp"
     app:cardCornerRadius="8dp"
@@ -37,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Alif Yusrika"
+            tools:text="Alif Yusrika"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -48,12 +49,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_nama_item_mahasiswa1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
+            android:layout_marginHorizontal="12sp"
+            android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Sistem Informasi"
+            tools:text="Sistem Informasi"
             android:textColor="@color/black"
-            android:textSize="8sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tv_motto_item_mahasiswa1"
@@ -67,9 +69,9 @@
             android:gravity="center_horizontal"
             android:maxLines="2"
             android:minLines="2"
-            android:text="Hacker | Design Illustrator | Gojek Driver"
+            tools:text="Hacker | Design Illustrator | Gojek Driver"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
 
         <RelativeLayout
             android:id="@+id/rl_pesan_item_mahasiswa"
