@@ -17,7 +17,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MahasiswaGridAdapter(private val list: List<User>) : RecyclerView.Adapter<MahasiswaGridAdapter.MyHolderView>() {
+class MahasiswaGridAdapter(private val list: List<User>) :
+    RecyclerView.Adapter<MahasiswaGridAdapter.MyHolderView>() {
 
     class MyHolderView(private val binding: ItemMahasiswa2Binding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -57,7 +58,7 @@ class MahasiswaGridAdapter(private val list: List<User>) : RecyclerView.Adapter<
                 }
 
                 val sampul = get.foto_sampul
-                if (sampul !== null){
+                if (sampul !== null) {
                     Glide.with(this)
                         .load(sampul)
                         .into(binding.imgHeaderItemMahasiswa2)
@@ -81,7 +82,8 @@ class MahasiswaGridAdapter(private val list: List<User>) : RecyclerView.Adapter<
                 }
 
                 itemView.setOnClickListener {
-                    val intent_detail_mahasiswa = Intent(context, DetailMahasiswaActivity::class.java)
+                    val intent_detail_mahasiswa =
+                        Intent(context, DetailMahasiswaActivity::class.java)
                     intent_detail_mahasiswa.putExtra("mahasiswa", get)
                     context.startActivity(intent_detail_mahasiswa)
                 }
@@ -135,7 +137,8 @@ class MahasiswaGridAdapter(private val list: List<User>) : RecyclerView.Adapter<
 
     }
 
-    override fun onBindViewHolder(holder: MyHolderView, position: Int) = holder.bind(list.get(position))
+    override fun onBindViewHolder(holder: MyHolderView, position: Int) =
+        holder.bind(list.get(position))
 
     override fun getItemCount() = list.size
 }

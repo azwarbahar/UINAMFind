@@ -45,7 +45,7 @@
                                 <ImageView
                                     android:id="@+id/img_header_card_detail_mahasiswa"
                                     android:layout_width="match_parent"
-                                    android:layout_height="70dp"
+                                    android:layout_height="75dp"
                                     android:scaleType="centerCrop"
                                     android:src="@drawable/header_mahasiswa_default" />
 

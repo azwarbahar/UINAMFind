@@ -59,4 +59,18 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponseLoker(
+        val `loker_data`: List<Loker>?,
+        val `result_loker`: Loker?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponsePerusahaan(
+        val `perusahaan_data`: List<Perusahaan>?,
+        val `result_perusahaan`: Perusahaan?,
+        val kode: String?,
+        val pesan: String?
+    )
+
 }

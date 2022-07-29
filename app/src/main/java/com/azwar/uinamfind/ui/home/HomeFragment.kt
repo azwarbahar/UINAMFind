@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.databinding.FragmentHomeBinding
 import com.azwar.uinamfind.data.models.BeasiswaModel
-import com.azwar.uinamfind.data.models.LokerModel
+import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
@@ -31,7 +30,6 @@ import com.azwar.uinamfind.ui.pencarian.SearchHomeActivity
 import com.azwar.uinamfind.ui.ukm.UKMActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,7 +42,7 @@ class HomeFragment : Fragment() {
     private val homeBinding get() = _homeBinding!!
 
     lateinit var lokerHomeAdapter: LokerHomeAdapter
-    lateinit var lokerModel: List<LokerModel>
+    lateinit var loker: List<Loker>
 
     lateinit var beasiswaTerbaruAdapter: BeasiswaTerbaruAdapter
     lateinit var beasiswaModel: List<BeasiswaModel>
@@ -157,13 +155,11 @@ class HomeFragment : Fragment() {
             startActivity(intent_mahasiswa)
         }
 
+        homeBinding.tvLihatSemuaRekomendasiLoker.setOnClickListener {
+            val intent = Intent(context, LokerActivity::class.java)
+            startActivity(intent)
+        }
 
-        // List rekomendasi loker
-        val layoutManagerRekomendasiLoker: RecyclerView.LayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        homeBinding.rvRekomendasiLokerHome.layoutManager = layoutManagerRekomendasiLoker
-        lokerHomeAdapter = LokerHomeAdapter()
-        homeBinding.rvRekomendasiLokerHome.adapter = lokerHomeAdapter
 
         // List Beasiswa Terbaru
         val linearManagerBeasiswaTerbaru: RecyclerView.LayoutManager =
@@ -180,6 +176,39 @@ class HomeFragment : Fragment() {
     private fun loadData() {
 //        checkProfil(id)
         loadMahasiswaNewUPdate()
+        loadRekomendasiLoker()
+
+    }
+
+    private fun loadRekomendasiLoker() {
+
+        ApiClient.instances.getLoker("Home")?.enqueue(object : Callback<Responses.ResponseLoker> {
+            override fun onResponse(
+                call: Call<Responses.ResponseLoker>,
+                response: Response<Responses.ResponseLoker>
+            ) {
+                if (response.isSuccessful) {
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    loker = response.body()?.loker_data!!
+
+                    // List rekomendasi loker
+                    val layoutManagerRekomendasiLoker: RecyclerView.LayoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    homeBinding.rvRekomendasiLokerHome.layoutManager = layoutManagerRekomendasiLoker
+                    lokerHomeAdapter = LokerHomeAdapter(loker)
+                    homeBinding.rvRekomendasiLokerHome.adapter = lokerHomeAdapter
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<Responses.ResponseLoker>, t: Throwable) {
+                // do something
+            }
+
+        })
 
     }
 

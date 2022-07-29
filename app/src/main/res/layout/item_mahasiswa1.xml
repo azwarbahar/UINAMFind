@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/img_photo_item_mahasiswa1"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="84dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_man_photo_default" />
 

@@ -7,6 +7,19 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    // LOKER
+    @GET("loker/getLoker.php")
+    fun getLoker(
+        @Query("halaman") halaman: String?
+    ): Call<Responses.ResponseLoker>?
+
+    // PERUSAHAAN
+    @GET("perusahaan/getPerusahaanId.php")
+    fun getPerusahaanId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponsePerusahaan>?
+
+
     @GET("login.php")
     fun login(
         @Query("email_uinam") email_uinam: String?,

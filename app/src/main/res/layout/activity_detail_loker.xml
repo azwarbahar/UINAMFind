@@ -83,15 +83,14 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorPrimaryTrans_10">
+                        android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/img_logo_kantor_detail_loker"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerInside"
-                            android:src="@drawable/icon_telkom" />
+                            android:src="@drawable/ic_kantor_mobil" />
 
                     </RelativeLayout>
 
@@ -107,9 +106,9 @@
                     android:layout_toRightOf="@id/cv_img_detail_loker"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="PT. Telkom Indonesia (Persero) Tbk (Telkom)"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="14sp"
+                    tools:text="PT. Telkom Indonesia (Persero) Tbk (Telkom)" />
 
                 <LinearLayout
                     android:id="@+id/ll1_detail_loker"
@@ -134,9 +133,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="Makassar, Indonesia"
+                        tools:text="Makassar, Indonesia"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="10sp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -151,9 +150,9 @@
                     android:background="@drawable/bg_primary_trans_10_stroke_16"
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="3dp"
-                    android:text="Full Time"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="10sp" />
+                    android:textSize="12sp"
+                    tools:text="Full Time" />
 
                 <TextView
                     android:id="@+id/tv_range_gaji_detail_loker"
@@ -166,10 +165,10 @@
                     android:layout_toRightOf="@id/cv_img_detail_loker"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="Rp. 5.000.000 - Rp. 8.000.000"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="Rp. 5.000.000 - Rp. 8.000.000" />
 
                 <LinearLayout
                     android:id="@+id/ll2_detail_loker"
@@ -196,9 +195,9 @@
                         android:layout_marginLeft="4dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="Tayang pada 20 Jan 2022"
+                        tools:text="Tayang pada 20 Jan 2022"
                         android:textColor="@color/white4"
-                        android:textSize="10dp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
@@ -219,7 +218,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Deskripsi"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -228,10 +227,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_desc1_detail_loker"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="12dp"
-                    android:lineSpacingExtra="8dp"
-                    android:text="@string/lorem_ipsum_long"
-                    android:textColor="@color/grey" />
+                    android:layout_marginTop="16dp"
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    tools:text="@string/lorem_ipsum_long" />
 
                 <TextView
                     android:id="@+id/tv_jobdesk_detail_loker"
@@ -239,10 +239,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_deskripsi_detail_loker"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="26dp"
                     android:text="Jobdesk"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -252,16 +252,17 @@
                     android:layout_below="@id/tv_jobdesk_detail_loker"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="12dp"
-                    android:lineSpacingExtra="8dp"
-                    android:text="@string/lorem_ipsum_long"
-                    android:textColor="@color/grey" />
+                    android:lineSpacingExtra="6dp"
+                    android:textSize="16sp"
+                    tools:text="@string/lorem_ipsum_long"
+                    android:textColor="@color/black" />
 
                 <View
                     android:id="@+id/view2_detail_loker"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_below="@id/tv_jobdes_detail_loker"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:background="@color/grey_hint" />
 
                 <TextView
@@ -273,6 +274,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Tentang Perusahaan"
                     android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -287,15 +289,14 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorPrimaryTrans_10">
+                        android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/img_logo_perusahaan_detail_loker"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerInside"
-                            android:src="@drawable/icon_telkom" />
+                            android:src="@drawable/ic_kantor_mobil" />
 
                     </RelativeLayout>
 
@@ -311,7 +312,9 @@
                     android:layout_toRightOf="@id/cv_img_perusahaan_detail_loker"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:text="PT. Telkom Indonesia (Persero) Tbk (Telkom)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="PT. Telkom Indonesia (Persero) Tbk (Telkom)"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -319,13 +322,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_nama_perusahaan_detail_loker"
-                    android:layout_marginHorizontal="16dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/cv_img_perusahaan_detail_loker"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="1000 - 5000 Kariawan"
+                    tools:text="1000 - 5000 Kariawan"
                     android:textColor="@color/grey_hint"
                     android:textSize="12sp" />
 
@@ -337,9 +339,9 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="50dp"
-                    android:lineSpacingExtra="8dp"
-                    android:text="@string/lorem_ipsum_long"
-                    android:textColor="@color/grey" />
+                    android:lineSpacingExtra="6dp"
+                    android:textColor="@color/grey"
+                    tools:text="@string/lorem_ipsum_long" />
 
             </RelativeLayout>
 
@@ -399,6 +401,7 @@
             android:paddingVertical="12dp">
 
             <TextView
+                android:id="@+id/tv_btn_lamar_loker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
