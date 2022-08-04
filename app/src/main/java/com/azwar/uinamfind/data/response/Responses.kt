@@ -73,4 +73,32 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponseLembaga(
+        val `lembaga_data`: List<LembagaKampus>?,
+        val `result_lembaga`: LembagaKampus?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseSosmed(
+        val `sosmed_data`: List<Sosmed>?,
+        val `result_sosmed`: Sosmed?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseKegiatan(
+        val `kegiatan_data`: List<Kegiatan>?,
+        val `result_kegiatan`: Kegiatan?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseOrganisasi(
+        val `organisasi_data`: List<Organisasi>?,
+        val `result_organisasi`: Organisasi?,
+        val kode: String?,
+        val pesan: String?
+    )
+
 }

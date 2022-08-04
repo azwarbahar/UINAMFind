@@ -7,6 +7,39 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    // ORGANISASI
+    @GET("organisasi/getOrganisasi.php")
+    fun getOrganisasi(): Call<Responses.ResponseOrganisasi>?
+
+
+    // KEGIATAN
+    @GET("kegiatan/getKegiatanKategori.php")
+    fun getKegiatanKategori(
+        @Query("from_id") from_id: String?,
+        @Query("kategori") kategori: String?
+    ): Call<Responses.ResponseKegiatan>?
+
+
+    // SOSMED
+    @GET("sosmed/getSosmedKategori.php")
+    fun getSosmedKategori(
+        @Query("from_id") from_id: String?,
+        @Query("kategori") kategori: String?
+    ): Call<Responses.ResponseSosmed>?
+
+
+    // LEMBAGA
+    @GET("lembaga/getLembagaCakupan.php")
+    fun getLembagaCakupan(
+        @Query("cakupan") cakupan: String?
+    ): Call<Responses.ResponseLembaga>?
+
+    @GET("lembaga/getLembagaFakultas.php")
+    fun getLembagaFakultas(
+        @Query("fakultas") fakultas: String?
+    ): Call<Responses.ResponseLembaga>?
+
+
     // LOKER
     @GET("loker/getLoker.php")
     fun getLoker(

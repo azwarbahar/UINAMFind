@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorBackgroundActivity"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundActivity"
     tools:context=".ui.lembaga.LembagaActivity">
 
     <RelativeLayout
@@ -46,11 +46,18 @@
 
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_fakultas_lembaga"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_lembaga"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_toolbar_lembaga"
-        android:layout_marginTop="5dp" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_toolbar_lembaga">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fakultas_lembaga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

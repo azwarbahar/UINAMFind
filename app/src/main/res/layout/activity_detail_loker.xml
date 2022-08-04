@@ -133,9 +133,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        tools:text="Makassar, Indonesia"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Makassar, Indonesia" />
 
                 </LinearLayout>
 
@@ -195,9 +195,9 @@
                         android:layout_marginLeft="4dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        tools:text="Tayang pada 20 Jan 2022"
                         android:textColor="@color/white4"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Tayang pada 20 Jan 2022" />
 
                 </LinearLayout>
 
@@ -253,9 +253,9 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="12dp"
                     android:lineSpacingExtra="6dp"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
-                    tools:text="@string/lorem_ipsum_long"
-                    android:textColor="@color/black" />
+                    tools:text="@string/lorem_ipsum_long" />
 
                 <View
                     android:id="@+id/view2_detail_loker"
@@ -272,9 +272,9 @@
                     android:layout_below="@id/view2_detail_loker"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
                     android:text="Tentang Perusahaan"
                     android:textColor="@color/black"
-                    android:layout_marginBottom="10dp"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -312,10 +312,10 @@
                     android:layout_toRightOf="@id/cv_img_perusahaan_detail_loker"
                     android:ellipsize="end"
                     android:maxLines="2"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    tools:text="PT. Telkom Indonesia (Persero) Tbk (Telkom)"
-                    android:textColor="@color/black" />
+                    tools:text="PT. Telkom Indonesia (Persero) Tbk (Telkom)" />
 
                 <TextView
                     android:id="@+id/tv_jumlah_kariawan_detail_loker"
@@ -327,9 +327,9 @@
                     android:layout_toRightOf="@id/cv_img_perusahaan_detail_loker"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    tools:text="1000 - 5000 Kariawan"
                     android:textColor="@color/grey_hint"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:text="1000 - 5000 Kariawan" />
 
                 <TextView
                     android:id="@+id/tv_deskripsi_perusahaan_detail_loker"
@@ -392,6 +392,7 @@
         android:background="@color/white2">
 
         <RelativeLayout
+            android:id="@+id/rl_brn_lamar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"

@@ -1,8 +1,10 @@
 package com.azwar.uinamfind.ui.loker
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.Perusahaan
@@ -19,7 +21,8 @@ import java.text.SimpleDateFormat
 class DetailLokerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailLokerBinding
-
+    private var lamar_mudah = ""
+    private var link_lamar = ""
     private lateinit var loker: Loker
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +39,27 @@ class DetailLokerActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_baseline_chevron_left_24)
+
+        binding.rlBrnLamar.setOnClickListener {
+
+            if (lamar_mudah.equals("Ya")) {
+                val intent = Intent(this, LamarLokerActivity::class.java)
+                intent.putExtra("loker", loker)
+                startActivity(intent)
+            } else {
+                if (link_lamar.equals("-") || link_lamar.equals("")) {
+                    Toast.makeText(this, "Link tidak terdeteksi", Toast.LENGTH_SHORT)
+                } else {
+                    val defaultBrowser = Intent.makeMainSelectorActivity(
+                        Intent.ACTION_MAIN,
+                        Intent.CATEGORY_APP_BROWSER
+                    )
+                    defaultBrowser.data = Uri.parse(link_lamar)
+                    startActivity(defaultBrowser)
+                }
+            }
+        }
+
     }
 
     private fun initData(loker: Loker) {
@@ -53,13 +77,13 @@ class DetailLokerActivity : AppCompatActivity() {
         binding.tvDeskripsiDetailLoker.setText(loker.deskripsi)
         binding.tvJobdesDetailLoker.setText(loker.jobdesk)
 
-        var lamar_mudah = loker.lamar_mudah
+        lamar_mudah = loker.lamar_mudah!!
         if (lamar_mudah.equals("Ya")) {
             binding.tvBtnLamarLoker.setText("Lamar Sekarang")
         } else {
             binding.tvBtnLamarLoker.setText("Kunjungi Untuk Melamar")
         }
-
+        link_lamar = loker.link_lamar!!
         loadPerusahaan(loker.perusahaan_id)
     }
 

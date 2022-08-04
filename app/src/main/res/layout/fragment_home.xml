@@ -762,8 +762,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_icon_mahasiswa_bottom_sheet_menu_home"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
                     android:layout_marginVertical="8dp"
                     android:layout_marginLeft="16dp"
@@ -870,6 +870,311 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_below="@id/cv_icon_lembaga_bottom_sheet_menu_home"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/white2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_organisasi_bottom_sheet_menu_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_lembaga_bottom_sheet_menu_home"
+                android:layout_marginTop="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_icon_organisasi_bottom_sheet_menu_home"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginLeft="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_menu_organisasi" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_organisasi_menu_bottom_sheet_menu_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="14sp"
+                    android:layout_toRightOf="@id/cv_icon_organisasi_bottom_sheet_menu_home"
+                    android:text="Organisasi dan Komunitas"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/ic_baseline_chevron_right_24"
+                    app:tint="@color/colorPrimary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/cv_icon_organisasi_bottom_sheet_menu_home"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/white2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_ukm_bottom_sheet_menu_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_organisasi_bottom_sheet_menu_home"
+                android:layout_marginTop="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_icon_ukm_bottom_sheet_menu_home"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginLeft="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_menu_ukm" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_ukm_menu_bottom_sheet_menu_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="14sp"
+                    android:layout_toRightOf="@id/cv_icon_ukm_bottom_sheet_menu_home"
+                    android:text="UKM"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/ic_baseline_chevron_right_24"
+                    app:tint="@color/colorPrimary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/cv_icon_ukm_bottom_sheet_menu_home"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/white2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_magang_bottom_sheet_menu_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_ukm_bottom_sheet_menu_home"
+                android:layout_marginTop="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_icon_magang_bottom_sheet_menu_home"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginLeft="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_menu_info_magang" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_magang_menu_bottom_sheet_menu_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="14sp"
+                    android:layout_toRightOf="@id/cv_icon_magang_bottom_sheet_menu_home"
+                    android:text="Info Magang"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/ic_baseline_chevron_right_24"
+                    app:tint="@color/colorPrimary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/cv_icon_magang_bottom_sheet_menu_home"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/white2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_beasiswa_bottom_sheet_menu_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_magang_bottom_sheet_menu_home"
+                android:layout_marginTop="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_icon_beasiswa_bottom_sheet_menu_home"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginLeft="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_menu_info_beasiswa" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_beasiswa_menu_bottom_sheet_menu_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="14sp"
+                    android:layout_toRightOf="@id/cv_icon_beasiswa_bottom_sheet_menu_home"
+                    android:text="Info Beasiswa"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/ic_baseline_chevron_right_24"
+                    app:tint="@color/colorPrimary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/cv_icon_beasiswa_bottom_sheet_menu_home"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/white2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_loker_bottom_sheet_menu_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_beasiswa_bottom_sheet_menu_home"
+                android:layout_marginTop="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_icon_loker_bottom_sheet_menu_home"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginLeft="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_menu_info_loker" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_loker_menu_bottom_sheet_menu_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="14sp"
+                    android:layout_toRightOf="@id/cv_icon_loker_bottom_sheet_menu_home"
+                    android:text="Info Lowongan Kerja"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/ic_baseline_chevron_right_24"
+                    app:tint="@color/colorPrimary" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/cv_icon_loker_bottom_sheet_menu_home"
                     android:layout_marginTop="6dp"
                     android:background="@color/white2" />
 

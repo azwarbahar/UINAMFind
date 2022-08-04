@@ -1,6 +1,7 @@
 package com.azwar.uinamfind.ui.mahasiswa
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -81,7 +82,7 @@ class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
                 }
 
                 override fun onFailure(call: Call<Responses.ResponseMahasiswa>, t: Throwable) {
-                    TODO("Not yet implemented")
+
                 }
 
             })
@@ -99,6 +100,11 @@ class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
                     swipe.isRefreshing = false
                     if (response.isSuccessful) {
                         mahasiswaFakultas = response.body()?.mahasiswa_data!!
+                        Toast.makeText(
+                            this@MahasiswaActivity,
+                            "Create list sefakultas",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         // List Data Mahasiswa Sefakultas
                         binding.rvMahasiswaSefakultas.layoutManager =
                             LinearLayoutManager(
@@ -110,11 +116,23 @@ class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
                             MahasiswaHorizontalAdapter(mahasiswaFakultas)
                         binding.rvMahasiswaSefakultas.adapter = mahasiswaHorizontalAdapter
 
+                    } else {
+                        Toast.makeText(
+                            this@MahasiswaActivity,
+                            response.message(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
                     }
                 }
 
                 override fun onFailure(call: Call<Responses.ResponseMahasiswa>, t: Throwable) {
                     swipe.isRefreshing = false
+                    Toast.makeText(
+                        this@MahasiswaActivity,
+                        t.localizedMessage,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
             })

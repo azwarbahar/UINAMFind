@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="4dp"
     android:layout_marginTop="10dp"
@@ -24,10 +25,10 @@
 
             <ImageView
                 android:id="@+id/img_logo_kantor_item_loker"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/icon_telkom" />
+                android:src="@drawable/ic_kantor_mobil" />
 
         </androidx.cardview.widget.CardView>
 
@@ -41,10 +42,10 @@
             android:layout_toRightOf="@id/cv_logo_kantor_item_loker"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Staff Administrasi Keuangan"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Staff Administrasi Keuangan" />
 
         <TextView
             android:id="@+id/tv_nama_kantor_loker_item"
@@ -55,9 +56,9 @@
             android:layout_marginRight="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="PT Telkom Indonesia (Persero) Tbk (Telkom)"
+            tools:text="PT Telkom Indonesia (Persero) Tbk (Telkom)"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_kota_loker_item"
@@ -69,9 +70,9 @@
             android:layout_marginRight="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Makassar"
+            tools:text="Makassar"
             android:textColor="@color/grey_hint"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_range_gaji_loker_item"
@@ -83,7 +84,7 @@
             android:layout_marginRight="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Rp. 5.000.000 - Rp. 8.000.000"
+            tools:text="Rp. 5.000.000 - Rp. 8.000.000"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             android:textStyle="bold" />

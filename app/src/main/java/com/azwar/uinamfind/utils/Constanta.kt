@@ -10,6 +10,8 @@ class Constanta {
         const val JURUSAN_USER = "JURUSAN_USER"
         const val FAKULTAS_USER = "FAKULTAS_USER"
 
+        const val OBJECT_SELECTED = "OBJECT_SELECTED"
+
 
     }
 

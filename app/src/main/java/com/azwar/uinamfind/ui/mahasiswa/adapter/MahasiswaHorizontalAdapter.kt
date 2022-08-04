@@ -25,7 +25,6 @@ class MahasiswaHorizontalAdapter(private val list: List<User>) :
         fun bind(get: User) {
             with(itemView) {
 
-
                 val lable = get.status_kemahasiswaan
                 if (lable.equals("Lulus")) {
                     itemMahasiswa1Binding.imgLableItemMahasiswa1.visibility = View.VISIBLE

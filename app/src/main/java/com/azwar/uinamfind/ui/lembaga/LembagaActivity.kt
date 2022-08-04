@@ -4,33 +4,65 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.databinding.ActivityLembagaBinding
 import com.azwar.uinamfind.ui.lembaga.adapter.FakultasLembagaAdapter
-import kotlinx.android.synthetic.main.activity_lembaga.*
 
-class LembagaActivity : AppCompatActivity() {
+class LembagaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var fakultasLembagaAdapter: FakultasLembagaAdapter
 
+    private lateinit var binding: ActivityLembagaBinding
+
+    private lateinit var swipe_lembaga: SwipeRefreshLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lembaga)
+        binding = ActivityLembagaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // List Fakultas Lembaga
-        val rv_fakultas_lembaga: RecyclerView = findViewById(R.id.rv_fakultas_lembaga)
-        rv_fakultas_lembaga.layoutManager = LinearLayoutManager(this)
-        fakultasLembagaAdapter = FakultasLembagaAdapter()
-        rv_fakultas_lembaga.adapter = fakultasLembagaAdapter
+        swipe_lembaga = binding.swipeLembaga
+        swipe_lembaga.setOnRefreshListener(this)
+        swipe_lembaga.setColorSchemeResources(
+            R.color.colorPrimary,
+            android.R.color.holo_blue_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_green_dark
+        )
+        swipe_lembaga.post(Runnable {
+            initData()
+        })
 
-        img_back_lembaga.setOnClickListener {
+        binding.imgBackLembaga.setOnClickListener {
             finish()
         }
 
-        img_search_lembaga.setOnClickListener {
+        binding.imgSearchLembaga.setOnClickListener {
             var intent_search = Intent(this, SearchLembagaActivity::class.java)
             startActivity(intent_search)
         }
 
+    }
+
+    private fun initData() {
+
+        val listLembaga = arrayOf(
+            "Universitas", "Syariah dan Hukum", "Tarbiah dan Keguruan",
+            "Ushuluddin dan Filsafat", "Adab dan Humaniora", "Dakwah dan Komunikasi",
+            "Sains dan Teknologi", "Kedokteran dan Ilmu Kesehatan", "Ekonomi dan Bisnis"
+        )
+
+        // List Fakultas Lembaga
+        val rv_fakultas = binding.rvFakultasLembaga
+        rv_fakultas.layoutManager = LinearLayoutManager(this)
+        fakultasLembagaAdapter = FakultasLembagaAdapter(listLembaga)
+        rv_fakultas.adapter = fakultasLembagaAdapter
+
+        swipe_lembaga.isRefreshing = false
+    }
+
+    override fun onRefresh() {
+        initData()
     }
 }

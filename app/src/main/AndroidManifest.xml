@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.kegiatan.DetailKegiatanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.loker.LamarLokerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.saya.PengaturanActivity"
             android:exported="false" />
         <activity
@@ -149,7 +155,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.MasukActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -158,8 +164,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
