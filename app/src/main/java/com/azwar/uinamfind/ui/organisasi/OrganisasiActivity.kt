@@ -23,10 +23,24 @@ class OrganisasiActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshList
     private lateinit var listOrganisasi: List<Organisasi>
     private lateinit var organisasiAdapter: OrganisasiAdapter
 
+    private lateinit var swipe_organisasi: SwipeRefreshLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrganisasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        swipe_organisasi = binding.swipeOrganisasi
+        swipe_organisasi.setOnRefreshListener(this)
+        swipe_organisasi.setColorSchemeResources(
+            R.color.colorPrimary,
+            android.R.color.holo_blue_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_green_dark
+        )
+        swipe_organisasi.post(Runnable {
+            loadDataOrganisasi()
+        })
 
         binding.imgSearchOrganisasi.setOnClickListener {
             val intent_search_organisasi = Intent(this, SearchOrganisasiActivity::class.java)
@@ -37,26 +51,20 @@ class OrganisasiActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshList
             finish()
         }
 
-        loadDataOrganisasi()
-
-    }
-
-    override fun onRefresh() {
-
-        loadDataOrganisasi()
     }
 
     private fun loadDataOrganisasi() {
 
         ApiClient.instances.getOrganisasi()?.enqueue(object :
-            Callback<Responses.ResponseOrganisasi>{
+            Callback<Responses.ResponseOrganisasi> {
             override fun onResponse(
                 call: Call<Responses.ResponseOrganisasi>,
                 response: Response<Responses.ResponseOrganisasi>
             ) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     listOrganisasi = response.body()?.organisasi_data!!
-                    binding.rvOrganisasi.layoutManager = LinearLayoutManager(this@OrganisasiActivity)
+                    binding.rvOrganisasi.layoutManager =
+                        LinearLayoutManager(this@OrganisasiActivity)
                     organisasiAdapter = OrganisasiAdapter(listOrganisasi)
                     binding.rvOrganisasi.adapter = organisasiAdapter
                 } else {
@@ -71,5 +79,10 @@ class OrganisasiActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshList
 
         })
 
+    }
+
+    override fun onRefresh() {
+
+        loadDataOrganisasi()
     }
 }

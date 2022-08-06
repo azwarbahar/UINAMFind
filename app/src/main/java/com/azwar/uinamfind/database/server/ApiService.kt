@@ -7,6 +7,15 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    // ANGGOTA
+    @GET("anggota/getAnggota.php")
+    fun getAnggota(
+        @Query("kategori") kategori: String?,
+        @Query("from_id") from_id: String?,
+        @Query("user_id") user_id: String?
+    ): Call<Responses.ResponseAnggota>?
+
+
     // ORGANISASI
     @GET("organisasi/getOrganisasi.php")
     fun getOrganisasi(): Call<Responses.ResponseOrganisasi>?
