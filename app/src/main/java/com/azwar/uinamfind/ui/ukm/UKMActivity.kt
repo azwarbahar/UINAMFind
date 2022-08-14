@@ -1,7 +1,9 @@
 package com.azwar.uinamfind.ui.ukm
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azwar.uinamfind.R
@@ -25,9 +27,17 @@ class UKMActivity : AppCompatActivity() {
         rv_pendaftaran_terbuka_ukm.adapter = pendaftaranUKMAdapter
 
 
+        val decoratorHorizontal = DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL)
+        decoratorHorizontal.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider)!!)
+        val decoratorVertikal = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+        decoratorVertikal.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider)!!)
         // List Data UKM
+
+        rv_ukm.setHasFixedSize(true)
         rv_ukm.layoutManager = GridLayoutManager(this, 2)
         ukmAdapter = UKMAdapter()
+        rv_ukm.addItemDecoration(decoratorVertikal)
+        rv_ukm.addItemDecoration(decoratorHorizontal)
         rv_ukm.adapter = ukmAdapter
 
         rl_toolbar_ukm.setOnClickListener {

@@ -7,6 +7,13 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    // FOTO
+    @GET("foto/getFoto.php")
+    fun getFoto(
+        @Query("kategori") kategori: String?,
+        @Query("from_id") from_id: String?
+    ): Call<Responses.ResponseFoto>?
+
     // ANGGOTA
     @GET("anggota/getAnggota.php")
     fun getAnggota(

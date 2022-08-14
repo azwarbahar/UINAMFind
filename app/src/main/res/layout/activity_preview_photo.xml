@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.PreviewPhotoActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryTrans_10">
+
+        <ImageView
+            android:id="@+id/img_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_baseline_close_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="16dp"
+            android:layout_toRightOf="@id/img_close"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="1"
+            android:text="SISFO FAIR"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/img_zoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_toolbar"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_empty_data" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/img_zoom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Foto dari :"
+                android:textColor="@color/grey_hint" />
+
+            <TextView
+                android:id="@+id/tv_nama_pengupload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv1"
+                android:layout_marginHorizontal="16dp"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="2"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Muhammad Azwar Bahar" />
+
+            <TextView
+                android:id="@+id/tv_deskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_nama_pengupload"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="22dp"
+                android:gravity="start"
+                android:lineSpacingExtra="6dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                tools:text="@string/lorem_ipsum_long" />
+
+            <TextView
+                android:id="@+id/tv_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_deskripsi"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                android:text="20 Januari 2022"
+                android:textColor="@color/grey_hint" />
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

@@ -108,4 +108,11 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponseFoto(
+        val `foto_data`: List<Foto>?,
+        val `result_foto`: Foto?,
+        val kode: String?,
+        val pesan: String?
+    )
+
 }
