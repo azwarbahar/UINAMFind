@@ -16,8 +16,6 @@ class FotoLembagaAdapter(private val list: List<Foto>) :
     class MyHolderView(private val binding: ItemFotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(get: Foto) {
-//            http://192.168.1.19/api_uinamfind/
-
             with(itemView) {
                 var foto = get.nama_foto
                 if (foto !== null) {

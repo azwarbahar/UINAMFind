@@ -80,40 +80,35 @@ class FotoLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 swipe_refresh.isRefreshing = false
 
                 if (response.isSuccessful) {
-                    fotoList = response.body()?.foto_data!!
+                    val kode = response.body()?.kode
+                    if (kode.equals("1")) {
+                        fotoList = response.body()?.foto_data!!
+                        if (fotoList.size > 1) {
+                            binding.llEmpty.visibility = View.GONE
+                            binding.rvFoto.visibility = View.VISIBLE
 
-
-//                    val decoratorHorizontal =
-//                        DividerItemDecoration(activity, LinearLayoutManager.HORIZONTAL)
-//                    decoratorHorizontal.setDrawable(
-//                        ContextCompat.getDrawable(
-//                            activity!!,
-//                            R.drawable.divider
-//                        )!!
-//                    )
-//                    val decoratorVertikal =
-//                        DividerItemDecoration(activity, LinearLayoutManager.VERTICAL)
-//                    decoratorVertikal.setDrawable(
-//                        ContextCompat.getDrawable(
-//                            activity!!,
-//                            R.drawable.divider
-//                        )!!
-//                    )
-
-                    // List data mahasiswa random
-                    binding.rvFoto.layoutManager =
-                        GridLayoutManager(activity, 3)
-                    fotoLembagaAdapter = FotoLembagaAdapter(fotoList)
-//                    binding.rvFoto.addItemDecoration(decoratorVertikal)
-//                    binding.rvFoto.addItemDecoration(decoratorHorizontal)
-                    binding.rvFoto.adapter = fotoLembagaAdapter
+                            binding.rvFoto.layoutManager =
+                                GridLayoutManager(activity, 3)
+                            fotoLembagaAdapter = FotoLembagaAdapter(fotoList)
+                            binding.rvFoto.adapter = fotoLembagaAdapter
+                        } else {
+                            binding.rvFoto.visibility = View.GONE
+                            binding.llEmpty.visibility = View.VISIBLE
+                        }
+                    } else {
+                        binding.rvFoto.visibility = View.GONE
+                        binding.llEmpty.visibility = View.VISIBLE
+                    }
                 } else {
-
+                    binding.rvFoto.visibility = View.GONE
+                    binding.llEmpty.visibility = View.VISIBLE
                 }
             }
 
             override fun onFailure(call: Call<Responses.ResponseFoto>, t: Throwable) {
                 swipe_refresh.isRefreshing = false
+                binding.rvFoto.visibility = View.GONE
+                binding.llEmpty.visibility = View.VISIBLE
             }
 
         })

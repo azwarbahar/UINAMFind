@@ -141,6 +141,32 @@
                         android:paddingLeft="11dp"
                         tools:listitem="@layout/item_anggota" />
 
+                    <LinearLayout
+                        android:id="@+id/ll_empty"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:layout_below="@id/tv2"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/img_empty_data" />
+
+                        <TextView
+                            android:textColor="@color/grey"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="Tidak ada anggota"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+
+                    </LinearLayout>
+
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>

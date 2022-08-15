@@ -106,23 +106,33 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
                     listAnggota = response.body()?.anggota_data!!
                     var size = listAnggota.size
                     binding.tv2.setText(size.toString() + " Orang")
-                    binding.rvAnggotaLembaga.layoutManager =
-                        LinearLayoutManager(activity)
-                    anggotaLembagaAdapter = AnggotaLembagaAdapter(listAnggota)
-                    val dividerItemDecoration: RecyclerView.ItemDecoration = DividerItemDecorator(
-                        ContextCompat.getDrawable(
-                            context!!, R.drawable.divider
+                    if (size > 0){
+                        binding.rvAnggotaLembaga.visibility = View.VISIBLE
+                        binding.llEmpty.visibility = View.GONE
+                        binding.rvAnggotaLembaga.layoutManager =
+                            LinearLayoutManager(activity)
+                        anggotaLembagaAdapter = AnggotaLembagaAdapter(listAnggota)
+                        val dividerItemDecoration: RecyclerView.ItemDecoration = DividerItemDecorator(
+                            ContextCompat.getDrawable(
+                                context!!, R.drawable.divider
+                            )
                         )
-                    )
-                    binding.rvAnggotaLembaga.addItemDecoration(dividerItemDecoration)
-                    binding.rvAnggotaLembaga.adapter = anggotaLembagaAdapter
-
+                        binding.rvAnggotaLembaga.addItemDecoration(dividerItemDecoration)
+                        binding.rvAnggotaLembaga.adapter = anggotaLembagaAdapter
+                    } else {
+                        binding.rvAnggotaLembaga.visibility = View.GONE
+                        binding.llEmpty.visibility = View.VISIBLE
+                    }
+                } else {
+                    binding.rvAnggotaLembaga.visibility = View.GONE
+                    binding.llEmpty.visibility = View.VISIBLE
                 }
 
             }
 
             override fun onFailure(call: Call<Responses.ResponseAnggota>, t: Throwable) {
-
+                binding.rvAnggotaLembaga.visibility = View.GONE
+                binding.llEmpty.visibility = View.VISIBLE
             }
 
         })
