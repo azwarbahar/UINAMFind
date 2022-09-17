@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.azwar.uinamfind.R
-import com.azwar.uinamfind.data.models.Kegiatan
-import com.azwar.uinamfind.data.models.LembagaKampus
-import com.azwar.uinamfind.data.models.Sosmed
+import com.azwar.uinamfind.data.models.*
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
@@ -31,7 +29,6 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     private var _binding: FragmentTentangLembagaBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var lembaga: LembagaKampus
     private lateinit var sosmedList: List<Sosmed>
     private lateinit var kegiatanList: List<Kegiatan>
 
@@ -39,6 +36,10 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     private lateinit var kegiatanGridAdapter: KegiatanGridAdapter
 
     private lateinit var swipe_refresh: SwipeRefreshLayout
+
+    private lateinit var lembaga: LembagaKampus
+    private lateinit var organisasi: Organisasi
+    private lateinit var ukm: Ukm
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +50,15 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         val view = binding.root
         sharedPref = PreferencesHelper(context)
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
+        val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
-        val lembaga: LembagaKampus = gson.fromJson(json, LembagaKampus::class.java)
+        if (kategori_objek.equals("Lembaga")) {
+            lembaga = gson.fromJson(json, LembagaKampus::class.java)
+        } else if (kategori_objek.equals("Organisasi")) {
+            organisasi = gson.fromJson(json, Organisasi::class.java)
+        } else if (kategori_objek.equals("UKM")) {
+            ukm = gson.fromJson(json, Ukm::class.java)
+        }
 
         swipe_refresh = binding.swipeRefresh
         swipe_refresh.setOnRefreshListener(this)
@@ -61,13 +69,19 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
             android.R.color.holo_green_dark
         )
         swipe_refresh.post(Runnable {
-            setData(lembaga)
+            if (kategori_objek.equals("Lembaga")) {
+                setDataLembaga(lembaga)
+            } else if (kategori_objek.equals("Organisasi")) {
+                setDataOrganisasi(organisasi)
+            } else if (kategori_objek.equals("UKM")) {
+                setDataUkm(ukm)
+            }
         })
 
         return view
     }
 
-    private fun setData(lembaga: LembagaKampus) {
+    private fun setDataLembaga(lembaga: LembagaKampus) {
 
         var deskripsi = lembaga.deskripsi
         var tv_desc = binding.tvDeskripsiLembaga
@@ -85,6 +99,44 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         setSosmed(id, "Lembaga")
         setKegiatan(id, "Lembaga")
 
+    }
+
+    private fun setDataOrganisasi(organisasi: Organisasi) {
+
+        var deskripsi = organisasi.deskripsi
+        var tv_desc = binding.tvDeskripsiLembaga
+        if (deskripsi.equals("-") || deskripsi == null) {
+            tv_desc.text = deskripsi
+        } else {
+            tv_desc.text = deskripsi
+//                    if (binding.tvDescItemPengalamanMahasiswa.lineCount > 2) {
+            val myTextViewDesc = MyTextViewDesc()
+            myTextViewDesc.makeTextViewResizable(tv_desc, 5, ".. Lihat lengkap", true)
+//                    }
+        }
+
+        val id = organisasi.id
+        setSosmed(id, "Organisasi")
+        setKegiatan(id, "Organisasi")
+    }
+
+    private fun setDataUkm(ukm: Ukm) {
+
+//        var deskripsi = ukm.deskripsi
+//        var tv_desc = binding.tvDeskripsiLembaga
+//        if (deskripsi.equals("-") || deskripsi == null) {
+//            tv_desc.text = deskripsi
+//        } else {
+//            tv_desc.text = deskripsi
+////                    if (binding.tvDescItemPengalamanMahasiswa.lineCount > 2) {
+//            val myTextViewDesc = MyTextViewDesc()
+//            myTextViewDesc.makeTextViewResizable(tv_desc, 5, ".. Lihat lengkap", true)
+////                    }
+//        }
+//
+//        val id = organisasi.id
+//        setSosmed(id, "Organisasi")
+//        setKegiatan(id, "Organisasi")
     }
 
     private fun setKegiatan(id: String?, kategori: String) {
@@ -150,9 +202,18 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
 
     override fun onRefresh() {
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
+        val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
-        val lembaga: LembagaKampus = gson.fromJson(json, LembagaKampus::class.java)
-        setData(lembaga)
+        if (kategori_objek.equals("Lembaga")) {
+            lembaga = gson.fromJson(json, LembagaKampus::class.java)
+            setDataLembaga(lembaga)
+        } else if (kategori_objek.equals("Organisasi")) {
+            organisasi = gson.fromJson(json, Organisasi::class.java)
+            setDataOrganisasi(organisasi)
+        } else if (kategori_objek.equals("UKM")) {
+            ukm = gson.fromJson(json, Ukm::class.java)
+            setDataUkm(ukm)
+        }
     }
 
 }

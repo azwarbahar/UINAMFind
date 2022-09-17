@@ -7,6 +7,7 @@
     android:background="@color/colorBackgroundActivity"
     tools:context=".ui.lembaga.DetailLembagaActivity">
 
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/continer_lembaga_detail"
         android:layout_width="match_parent"
@@ -23,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
                 android:theme="@style/CustomToolbarTheme"
+                app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
                 <ImageView
@@ -72,7 +73,6 @@
                 android:layout_below="@+id/tab_layout_lembaga" />
 
         </RelativeLayout>
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

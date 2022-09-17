@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.azwar.uinamfind.R
-import com.azwar.uinamfind.data.models.Anggota
-import com.azwar.uinamfind.data.models.LembagaKampus
-import com.azwar.uinamfind.data.models.User
+import com.azwar.uinamfind.data.models.*
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
@@ -42,6 +40,9 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     private lateinit var user: User
 
     private lateinit var swipe_refresh: SwipeRefreshLayout
+    private lateinit var lembaga: LembagaKampus
+    private lateinit var organisasi: Organisasi
+    private lateinit var ukm: Ukm
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,8 +54,15 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         sharedPref = PreferencesHelper(context)
         var id = sharedPref.getString(Constanta.ID_USER).toString()
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
+        val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
-        val lembaga: LembagaKampus = gson.fromJson(json, LembagaKampus::class.java)
+        if (kategori_objek.equals("Lembaga")) {
+            lembaga = gson.fromJson(json, LembagaKampus::class.java)
+        } else if (kategori_objek.equals("Organisasi")) {
+            organisasi = gson.fromJson(json, Organisasi::class.java)
+        } else if (kategori_objek.equals("UKM")) {
+            ukm = gson.fromJson(json, Ukm::class.java)
+        }
 
         swipe_refresh = binding.swipeRefresh
         swipe_refresh.setOnRefreshListener(this)
@@ -65,7 +73,13 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
             android.R.color.holo_green_dark
         )
         swipe_refresh.post(Runnable {
-            setData(lembaga)
+            if (kategori_objek.equals("Lembaga")) {
+                setDataLembaga(lembaga)
+            } else if (kategori_objek.equals("Organisasi")) {
+                setDataOrganisasi(organisasi)
+            } else if (kategori_objek.equals("UKM")) {
+                setDataUkm(ukm)
+            }
         })
 
         binding.rlAdmin.setOnClickListener {
@@ -89,9 +103,19 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         return view
     }
 
-    private fun setData(lembaga: LembagaKampus) {
+    private fun setDataLembaga(lembaga: LembagaKampus) {
         loadUser(lembaga.admin)
         loadAnggota("Lembaga", lembaga.id, lembaga.admin)
+    }
+
+    private fun setDataOrganisasi(organisasi: Organisasi) {
+        loadUser(organisasi.admin)
+        loadAnggota("Organisasi", organisasi.id, organisasi.admin)
+    }
+
+    private fun setDataUkm(ukm: Ukm) {
+//        loadUser(organisasi.admin)
+//        loadAnggota("Organisasi", organisasi.id, organisasi.admin)
     }
 
     private fun loadAnggota(kategori: String, from_id: String?, user_id: String?) {
@@ -106,17 +130,18 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
                     listAnggota = response.body()?.anggota_data!!
                     var size = listAnggota.size
                     binding.tv2.setText(size.toString() + " Orang")
-                    if (size > 0){
+                    if (size > 0) {
                         binding.rvAnggotaLembaga.visibility = View.VISIBLE
                         binding.llEmpty.visibility = View.GONE
                         binding.rvAnggotaLembaga.layoutManager =
                             LinearLayoutManager(activity)
                         anggotaLembagaAdapter = AnggotaLembagaAdapter(listAnggota)
-                        val dividerItemDecoration: RecyclerView.ItemDecoration = DividerItemDecorator(
-                            ContextCompat.getDrawable(
-                                context!!, R.drawable.divider
+                        val dividerItemDecoration: RecyclerView.ItemDecoration =
+                            DividerItemDecorator(
+                                ContextCompat.getDrawable(
+                                    context!!, R.drawable.divider
+                                )
                             )
-                        )
                         binding.rvAnggotaLembaga.addItemDecoration(dividerItemDecoration)
                         binding.rvAnggotaLembaga.adapter = anggotaLembagaAdapter
                     } else {
@@ -182,17 +207,28 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
 
                 override fun onFailure(call: Call<Responses.ResponseMahasiswa>, t: Throwable) {
                 }
-
             })
-
     }
 
-
     override fun onRefresh() {
+        var id = sharedPref.getString(Constanta.ID_USER).toString()
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
+        val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
-        val lembaga: LembagaKampus = gson.fromJson(json, LembagaKampus::class.java)
-        setData(lembaga)
+        if (kategori_objek.equals("Lembaga")) {
+            lembaga = gson.fromJson(json, LembagaKampus::class.java)
+        } else if (kategori_objek.equals("Organisasi")) {
+            organisasi = gson.fromJson(json, Organisasi::class.java)
+        } else if (kategori_objek.equals("UKM")) {
+            ukm = gson.fromJson(json, Ukm::class.java)
+        }
+        if (kategori_objek.equals("Lembaga")) {
+            setDataLembaga(lembaga)
+        } else if (kategori_objek.equals("Organisasi")) {
+            setDataOrganisasi(organisasi)
+        } else if (kategori_objek.equals("UKM")) {
+            setDataUkm(ukm)
+        }
     }
 
 }

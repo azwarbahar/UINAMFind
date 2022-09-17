@@ -2,7 +2,10 @@ package com.azwar.uinamfind.ui.lembaga
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.LembagaKampus
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.databinding.ActivityDetailLembagaBinding
@@ -21,7 +24,14 @@ class DetailLembagaActivity : AppCompatActivity() {
     val tabArray = arrayOf(
         "Tentang",
         "Anggota",
-        "Foto"
+        "Foto",
+        "Pengaturan"
+    )
+    val tabArrayAdmin = arrayOf(
+        "Tentang",
+        "Anggota",
+        "Foto",
+        "Pengaturan"
     )
 
     private lateinit var binding: ActivityDetailLembagaBinding
@@ -31,10 +41,9 @@ class DetailLembagaActivity : AppCompatActivity() {
         binding = ActivityDetailLembagaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPref = PreferencesHelper(this)
-
+        var id = sharedPref.getString(Constanta.ID_USER).toString()
         lembaga = intent.getParcelableExtra("lembaga")!!
-        setupShared(lembaga)
-        setupTabFragment()
+
 
         val toolbar = binding.toolbarLembagaDetail
         toolbar.setTitleTextColor(Color.WHITE);
@@ -44,6 +53,8 @@ class DetailLembagaActivity : AppCompatActivity() {
         supportActionBar!!.setTitle(lembaga.nama)
 //        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_baseline_chevron_left_24)
 
+        setupShared(lembaga)
+        setupTabFragment(id, lembaga)
 
 
         val foto = lembaga.foto
@@ -54,27 +65,38 @@ class DetailLembagaActivity : AppCompatActivity() {
                 .into(binding.imgHeaderLembagaDetail)
         }
 
-
     }
+
 
     private fun setupShared(lembaga: LembagaKampus) {
         val gson = Gson()
         val lembagaJson = gson.toJson(lembaga)
         sharedPref.put(Constanta.OBJECT_SELECTED, lembagaJson)
+        sharedPref.put(Constanta.KEY_OBJECT_SELECTED, "Lembaga")
     }
 
-    private fun setupTabFragment() {
+    private fun setupTabFragment(id: String, lembaga: LembagaKampus) {
 
         val viewPager = binding.viewPagerLembaga
         val tabLayout = binding.tabLayoutLembaga
 
-        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle)
+        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 3)
         viewPager.adapter = adapter
-
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabArray[position]
         }.attach()
 
+//        var admin_id = lembaga.admin
+//        if (admin_id != null) {
+//            if (admin_id.equals(id)) {
+//                val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 4)
+//                viewPager.adapter = adapter
+//                TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+//                    tab.text = tabArrayAdmin[position]
+//                }.attach()
+//            } else {
+//            }
+//        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

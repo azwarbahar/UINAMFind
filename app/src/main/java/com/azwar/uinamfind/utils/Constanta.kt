@@ -11,6 +11,7 @@ class Constanta {
         const val FAKULTAS_USER = "FAKULTAS_USER"
 
         const val OBJECT_SELECTED = "OBJECT_SELECTED"
+        const val KEY_OBJECT_SELECTED = "KEY_OBJECT_SELECTED"
         const val OTHER_SELECTED = "OTHER_SELECTED"
 
 

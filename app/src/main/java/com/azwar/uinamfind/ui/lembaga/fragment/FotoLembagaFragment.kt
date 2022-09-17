@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.Foto
 import com.azwar.uinamfind.data.models.LembagaKampus
+import com.azwar.uinamfind.data.models.Organisasi
+import com.azwar.uinamfind.data.models.Ukm
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
@@ -33,6 +32,10 @@ class FotoLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var fotoList: List<Foto>
 
     private lateinit var swipe_refresh: SwipeRefreshLayout
+    private lateinit var lembaga: LembagaKampus
+    private lateinit var organisasi: Organisasi
+    private lateinit var ukm: Ukm
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,11 +45,16 @@ class FotoLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         _binding = FragmentFotoLembagaBinding.inflate(inflater, container, false)
         val view = binding.root
         sharedPref = PreferencesHelper(context)
-        var id = sharedPref.getString(Constanta.ID_USER).toString()
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
+        val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
-        val lembaga: LembagaKampus = gson.fromJson(json, LembagaKampus::class.java)
-
+        if (kategori_objek.equals("Lembaga")) {
+            lembaga = gson.fromJson(json, LembagaKampus::class.java)
+        } else if (kategori_objek.equals("Organisasi")) {
+            organisasi = gson.fromJson(json, Organisasi::class.java)
+        } else if (kategori_objek.equals("UKM")) {
+            ukm = gson.fromJson(json, Ukm::class.java)
+        }
 
         swipe_refresh = binding.swipeRefresh
         swipe_refresh.setOnRefreshListener(this)
@@ -56,8 +64,15 @@ class FotoLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             android.R.color.holo_orange_dark,
             android.R.color.holo_green_dark
         )
+
         swipe_refresh.post(Runnable {
-            setData(lembaga)
+            if (kategori_objek.equals("Lembaga")) {
+                loadFoto("Lembaga", lembaga.id)
+            } else if (kategori_objek.equals("Organisasi")) {
+                loadFoto("Organisasi", organisasi.id)
+            } else if (kategori_objek.equals("UKM")) {
+//                setDataUkm(ukm)
+            }
         })
 
 
@@ -83,7 +98,7 @@ class FotoLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     val kode = response.body()?.kode
                     if (kode.equals("1")) {
                         fotoList = response.body()?.foto_data!!
-                        if (fotoList.size > 1) {
+                        if (fotoList.size > 0) {
                             binding.llEmpty.visibility = View.GONE
                             binding.rvFoto.visibility = View.VISIBLE
 
@@ -117,10 +132,18 @@ class FotoLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
-        var id = sharedPref.getString(Constanta.ID_USER).toString()
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
+        val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
-        val lembaga: LembagaKampus = gson.fromJson(json, LembagaKampus::class.java)
-        setData(lembaga)
+        if (kategori_objek.equals("Lembaga")) {
+            lembaga = gson.fromJson(json, LembagaKampus::class.java)
+            loadFoto("Lembaga", lembaga.id)
+        } else if (kategori_objek.equals("Organisasi")) {
+            organisasi = gson.fromJson(json, Organisasi::class.java)
+            loadFoto("Organisasi", organisasi.id)
+        } else if (kategori_objek.equals("UKM")) {
+            ukm = gson.fromJson(json, Ukm::class.java)
+//            loadFoto("UKM", organisasi.id)
+        }
     }
 }

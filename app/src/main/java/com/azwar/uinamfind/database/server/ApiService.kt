@@ -28,6 +28,11 @@ interface ApiService {
     fun getOrganisasi(): Call<Responses.ResponseOrganisasi>?
 
 
+    // UKM
+    @GET("ukm/getUkm.php")
+    fun getUkm(): Call<Responses.ResponseOrganisasi>?
+
+
     // KEGIATAN
     @GET("kegiatan/getKegiatanKategori.php")
     fun getKegiatanKategori(
@@ -45,6 +50,11 @@ interface ApiService {
 
 
     // LEMBAGA
+    @GET("lembaga/getLembagaId.php")
+    fun getLembagaId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseLembaga>?
+
     @GET("lembaga/getLembagaCakupan.php")
     fun getLembagaCakupan(
         @Query("cakupan") cakupan: String?

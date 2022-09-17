@@ -101,6 +101,13 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponseUkm(
+        val `ukm_data`: List<Ukm>?,
+        val `result_ukm`: Ukm?,
+        val kode: String?,
+        val pesan: String?
+    )
+
     data class ResponseAnggota(
         val `anggota_data`: List<Anggota>?,
         val `result_anggota`: Anggota?,

@@ -58,8 +58,9 @@ class DetailOrganisasiActivity : AppCompatActivity() {
 
     private fun setupShared(organisasi: Organisasi) {
         val gson = Gson()
-        val lembagaJson = gson.toJson(organisasi)
-        sharedPref.put(Constanta.OBJECT_SELECTED, lembagaJson)
+        val organisasiJson = gson.toJson(organisasi)
+        sharedPref.put(Constanta.OBJECT_SELECTED, organisasiJson)
+        sharedPref.put(Constanta.KEY_OBJECT_SELECTED, "Organisasi")
     }
 
     private fun setupTabFragment() {
@@ -67,7 +68,7 @@ class DetailOrganisasiActivity : AppCompatActivity() {
         val viewPager = binding.viewPagerOrganisasi
         val tabLayout = binding.tabLayoutOrganisasi
 
-        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle)
+        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 3)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
