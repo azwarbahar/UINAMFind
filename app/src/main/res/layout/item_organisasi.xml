@@ -44,9 +44,9 @@
                     <ImageView
                         android:id="@+id/img_photo_item_organisasi"
                         android:layout_width="match_parent"
-                        android:scaleType="fitXY"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_man_photo_default" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/lembaga_default" />
 
                 </RelativeLayout>
 

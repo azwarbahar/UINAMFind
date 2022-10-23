@@ -23,6 +23,7 @@ class MasukActivity : AppCompatActivity() {
             if (role.equals("user")) {
                 val menu_mahasiswa = Intent(this, MainActivity::class.java)
                 startActivity(menu_mahasiswa)
+                finish()
             } else {
 //                val menu_tamu = Intent(this, LoginTamuActivity::class.java)
 //                startActivity(menu_tamu)

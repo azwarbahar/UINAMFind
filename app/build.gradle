@@ -104,4 +104,7 @@ dependencies {
     // ZoominImageView
     implementation 'com.github.chrisbanes:PhotoView:2.2.0'
 
+    // Dhaval2404/ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
 }

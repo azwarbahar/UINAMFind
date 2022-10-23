@@ -21,8 +21,8 @@ class LembagaAdapter(private val list: List<LembagaKampus>) :
 
                 binding.tvNamaLembaga.setText(get.nama)
 
-                val foto = get.foto
-                if (foto.equals("-")) {
+                val foto = get.foto.toString()
+                if (foto.equals("-") || foto.equals("null")) {
                 } else {
                     Glide.with(this)
                         .load(Constanta.URL_PHOTO + "" + foto)

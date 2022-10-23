@@ -20,8 +20,8 @@ class OrganisasiAdapter(private var list: List<Organisasi>) :
                 binding.tvNamaItemOrganisasi.setText(get.nama_organisasi)
                 binding.tvJenisItemOrganisasi.setText(get.kategori)
 
-                val foto = get.foto
-                if (foto.equals("-")) {
+                val foto = get.foto.toString()
+                if (foto.equals("-") || foto.equals("null")) {
                 } else {
                     Glide.with(this)
                         .load(foto)

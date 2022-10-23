@@ -11,8 +11,16 @@ import android.view.View.MeasureSpec
 import android.view.ViewGroup
 import android.widget.Toast
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.data.models.User
+import com.azwar.uinamfind.data.response.Responses
+import com.azwar.uinamfind.database.local.PreferencesHelper
+import com.azwar.uinamfind.database.server.ApiClient
+import com.azwar.uinamfind.utils.Constanta
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_bottom_sheet_menu_saya.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
@@ -20,12 +28,23 @@ import java.io.IOException
 
 class DialogMoreFragment() : BottomSheetDialogFragment() {
 
+    private lateinit var sharedPref: PreferencesHelper
+
+    // models
+    private lateinit var user: User
+    private var id: String = ""
+    private var username: String = ""
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.dialog_bottom_sheet_menu_saya, container, false)
+
+        sharedPref = PreferencesHelper(context)
+        id = sharedPref.getString(Constanta.ID_USER).toString()
 //        val cv_card_mahasiswa = view.cv_card_mahasiswa
         val pengaturan = view.ll_pengaturan_dialog
         val edit = view.ll_edit_profil_dialog
@@ -72,13 +91,55 @@ class DialogMoreFragment() : BottomSheetDialogFragment() {
             intent.action = Intent.ACTION_SEND
             intent.putExtra(
                 Intent.EXTRA_TEXT, "Hi, Cek profil saya di UINAM Find dengan Link :\n" +
-                        "https://uinamfind.com/azwarbahar"
+                        "https://uinamfind.com/" + username
             )
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, null))
         }
-
+        loadDataSaya(id)
         return view
+    }
+
+
+    private fun loadDataSaya(id: String) {
+        ApiClient.instances.getMahasiswaID(id)
+            ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseMahasiswa>,
+                    response: Response<Responses.ResponseMahasiswa>
+                ) {
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    user = response.body()?.result_mahasiswa!!
+                    if (response.isSuccessful) {
+                        if (kode.equals("1")) {
+                            initDataUser(user)
+                        } else {
+//                            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+//                        Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Responses.ResponseMahasiswa>, t: Throwable) {
+//                    Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+
+    }
+
+    private fun initDataUser(user: User) {
+        var nim = user.nim
+        username = user.username.toString()
+        if (username == null) {
+            if (nim != null) {
+                username = nim
+            }
+        }
     }
 
     fun viewToBitmap(v: View): Bitmap? {

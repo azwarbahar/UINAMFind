@@ -24,7 +24,8 @@ class DetailOrganisasiActivity : AppCompatActivity() {
     val tabArray = arrayOf(
         "Tentang",
         "Anggota",
-        "Foto"
+        "Foto",
+        "Pengaturan"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +47,8 @@ class DetailOrganisasiActivity : AppCompatActivity() {
 //        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_baseline_chevron_left_24)
 
 
-        val foto = organisasi.foto
-        if (foto.equals("-")) {
+        val foto = organisasi.foto.toString()
+        if (foto.equals("-") || foto.equals("null")) {
         } else {
             Glide.with(this)
                 .load(foto)
@@ -68,7 +69,7 @@ class DetailOrganisasiActivity : AppCompatActivity() {
         val viewPager = binding.viewPagerOrganisasi
         val tabLayout = binding.tabLayoutOrganisasi
 
-        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 3)
+        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 4)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

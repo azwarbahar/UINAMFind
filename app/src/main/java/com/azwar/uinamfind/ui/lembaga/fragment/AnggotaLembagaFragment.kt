@@ -193,8 +193,8 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
                             var nama_lengkap = user.nama_depan + " " + user.nama_belakang
                             text_nama_lengkap.text = nama_lengkap
                         }
-                        val foto = user.foto
-                        if (foto.equals("-")) {
+                        val foto = user.foto.toString()
+                        if (foto.equals("-") || foto.equals("null")) {
                         } else {
                             Glide.with(this@AnggotaLembagaFragment)
                                 .load(foto)

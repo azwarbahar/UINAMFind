@@ -57,8 +57,8 @@ class DetailLembagaActivity : AppCompatActivity() {
         setupTabFragment(id, lembaga)
 
 
-        val foto = lembaga.foto
-        if (foto.equals("-")) {
+        val foto = lembaga.foto.toString()
+        if (foto.equals("-") || foto.equals("null")) {
         } else {
             Glide.with(this)
                 .load(foto)
@@ -80,7 +80,7 @@ class DetailLembagaActivity : AppCompatActivity() {
         val viewPager = binding.viewPagerLembaga
         val tabLayout = binding.tabLayoutLembaga
 
-        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 3)
+        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 4)
         viewPager.adapter = adapter
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabArray[position]

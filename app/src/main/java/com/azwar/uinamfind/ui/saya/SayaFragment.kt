@@ -1,8 +1,10 @@
 package com.azwar.uinamfind.ui.saya
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -38,6 +40,7 @@ import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import com.bumptech.glide.Glide
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import retrofit2.Call
 import retrofit2.Callback
@@ -50,6 +53,9 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private val sayaBinding get() = _sayaBinding!!
 
     private lateinit var swipe_saya: SwipeRefreshLayout
+
+    private val PROFILE_IMAGE_REQ_CODE = 101
+    private val HEADER_IMAGE_REQ_CODE = 102
 
     // models
     private lateinit var user: User
@@ -169,7 +175,30 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             showDialogMore()
         }
 
+        sayaBinding.imgPhotoCardDetailMahasiswa.setOnClickListener {
+            ImagePicker.with(this)
+                .cropSquare()
+//                .saveDir(activity?.getExternalFilesDir("ImagePicker")!!)
+                .maxResultSize(1080, 1080)
+                .start(PROFILE_IMAGE_REQ_CODE)
+        }
+
         return sayaBinding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val uri: Uri = data?.data!!
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == PROFILE_IMAGE_REQ_CODE) {
+                sayaBinding.imgPhotoCardDetailMahasiswa.setImageURI(null)
+                sayaBinding.imgPhotoCardDetailMahasiswa.setImageURI(uri)
+            } else if (requestCode == HEADER_IMAGE_REQ_CODE) {
+
+            }
+
+        }
+
     }
 
     private fun showDialogMore() {
@@ -254,10 +283,10 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 //                            rv_keahlian.addItemDecoration(dividerItemDecoration)
                             rv_keahlian.adapter = keahlianMahasiswaAdapter
                         } else {
-                            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                         }
                     } else {
-                        Toast.makeText(activity, pesanRespon, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     Toast.makeText(activity, "Server Tidak Merespon", Toast.LENGTH_SHORT).show()

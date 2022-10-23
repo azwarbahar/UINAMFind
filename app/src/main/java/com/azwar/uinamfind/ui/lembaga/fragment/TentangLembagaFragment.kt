@@ -70,22 +70,22 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         )
         swipe_refresh.post(Runnable {
             if (kategori_objek.equals("Lembaga")) {
-                setDataLembaga(lembaga)
+                setDataLembaga(lembaga, kategori_objek)
             } else if (kategori_objek.equals("Organisasi")) {
-                setDataOrganisasi(organisasi)
+                setDataOrganisasi(organisasi, kategori_objek)
             } else if (kategori_objek.equals("UKM")) {
-                setDataUkm(ukm)
+                setDataUkm(ukm, kategori_objek)
             }
         })
 
         return view
     }
 
-    private fun setDataLembaga(lembaga: LembagaKampus) {
+    private fun setDataLembaga(lembaga: LembagaKampus, kategori_objek: String?) {
 
-        var deskripsi = lembaga.deskripsi
+        var deskripsi = lembaga.deskripsi.toString()
         var tv_desc = binding.tvDeskripsiLembaga
-        if (deskripsi.equals("-") || deskripsi == null) {
+        if (deskripsi.equals("-") || deskripsi.equals("null")) {
             tv_desc.text = deskripsi
         } else {
             tv_desc.text = deskripsi
@@ -96,16 +96,18 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         }
 
         val id = lembaga.id
-        setSosmed(id, "Lembaga")
-        setKegiatan(id, "Lembaga")
+        if (kategori_objek != null) {
+            setSosmed(id, kategori_objek)
+            setKegiatan(id, kategori_objek)
+        }
 
     }
 
-    private fun setDataOrganisasi(organisasi: Organisasi) {
+    private fun setDataOrganisasi(organisasi: Organisasi, kategori_objek: String?) {
 
-        var deskripsi = organisasi.deskripsi
+        var deskripsi = organisasi.deskripsi.toString()
         var tv_desc = binding.tvDeskripsiLembaga
-        if (deskripsi.equals("-") || deskripsi == null) {
+        if (deskripsi.equals("-") || deskripsi.equals("null")) {
             tv_desc.text = deskripsi
         } else {
             tv_desc.text = deskripsi
@@ -116,11 +118,13 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         }
 
         val id = organisasi.id
-        setSosmed(id, "Organisasi")
-        setKegiatan(id, "Organisasi")
+        if (kategori_objek != null) {
+            setSosmed(id, kategori_objek)
+            setKegiatan(id, kategori_objek)
+        }
     }
 
-    private fun setDataUkm(ukm: Ukm) {
+    private fun setDataUkm(ukm: Ukm, kategori_objek: String?) {
 
 //        var deskripsi = ukm.deskripsi
 //        var tv_desc = binding.tvDeskripsiLembaga
@@ -206,13 +210,13 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         val gson = Gson()
         if (kategori_objek.equals("Lembaga")) {
             lembaga = gson.fromJson(json, LembagaKampus::class.java)
-            setDataLembaga(lembaga)
+            setDataLembaga(lembaga, kategori_objek)
         } else if (kategori_objek.equals("Organisasi")) {
             organisasi = gson.fromJson(json, Organisasi::class.java)
-            setDataOrganisasi(organisasi)
+            setDataOrganisasi(organisasi, kategori_objek)
         } else if (kategori_objek.equals("UKM")) {
             ukm = gson.fromJson(json, Ukm::class.java)
-            setDataUkm(ukm)
+            setDataUkm(ukm, kategori_objek)
         }
     }
 

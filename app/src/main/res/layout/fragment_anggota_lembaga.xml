@@ -63,7 +63,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:scaleType="fitXY"
-                                    tools:src="@drawable/sample_market_2" />
+                                    android:src="@drawable/ic_man_photo_default" />
 
                             </RelativeLayout>
 
@@ -144,12 +144,13 @@
                     <LinearLayout
                         android:id="@+id/ll_empty"
                         android:layout_width="wrap_content"
-                        android:gravity="center"
-                        android:layout_below="@id/tv2"
-                        android:layout_marginTop="30dp"
-                        android:orientation="vertical"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true">
+                        android:layout_below="@id/tv2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="120dp"
@@ -157,12 +158,12 @@
                             android:src="@drawable/img_empty_data" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tidak ada anggota"
                             android:textColor="@color/grey"
                             android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:text="Tidak ada anggota"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
