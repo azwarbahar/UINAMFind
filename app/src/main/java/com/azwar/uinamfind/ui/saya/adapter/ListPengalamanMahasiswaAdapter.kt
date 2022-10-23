@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.data.models.PengalamanMahasiswa
 import com.azwar.uinamfind.databinding.ItemPengalamanMahasiswaEditBinding
-import com.azwar.uinamfind.ui.saya.organisasi.EditOrganisasiMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.EditPengalamanMahasiswaActivity
 import com.azwar.uinamfind.utils.ui.MyTextViewDesc
 import java.text.SimpleDateFormat
@@ -19,7 +18,7 @@ class ListPengalamanMahasiswaAdapter(private val list: List<PengalamanMahasiswa>
         fun bind(list: PengalamanMahasiswa) {
             with(itemView) {
 
-                binding.tvJudulItemPengalaman.setText(list.nama)
+                binding.tvJudulItemPengalaman.setText(list.judul)
                 binding.tvNamaKantorItemPengalaman.setText(list.nama_tempat + " - " + list.jenis_pengalaman)
                 var tgl_mulai = list.tanggal_mulai
                 var tgl_berakhir = list.tanggal_berakhir

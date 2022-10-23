@@ -15,7 +15,7 @@ class PengalamanMahasiswaAdapter(private val list: List<PengalamanMahasiswa>) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(list: PengalamanMahasiswa) {
             with(binding) {
-                binding.tvJudulItemPengalaman.setText(list.nama)
+                binding.tvJudulItemPengalaman.setText(list.judul)
                 binding.tvNamaKantorItemPengalaman.setText(list.nama_tempat + " - " + list.jenis_pengalaman)
                 var tgl_mulai = list.tanggal_mulai
                 var tgl_berakhir = list.tanggal_berakhir

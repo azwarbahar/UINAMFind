@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.data.models.LembagaKampus
 import com.azwar.uinamfind.databinding.ItemLembagaBinding
 import com.azwar.uinamfind.ui.lembaga.DetailLembagaActivity
+import com.azwar.uinamfind.utils.Constanta
 import com.bumptech.glide.Glide
 
 class LembagaAdapter(private val list: List<LembagaKampus>) :
@@ -24,7 +25,7 @@ class LembagaAdapter(private val list: List<LembagaKampus>) :
                 if (foto.equals("-")) {
                 } else {
                     Glide.with(this)
-                        .load(foto)
+                        .load(Constanta.URL_PHOTO + "" + foto)
                         .into(binding.imgPhotoItemLembaga)
                     Glide.with(this)
                         .load(foto)
@@ -35,7 +36,6 @@ class LembagaAdapter(private val list: List<LembagaKampus>) :
                     intent_lembaga_detail.putExtra("lembaga", get)
                     context.startActivity(intent_lembaga_detail)
                 }
-
             }
         }
 

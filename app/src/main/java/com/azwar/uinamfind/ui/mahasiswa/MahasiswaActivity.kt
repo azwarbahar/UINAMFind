@@ -100,11 +100,11 @@ class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
                     swipe.isRefreshing = false
                     if (response.isSuccessful) {
                         mahasiswaFakultas = response.body()?.mahasiswa_data!!
-                        Toast.makeText(
-                            this@MahasiswaActivity,
-                            "Create list sefakultas",
-                            Toast.LENGTH_SHORT
-                        ).show()
+//                        Toast.makeText(
+//                            this@MahasiswaActivity,
+//                            "Create list sefakultas",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
                         // List Data Mahasiswa Sefakultas
                         binding.rvMahasiswaSefakultas.layoutManager =
                             LinearLayoutManager(

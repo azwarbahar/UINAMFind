@@ -115,8 +115,11 @@ class EditTentangMahasiswaActivity : AppCompatActivity() {
     }
 
     private fun initData(tentangSaya: String) {
-
-        binding.tieTentangSaya.setText(tentangSaya)
+        if (tentangSaya.isEmpty() || tentangSaya.equals("null")){
+            binding.tieTentangSaya.setText("")
+        } else {
+            binding.tieTentangSaya.setText(tentangSaya)
+        }
 
     }
 }

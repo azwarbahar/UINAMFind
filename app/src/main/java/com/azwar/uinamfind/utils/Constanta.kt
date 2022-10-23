@@ -14,6 +14,8 @@ class Constanta {
         const val KEY_OBJECT_SELECTED = "KEY_OBJECT_SELECTED"
         const val OTHER_SELECTED = "OTHER_SELECTED"
 
+        const val URL_PHOTO = "https://admin.uinamfind.com/assets/images/"
+
 
     }
 

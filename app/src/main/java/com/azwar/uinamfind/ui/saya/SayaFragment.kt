@@ -436,9 +436,9 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
 
         // tentang saya
-        tentang_user = user.tentang_user!!
+        tentang_user = user.tentang_user.toString()
         var text_tentang_saya = sayaBinding.tvTentangSayaDetailMahasiswa
-        if (tentang_user.isEmpty()) {
+        if (tentang_user.isEmpty() || tentang_user.equals("null")) {
             text_tentang_saya.setTypeface(text_tentang_saya.getTypeface(), Typeface.ITALIC)
             text_tentang_saya.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
@@ -471,7 +471,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
 
         val sampul = user.foto_sampul
-        if (sampul !== null){
+        if (sampul !== null) {
             Glide.with(this)
                 .load(sampul)
                 .into(sayaBinding.imgHeaderCardDetailMahasiswa)
@@ -504,19 +504,19 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                                 text_motto.text = motto_
                             }
                         } else {
-                            Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
                             val text_motto = sayaBinding.tvMottoCardDetailMahasiswa
                             text_motto.text = "  -"
                         }
                     } else {
-                        Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
                         val text_motto = sayaBinding.tvMottoCardDetailMahasiswa
                         text_motto.text = "  -"
                     }
                 }
 
                 override fun onFailure(call: Call<Responses.ResponseMotto>, t: Throwable) {
-                    Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
                     val text_motto = sayaBinding.tvMottoCardDetailMahasiswa
                     text_motto.text = "  -"
                 }

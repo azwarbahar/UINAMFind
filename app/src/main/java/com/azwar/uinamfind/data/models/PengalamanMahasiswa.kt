@@ -9,7 +9,7 @@ data class PengalamanMahasiswa(
     val id: String?,
     val jenis_pengalaman: String?,
     val lokasi_tempat: String?,
-    val nama: String?,
+    val judul: String?,
     val nama_tempat: String?,
     val slug_pengalaman: String?,
     val status_pengalaman: String?,
@@ -41,7 +41,7 @@ data class PengalamanMahasiswa(
         parcel.writeString(id)
         parcel.writeString(jenis_pengalaman)
         parcel.writeString(lokasi_tempat)
-        parcel.writeString(nama)
+        parcel.writeString(judul)
         parcel.writeString(nama_tempat)
         parcel.writeString(slug_pengalaman)
         parcel.writeString(status_pengalaman)

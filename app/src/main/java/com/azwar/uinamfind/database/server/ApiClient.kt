@@ -31,7 +31,7 @@ object ApiClient {
             .setLenient()
             .create()
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.2/api_uinamfind/")
+            .baseUrl("https://api.uinamfind.com/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

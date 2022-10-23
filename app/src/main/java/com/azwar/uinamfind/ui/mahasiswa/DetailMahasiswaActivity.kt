@@ -116,9 +116,9 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         }
 
         // tentang saya
-        var tentang_user = user.tentang_user!!
+        var tentang_user = user.tentang_user.toString()
         var text_tentang_saya = binding.tvTentangSayaDetailMahasiswa
-        if (tentang_user.equals("-")) {
+        if (tentang_user.equals("-") || tentang_user.equals("null")) {
             text_tentang_saya.setTypeface(text_tentang_saya.getTypeface(), Typeface.ITALIC)
             text_tentang_saya.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
@@ -151,7 +151,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         }
 
         val sampul = user.foto_sampul
-        if (sampul !== null){
+        if (sampul !== null) {
             Glide.with(this)
                 .load(sampul)
                 .into(binding.imgHeaderCardDetailMahasiswa)
@@ -160,11 +160,11 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         }
 
         // motto
-        loadMotto(user.id!!)
-        laodDataOrganisasi(user.id!!)
-        loadDataPengalaman(user.id!!)
-        loadDataKeahlian(user.id!!)
-        loadDataPendidikan(user.id!!)
+        loadMotto(user.id.toString())
+        laodDataOrganisasi(user.id.toString())
+        loadDataPengalaman(user.id.toString())
+        loadDataKeahlian(user.id.toString())
+        loadDataPendidikan(user.id.toString())
 
     }
 

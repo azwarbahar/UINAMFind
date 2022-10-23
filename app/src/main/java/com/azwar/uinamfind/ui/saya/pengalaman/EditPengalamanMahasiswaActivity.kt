@@ -304,7 +304,7 @@ class EditPengalamanMahasiswaActivity : AppCompatActivity() {
 
     private fun initDataIntent(pengalamanMahasiswa: PengalamanMahasiswa) {
         pengalaman_id = pengalamanMahasiswa.id.toString()
-        var posisi = pengalamanMahasiswa.nama
+        var posisi = pengalamanMahasiswa.judul
         var jenis = pengalamanMahasiswa.jenis_pengalaman
         var nama_perusahaan = pengalamanMahasiswa.nama_tempat
         var lokasi = pengalamanMahasiswa.lokasi_tempat
