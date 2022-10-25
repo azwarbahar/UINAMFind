@@ -1,6 +1,7 @@
 package com.azwar.uinamfind.ui.saya
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -149,7 +150,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         // logo back trans in card
         val img_back_logo_card = sayaBinding.imgBaclLogoCard
-        img_back_logo_card.alpha = 0.1f
+        img_back_logo_card.alpha = 0.3f
 
         // show progress loading
 
@@ -176,29 +177,71 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         }
 
         sayaBinding.imgPhotoCardDetailMahasiswa.setOnClickListener {
-            ImagePicker.with(this)
-                .cropSquare()
-//                .saveDir(activity?.getExternalFilesDir("ImagePicker")!!)
-                .maxResultSize(1080, 1080)
-                .start(PROFILE_IMAGE_REQ_CODE)
+            val pilihan = arrayOf(
+                "Ganti Gambar",
+                "Lihat Gambar"
+            )
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Opsi")
+            builder.setItems(pilihan) { dialog, which ->
+                when (which) {
+                    0 -> openImagePicker(PROFILE_IMAGE_REQ_CODE)
+                    1 -> openPreviewImage("Profil")
+                }
+            }
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+        sayaBinding.imgHeaderCardDetailMahasiswa.setOnClickListener {
+            val pilihan = arrayOf(
+                "Ganti Gambar",
+                "Lihat Gambar"
+            )
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Opsi")
+            builder.setItems(pilihan) { dialog, which ->
+                when (which) {
+                    0 -> openImagePicker(HEADER_IMAGE_REQ_CODE)
+                    1 -> openPreviewImage("Header")
+                }
+            }
+            val dialog = builder.create()
+            dialog.show()
         }
 
         return sayaBinding.root
     }
 
+    private fun openPreviewImage(s: String) {
+
+    }
+
+    private fun openImagePicker(s: Int) {
+        if (s == HEADER_IMAGE_REQ_CODE) {
+            ImagePicker.with(this)
+                .crop()
+                .start(HEADER_IMAGE_REQ_CODE)
+        } else {
+            ImagePicker.with(this)
+                .cropSquare()
+                .maxResultSize(1080, 1080)
+                .start(PROFILE_IMAGE_REQ_CODE)
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val uri: Uri = data?.data!!
         if (resultCode == Activity.RESULT_OK) {
+            val uri: Uri = data?.data!!
             if (requestCode == PROFILE_IMAGE_REQ_CODE) {
                 sayaBinding.imgPhotoCardDetailMahasiswa.setImageURI(null)
                 sayaBinding.imgPhotoCardDetailMahasiswa.setImageURI(uri)
             } else if (requestCode == HEADER_IMAGE_REQ_CODE) {
-
+                sayaBinding.imgHeaderCardDetailMahasiswa.setImageURI(null)
+                sayaBinding.imgHeaderCardDetailMahasiswa.setImageURI(uri)
             }
-
         }
-
     }
 
     private fun showDialogMore() {

@@ -45,8 +45,8 @@
                                 <ImageView
                                     android:id="@+id/img_header_card_detail_mahasiswa"
                                     android:layout_width="match_parent"
-                                    android:scaleType="centerCrop"
                                     android:layout_height="75dp"
+                                    android:scaleType="centerCrop"
                                     android:src="@drawable/header_mahasiswa_default" />
 
                                 <ImageView
@@ -90,8 +90,8 @@
                                             <ImageView
                                                 android:id="@+id/img_photo_card_detail_mahasiswa"
                                                 android:layout_width="match_parent"
-                                                android:scaleType="centerCrop"
                                                 android:layout_height="match_parent"
+                                                android:scaleType="centerCrop"
                                                 android:src="@drawable/ic_man_photo_default" />
 
                                         </RelativeLayout>
@@ -658,8 +658,8 @@
         android:id="@+id/continer_bottom_sheet_menu_saya"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:behavior_hideable="true"
         android:background="@color/blackTrans_30"
+        app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 

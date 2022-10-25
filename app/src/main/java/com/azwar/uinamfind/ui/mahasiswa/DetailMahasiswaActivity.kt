@@ -66,7 +66,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
             b.compress(CompressFormat.JPEG, 100, FileOutputStream("/some/location/image.jpg"))
         }
 
-        binding.imgBaclLogoCard.alpha = 0.1f
+        binding.imgBaclLogoCard.alpha = 0.3f
 
         swipe_detail = binding.swipeDetail
         swipe_detail.setOnRefreshListener(this)
