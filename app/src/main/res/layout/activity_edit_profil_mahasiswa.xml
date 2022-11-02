@@ -35,6 +35,18 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tv_simpan_edit_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:text="Simpan"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -120,12 +132,41 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_jenis_kelamin"
+                android:id="@+id/ll_motto_profesional"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_nama_belakang"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Motto Profesional"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_motto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="Moto"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jenis_kelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_motto_profesional"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="22dp"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -381,6 +422,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/rl_bottom_edit_profil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

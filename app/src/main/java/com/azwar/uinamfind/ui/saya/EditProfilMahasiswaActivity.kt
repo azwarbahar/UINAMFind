@@ -42,16 +42,24 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
     // models
     private lateinit var user: User
 
+    // motto
+    var motto_id: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfilMahasiswaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPref = PreferencesHelper(this)
         id = sharedPref.getString(Constanta.ID_USER).toString()
+
         loadDataSaya(id)
         setupSpinner()
 
         binding.rlBottomEditProfil.setOnClickListener {
+            clickSimpan()
+        }
+
+        binding.tvSimpanEditProfil.setOnClickListener {
             clickSimpan()
         }
 
@@ -91,6 +99,7 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
         val nama_belakang = binding.etNamaBelakangEditProfil.text
         val alamat = binding.etAlamatEditProfil.text
         val tgl_lahir = binding.etTanggalLahirEditProfil.text
+        val motto = binding.etMotto.text
 
         if (nama_depan.isEmpty()) {
             binding.etNamaDepanEditProfil.error = "Lengkapi"
@@ -99,7 +108,6 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
         } else if (tgl_lahir.isEmpty()) {
             binding.etTanggalLahirEditProfil.error = "Lengkapi"
         } else {
-
             startUpdateData(
                 nama_depan,
                 nama_belakang,
@@ -111,6 +119,38 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
             )
         }
 
+        if (motto.isEmpty() || motto.equals("")) {
+        } else {
+            if (!motto_id.equals(""))
+                startUpdateMoto(motto_id, id, motto)
+        }
+    }
+
+    private fun startUpdateMoto(mottoId: String, id: String, motto: Editable?) {
+        ApiClient.instances.updateMottoUser(
+            mottoId, id, motto.toString()
+        )?.enqueue(object :
+            Callback<Responses.ResponseMotto> {
+            override fun onResponse(
+                call: Call<Responses.ResponseMotto>,
+                response: Response<Responses.ResponseMotto>
+            ) {
+                val message = response.body()?.pesan
+                val kode = response.body()?.kode
+                if (response.isSuccessful) {
+                    if (kode.equals("1")) {
+                    } else {
+                    }
+                } else {
+                }
+            }
+
+            override fun onFailure(
+                call: Call<Responses.ResponseMotto>,
+                t: Throwable
+            ) {
+            }
+        })
     }
 
     private fun startUpdateData(
@@ -214,7 +254,6 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
     }
 
     private fun loadDataSaya(id: String) {
-
         ApiClient.instances.getMahasiswaID(id)
             ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
                 override fun onResponse(
@@ -265,7 +304,52 @@ class EditProfilMahasiswaActivity : AppCompatActivity() {
         setupAutoCompletLokasi(lokasi_pilih)
         binding.etAlamatEditProfil.setText(user.alamat)
         binding.etTanggalLahirEditProfil.setText(user.tanggal_lahir)
+
+        // motto
+        loadMotto(user.id.toString())
     }
+
+    private fun loadMotto(id: String) {
+        ApiClient.instances.getMottoId(id)
+            ?.enqueue(object : Callback<Responses.ResponseMotto> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseMotto>,
+                    response: Response<Responses.ResponseMotto>
+                ) {
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    val motto = response.body()?.result_motto
+                    if (response.isSuccessful) {
+                        if (kode.equals("1")) {
+                            val text_motto = binding.etMotto
+                            val motto_ = motto?.motto_profesional
+                            motto_id = motto?.id.toString()
+                            if (motto_ == null || motto_.equals("")) {
+                                text_motto.setText(" - ")
+                            } else {
+                                text_motto.setText(motto_.toString())
+                            }
+                        } else {
+//                            Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
+                            val text_motto = binding.etMotto
+                            text_motto.setText("  -")
+                        }
+                    } else {
+//                        Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
+                        val text_motto = binding.etMotto
+                        text_motto.setText("  -")
+                    }
+                }
+
+                override fun onFailure(call: Call<Responses.ResponseMotto>, t: Throwable) {
+//                    Toast.makeText(activity, "Gagal Load Motto", Toast.LENGTH_SHORT).show()
+                    val text_motto = binding.etMotto
+                    text_motto.setText("  -")
+                }
+
+            })
+    }
+
 
     private fun showDatPickerDialig(et: EditText) {
         val c = Calendar.getInstance()

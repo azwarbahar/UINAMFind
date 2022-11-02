@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
@@ -144,7 +145,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         val foto = user.foto
         if (foto !== null) {
             Glide.with(this)
-                .load(foto)
+                .load(BuildConfig.BASE_URL + "/upload/photo/" +foto)
                 .into(binding.imgPhotoCardDetailMahasiswa)
         } else {
 
@@ -153,7 +154,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         val sampul = user.foto_sampul
         if (sampul !== null) {
             Glide.with(this)
-                .load(sampul)
+                .load(BuildConfig.BASE_URL + "/upload/photo/" +sampul)
                 .into(binding.imgHeaderCardDetailMahasiswa)
         } else {
 
@@ -405,8 +406,6 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
                 }
 
             })
-
-
     }
 
     private fun loadMotto(id: String) {
@@ -439,11 +438,11 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
                             text_motto.text = "  -"
                         }
                     } else {
-                        Toast.makeText(
-                            this@DetailMahasiswaActivity,
-                            "Gagal Load Motto",
-                            Toast.LENGTH_SHORT
-                        ).show()
+//                        Toast.makeText(
+//                            this@DetailMahasiswaActivity,
+//                            "Gagal Load Motto",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
                         val text_motto = binding.tvMottoCardDetailMahasiswa
                         text_motto.text = "  -"
                     }
@@ -451,11 +450,11 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
 
                 override fun onFailure(call: Call<Responses.ResponseMotto>, t: Throwable) {
                     swipe_detail.isRefreshing = false
-                    Toast.makeText(
-                        this@DetailMahasiswaActivity,
-                        "Gagal Load Motto",
-                        Toast.LENGTH_SHORT
-                    ).show()
+//                    Toast.makeText(
+//                        this@DetailMahasiswaActivity,
+//                        "Gagal Load Motto",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
                     val text_motto = binding.tvMottoCardDetailMahasiswa
                     text_motto.text = "  -"
                 }

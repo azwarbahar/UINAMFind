@@ -1,6 +1,8 @@
 package com.azwar.uinamfind.database.server
 
 import com.azwar.uinamfind.data.response.Responses
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -128,6 +130,16 @@ interface ApiService {
         @Field("tanggal_lahir") tanggal_lahir: String?
     ): Call<Responses.ResponseMahasiswa>?
 
+    //Update
+    @Multipart
+    @POST("mahasiswa/updatePhoto.php")
+    fun updatePhoto(
+        @Part("ket") ket: RequestBody?,
+        @Part("id") id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponseMahasiswa>?
+
+
     @FormUrlEncoded
     @POST("mahasiswa/updateTentangSaya.php")
     fun updateTentangSaya(
@@ -139,6 +151,15 @@ interface ApiService {
     @GET("mahasiswa/motto/getMottoId.php")
     fun getMottoId(
         @Query("user_id") user_id: String?
+    ): Call<Responses.ResponseMotto>?
+
+    // Update Motto
+    @FormUrlEncoded
+    @POST("mahasiswa/motto/updateMottoUser.php")
+    fun updateMottoUser(
+        @Field("id") id: String?,
+        @Field("user_id") user_id: String?,
+        @Field("motto_profesional") motto_profesional: String?
     ): Call<Responses.ResponseMotto>?
 
     //ORGANISASI

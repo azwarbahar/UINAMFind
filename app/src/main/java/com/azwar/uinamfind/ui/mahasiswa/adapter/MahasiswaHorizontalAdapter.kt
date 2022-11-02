@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.server.ApiClient
@@ -55,7 +56,7 @@ class MahasiswaHorizontalAdapter(private val list: List<User>) :
                 val foto = get.foto
                 if (foto !== null) {
                     Glide.with(this)
-                        .load(foto)
+                        .load(BuildConfig.BASE_URL + "/upload/photo/" +foto)
                         .into(itemMahasiswa1Binding.imgPhotoItemMahasiswa1)
                 } else {
 

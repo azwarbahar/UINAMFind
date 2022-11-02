@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/drawable/ic_man_photo_default.xml" value="0.137" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/drawable/lembaga_default.xml" value="0.1285" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_profil_mahasiswa.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_pengaturan.xml" value="0.19537037037037036" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_anggota_lembaga.xml" value="0.16" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_pengaturan_lembaga.xml" value="0.17864583333333334" />

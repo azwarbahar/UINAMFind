@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
@@ -43,9 +44,14 @@ import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import okhttp3.MediaType.Companion.parse
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 
 class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
@@ -220,12 +226,17 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private fun openImagePicker(s: Int) {
         if (s == HEADER_IMAGE_REQ_CODE) {
             ImagePicker.with(this)
+                .galleryOnly()
                 .crop()
+                .compress(1024)
+                .maxResultSize(620, 620)
                 .start(HEADER_IMAGE_REQ_CODE)
         } else {
             ImagePicker.with(this)
+                .galleryOnly()
                 .cropSquare()
-                .maxResultSize(1080, 1080)
+                .compress(1024)
+                .maxResultSize(620, 620)
                 .start(PROFILE_IMAGE_REQ_CODE)
         }
     }
@@ -237,11 +248,65 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             if (requestCode == PROFILE_IMAGE_REQ_CODE) {
                 sayaBinding.imgPhotoCardDetailMahasiswa.setImageURI(null)
                 sayaBinding.imgPhotoCardDetailMahasiswa.setImageURI(uri)
+                startUploadPhoto("Profil", uri)
             } else if (requestCode == HEADER_IMAGE_REQ_CODE) {
+                startUploadPhoto("Header", uri)
                 sayaBinding.imgHeaderCardDetailMahasiswa.setImageURI(null)
                 sayaBinding.imgHeaderCardDetailMahasiswa.setImageURI(uri)
             }
         }
+    }
+
+    private fun startUploadPhoto(ket: String, uri: Uri) {
+
+        val dialogProgress = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
+        dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
+        dialogProgress.titleText = "Loading.."
+        dialogProgress.setCancelable(false)
+        dialogProgress.show()
+
+        val file = File(uri.path)
+        val foto = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+        val foto_send = MultipartBody.Part.createFormData("foto", file.name, foto)
+        val keterangan = RequestBody.create("text/plain".toMediaTypeOrNull(), ket)
+        val user_id = RequestBody.create("text/plain".toMediaTypeOrNull(), id)
+
+        ApiClient.instances.updatePhoto(keterangan, user_id, foto_send)
+            ?.enqueue(object : Callback<Responses.ResponseMahasiswa> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseMahasiswa>,
+                    response: Response<Responses.ResponseMahasiswa>
+                ) {
+                    dialogProgress.dismiss()
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    if (response.isSuccessful) {
+                        if (kode.equals("1")) {
+                            loadDataSaya(id)
+                            Toast.makeText(activity, "Success upload photo!", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+
+                            Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    } else {
+                        Toast.makeText(activity, pesanRespon, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+
+                override fun onFailure(call: Call<Responses.ResponseMahasiswa>, t: Throwable) {
+                    Toast.makeText(activity, t.message, Toast.LENGTH_SHORT)
+                        .show()
+
+                    dialogProgress.dismiss()
+                }
+
+            })
+
     }
 
     private fun showDialogMore() {
@@ -536,7 +601,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         var foto = user.foto
         if (foto !== null) {
             Glide.with(this)
-                .load(foto)
+                .load(BuildConfig.BASE_URL + "/upload/photo/" + foto)
                 .into(sayaBinding.imgPhotoCardDetailMahasiswa)
         } else {
 
@@ -545,7 +610,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         val sampul = user.foto_sampul
         if (sampul !== null) {
             Glide.with(this)
-                .load(sampul)
+                .load(BuildConfig.BASE_URL + "/upload/photo/" + sampul)
                 .into(sayaBinding.imgHeaderCardDetailMahasiswa)
         } else {
 

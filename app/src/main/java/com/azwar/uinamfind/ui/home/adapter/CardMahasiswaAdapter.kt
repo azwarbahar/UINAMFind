@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.server.ApiClient
@@ -65,7 +66,7 @@ class CardMahasiswaAdapter(private val list: List<User>) :
                 val foto = get.foto
                 if (foto !== null) {
                     Glide.with(this)
-                        .load(foto)
+                        .load(BuildConfig.BASE_URL + "/upload/photo/" +foto)
                         .into(binding.imgPhotoCardItemMahasiswa)
                 } else {
 
@@ -74,7 +75,7 @@ class CardMahasiswaAdapter(private val list: List<User>) :
                 val sampul = get.foto_sampul
                 if (sampul !== null){
                     Glide.with(this)
-                        .load(sampul)
+                        .load(BuildConfig.BASE_URL + "/upload/photo/" +sampul)
                         .into(binding.imgHeaderCardItemMahasiswa)
                 } else {
 
