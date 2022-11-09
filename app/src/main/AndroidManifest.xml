@@ -16,6 +16,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.perusahaan.EditPerusahaanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.perusahaan.TambahPerusahaanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lamaran.TambahLokerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lamaran.EditLokerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lamaran.DetailLamaranRecruiterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainRecruiterActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.PreviewPhotoActivity"
             android:exported="false" />
         <activity

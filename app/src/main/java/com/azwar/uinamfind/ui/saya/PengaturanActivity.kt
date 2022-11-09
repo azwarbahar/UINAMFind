@@ -1,10 +1,12 @@
 package com.azwar.uinamfind.ui.saya
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.databinding.ActivityPengaturanBinding
+import com.azwar.uinamfind.ui.MasukActivity
 
 class PengaturanActivity : AppCompatActivity() {
 
@@ -21,6 +23,9 @@ class PengaturanActivity : AppCompatActivity() {
 
         binding.btnKeluar.setOnClickListener {
             sharedPref.logout()
+            val intent = Intent(this, MasukActivity::class.java)
+            startActivity(intent)
+            finish()
 
         }
 

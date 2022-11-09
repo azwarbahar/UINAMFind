@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.Perusahaan
 import com.azwar.uinamfind.data.response.Responses
@@ -15,6 +16,8 @@ import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class LokerHomeAdapter(private val list: List<Loker>) :
     RecyclerView.Adapter<LokerHomeAdapter.ViewHolder>() {
@@ -26,11 +29,14 @@ class LokerHomeAdapter(private val list: List<Loker>) :
             with(itemView) {
 
                 binding.tvJudulLokerItem.setText(get.posisi)
-                binding.tvNamaKantorLokerItem.setText(get.perusahaan)
                 binding.tvKotaLokerItem.setText(get.lokasi)
                 var gaji_tercantum = get.gaji_tersedia
                 if (gaji_tercantum.equals("Ya")) {
-                    binding.tvRangeGajiLokerItem.setText(get.gaji_min + " - " + get.gaji_max)
+                    binding.tvRangeGajiLokerItem.setText(
+                        "Rp." + moneyFormatConvert(get.gaji_min.toString()) + " - Rp." +moneyFormatConvert(
+                            get.gaji_max.toString()
+                        )
+                    )
                 } else {
                     binding.tvRangeGajiLokerItem.setText("Salary tidak dicantumkan")
                 }
@@ -46,6 +52,12 @@ class LokerHomeAdapter(private val list: List<Loker>) :
             }
         }
 
+        private fun moneyFormatConvert(value: String): String? {
+            val nilai = value.toDouble()
+            val formatter: NumberFormat = DecimalFormat("#,###")
+            return formatter.format(nilai)
+        }
+
         private fun loadPerusahaan(perusahaanId: String?, imgLogoKantorItemLoker: ImageView) {
 
             ApiClient.instances.getPerusahaanId(perusahaanId)?.enqueue(object :
@@ -59,10 +71,11 @@ class LokerHomeAdapter(private val list: List<Loker>) :
                         val message = response.body()?.pesan
                         val kode = response.body()?.kode
                         val perusahaan: Perusahaan = response.body()?.result_perusahaan!!
+                        binding.tvNamaKantorLokerItem.setText(perusahaan.nama.toString())
                         var foto_perusahaan = perusahaan.foto
                         if (foto_perusahaan != null) {
                             Glide.with(itemView)
-                                .load(foto_perusahaan)
+                                .load(BuildConfig.BASE_URL + "/upload/perusahaan/" +foto_perusahaan)
                                 .into(imgLogoKantorItemLoker)
                         }
                     }

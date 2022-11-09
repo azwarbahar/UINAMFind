@@ -535,8 +535,6 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 }
 
             })
-
-
     }
 
     private fun initDataUser(user: User) {

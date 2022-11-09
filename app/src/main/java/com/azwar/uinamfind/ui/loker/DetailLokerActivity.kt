@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.Perusahaan
@@ -111,10 +112,10 @@ class DetailLokerActivity : AppCompatActivity() {
                     var foto_perusahaan = perusahaan.foto
                     if (foto_perusahaan != null) {
                         Glide.with(this@DetailLokerActivity)
-                            .load(foto_perusahaan)
+                            .load(BuildConfig.BASE_URL + "/upload/perusahaan/" +foto_perusahaan)
                             .into(binding.imgLogoKantorDetailLoker)
                         Glide.with(this@DetailLokerActivity)
-                            .load(foto_perusahaan)
+                            .load(BuildConfig.BASE_URL + "/upload/perusahaan/" +foto_perusahaan)
                             .into(binding.imgLogoPerusahaanDetailLoker)
                     }
                     binding.tvNamaKantorDetailLoker.setText(perusahaan.nama)

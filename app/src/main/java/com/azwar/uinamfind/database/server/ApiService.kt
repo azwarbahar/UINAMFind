@@ -67,11 +67,49 @@ interface ApiService {
         @Query("fakultas") fakultas: String?
     ): Call<Responses.ResponseLembaga>?
 
+    // LAMARAN
+    @GET("lamaran/getLamaranStatusRecruiterId.php")
+    fun getLamaranStatusRecruiterId(
+        @Query("status_lamaran") status_lamaran: String?,
+        @Query("recruiter_id") recruiter_id: String?
+    ): Call<Responses.ResponseLamaran>?
+
+    // LAMARAN ID
+    @GET("lamaran/getLamaranId.php")
+    fun getLamaranId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseLamaran>?
+
+    // LAMARAN PER LOKER
+    @GET("lamaran/getLamaranLokerRecruiter.php")
+    fun getLamaranLokerRecruiter(
+        @Query("loker_id") loker_id: String?
+    ): Call<Responses.ResponseLamaran>?
+
+    @FormUrlEncoded
+    @POST("lamaran/updateLamaranStatus.php")
+    fun updateLamaranStatus(
+        @Field("lamaran_id") lamaran_id: String?,
+        @Field("status_lamaran") status_lamaran: String?
+    ): Call<Responses.ResponseLamaran>?
+
 
     // LOKER
     @GET("loker/getLoker.php")
     fun getLoker(
         @Query("halaman") halaman: String?
+    ): Call<Responses.ResponseLoker>?
+
+    // LOKER ID
+    @GET("loker/getLokerId.php")
+    fun getLokerId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseLoker>?
+
+    // Loker Recruiter ID
+    @GET("loker/getLokerRecruiterId.php")
+    fun getLokerRecruiterId(
+        @Query("recruiter_id") recruiter_id: String?
     ): Call<Responses.ResponseLoker>?
 
     // PERUSAHAAN
@@ -80,12 +118,62 @@ interface ApiService {
         @Query("id") id: String?
     ): Call<Responses.ResponsePerusahaan>?
 
+    // UPDATE PERUSAHAAN
+    @FormUrlEncoded
+    @POST("perusahaan/updatePerusahaan.php")
+    fun updatePerusahaan(
+        @Field("id") id: String?,
+        @Field("nama") nama: String?,
+        @Field("url_profil") url_profil: String?,
+        @Field("industri") industri: String?,
+        @Field("ukuran_kariawan") ukuran_kariawan: String?,
+        @Field("telpon") telpon: String?,
+        @Field("email") email: String?,
+        @Field("tahun_berdiri") tahun_berdiri: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("alamat") alamat: String?,
+        @Field("lokasi") lokasi: String?,
+        @Field("recruiter_id") recruiter_id: String?
+    ): Call<Responses.ResponsePerusahaan>?
+
+    // UPDATE PERUSHAAN WITH PHOTO
+    @Multipart
+    @POST("perusahaan/updatePerusahaan.php")
+    fun updatePerusahaanPhoto(
+        @Part("id") id: RequestBody?,
+        @Part("nama") nama: RequestBody?,
+        @Part("url_profil") url_profil: RequestBody?,
+        @Part("industri") industri: RequestBody?,
+        @Part("ukuran_kariawan") ukuran_kariawan: RequestBody?,
+        @Part("telpon") telpon: RequestBody?,
+        @Part("email") email: RequestBody?,
+        @Part("tahun_berdiri") tahun_berdiri: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part("alamat") alamat: RequestBody?,
+        @Part("lokasi") lokasi: RequestBody?,
+        @Part("recruiter_id") recruiter_id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponsePerusahaan>?
+
 
     @GET("login.php")
     fun login(
         @Query("email_uinam") email_uinam: String?,
         @Query("password") password: String?
     ): Call<Responses.LoginUserResponse>?
+
+    // Login Recruiter
+    @GET("login-recruiter.php")
+    fun loginRecruiter(
+        @Query("email") email: String?,
+        @Query("password") password: String?
+    ): Call<Responses.LoginRecruiterResponse>?
+
+    //Recruiter ID
+    @GET("recruiter/getRecruiterId.php")
+    fun getRecruiterId(
+        @Query("id") id: String?
+    ): Call<Responses.LoginRecruiterResponse>?
 
     //Mahasiswa
     @GET("mahasiswa/getMahasiswaId.php")

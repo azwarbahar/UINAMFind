@@ -41,8 +41,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:gravity="center_vertical"
             android:layout_marginRight="16dp"
+            android:gravity="center_vertical"
             android:text="Simpan"
             android:textColor="@color/white"
             android:textSize="14sp" />

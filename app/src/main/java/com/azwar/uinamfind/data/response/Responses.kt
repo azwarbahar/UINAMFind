@@ -11,6 +11,14 @@ class Responses {
         val role: String
     )
 
+    data class LoginRecruiterResponse(
+        val `data`: Recruiter,
+        val `result_recruiter`: Recruiter,
+        val kode: String,
+        val pesan: String,
+        val role: String
+    )
+
     data class ResponseCheckProfilMahasiswa(
         val kode: String?,
         val pesan: String?,
@@ -62,6 +70,13 @@ class Responses {
     data class ResponseLoker(
         val `loker_data`: List<Loker>?,
         val `result_loker`: Loker?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseLamaran(
+        val `lamaran_data`: List<Lamaran>?,
+        val `result_lamaran`: Lamaran?,
         val kode: String?,
         val pesan: String?
     )

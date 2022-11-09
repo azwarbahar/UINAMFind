@@ -72,7 +72,6 @@ class LoginMahasiswaActivity : AppCompatActivity() {
                     response: Response<Responses.LoginUserResponse?>
                 ) {
                     dialogProgress.dismiss()
-
                     val pesanRespon = response.message()
                     val message = response.body()?.pesan
                     val kode = response.body()?.kode

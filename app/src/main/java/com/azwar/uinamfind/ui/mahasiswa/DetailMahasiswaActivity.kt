@@ -145,7 +145,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         val foto = user.foto
         if (foto !== null) {
             Glide.with(this)
-                .load(BuildConfig.BASE_URL + "/upload/photo/" +foto)
+                .load(BuildConfig.BASE_URL + "/upload/photo/" + foto)
                 .into(binding.imgPhotoCardDetailMahasiswa)
         } else {
 
@@ -154,7 +154,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         val sampul = user.foto_sampul
         if (sampul !== null) {
             Glide.with(this)
-                .load(BuildConfig.BASE_URL + "/upload/photo/" +sampul)
+                .load(BuildConfig.BASE_URL + "/upload/photo/" + sampul)
                 .into(binding.imgHeaderCardDetailMahasiswa)
         } else {
 

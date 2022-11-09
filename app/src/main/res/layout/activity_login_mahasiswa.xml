@@ -99,6 +99,8 @@
         android:layout_marginTop="16dp"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
+        app:endIconTint="@color/white"
+        app:endIconMode="password_toggle"
         app:hintTextColor="@color/white"
         app:startIconTint="@color/white">
 

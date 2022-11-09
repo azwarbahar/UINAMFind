@@ -3,28 +3,32 @@ package com.azwar.uinamfind.data.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Perusahaan(
+data class Recruiter(
     val created_at: String?,
-    val deskripsi: String?,
-    val foto: String?,
-    val id: String?,
-    val industri: String?,
-    val jenis_perusahaan: String?,
-    val lokasi: String?,
-    val nama: String?,
-    val recruiter_id: String?,
-    val slug: String?,
-    val status: String?,
-    val tagline: String?,
-    val tahun_berdiri: String?,
-    val telpon: String?,
-    val ukuran_kariawan: String?,
-    val updated_at: String?,
     val email: String?,
-    val alamat: String?,
-    val url_profil: String?
+    val foto: String?,
+    val foto_sampul: String?,
+    val id: String?,
+    val id_perusahaan: String?,
+    val jabatan: String?,
+    val jenis_kelamin: String?,
+    val lokasi: String?,
+    val motto: String?,
+    val nama: String?,
+    val nama_perusahaan: String?,
+    val password: String?,
+    val status: String?,
+    val tanggal_lahir: String?,
+    val telpon: String?,
+    val tempat_lahir: String?,
+    val updated_at: String?,
+    val username: String?,
+    val verifed_email: String?,
+    val verifed_telpon: String?
 ): Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -49,36 +53,38 @@ data class Perusahaan(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(created_at)
-        parcel.writeString(deskripsi)
-        parcel.writeString(foto)
-        parcel.writeString(id)
-        parcel.writeString(industri)
-        parcel.writeString(jenis_perusahaan)
-        parcel.writeString(lokasi)
-        parcel.writeString(nama)
-        parcel.writeString(recruiter_id)
-        parcel.writeString(slug)
-        parcel.writeString(status)
-        parcel.writeString(tagline)
-        parcel.writeString(tahun_berdiri)
-        parcel.writeString(telpon)
-        parcel.writeString(ukuran_kariawan)
-        parcel.writeString(updated_at)
         parcel.writeString(email)
-        parcel.writeString(alamat)
-        parcel.writeString(url_profil)
+        parcel.writeString(foto)
+        parcel.writeString(foto_sampul)
+        parcel.writeString(id)
+        parcel.writeString(id_perusahaan)
+        parcel.writeString(jabatan)
+        parcel.writeString(jenis_kelamin)
+        parcel.writeString(lokasi)
+        parcel.writeString(motto)
+        parcel.writeString(nama)
+        parcel.writeString(nama_perusahaan)
+        parcel.writeString(password)
+        parcel.writeString(status)
+        parcel.writeString(tanggal_lahir)
+        parcel.writeString(telpon)
+        parcel.writeString(tempat_lahir)
+        parcel.writeString(updated_at)
+        parcel.writeString(username)
+        parcel.writeString(verifed_email)
+        parcel.writeString(verifed_telpon)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Perusahaan> {
-        override fun createFromParcel(parcel: Parcel): Perusahaan {
-            return Perusahaan(parcel)
+    companion object CREATOR : Parcelable.Creator<Recruiter> {
+        override fun createFromParcel(parcel: Parcel): Recruiter {
+            return Recruiter(parcel)
         }
 
-        override fun newArray(size: Int): Array<Perusahaan?> {
+        override fun newArray(size: Int): Array<Recruiter?> {
             return arrayOfNulls(size)
         }
     }
