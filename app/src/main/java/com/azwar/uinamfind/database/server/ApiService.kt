@@ -100,6 +100,47 @@ interface ApiService {
         @Query("halaman") halaman: String?
     ): Call<Responses.ResponseLoker>?
 
+    // ADD LOKER
+    @FormUrlEncoded
+    @POST("loker/addLoker.php")
+    fun addLoker(
+        @Field("posisi") posisi: String?,
+        @Field("jobdesk") jobdesk: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("lokasi") lokasi: String?,
+        @Field("jenis_pekerjaan") jenis_pekerjaan: String?,
+        @Field("gaji_tersedia") gaji_tersedia: String?,
+        @Field("gaji_max") gaji_max: String?,
+        @Field("gaji_min") gaji_min: String?,
+        @Field("recruiter_id") recruiter_id: String?,
+        @Field("perusahaan_id") perusahaan_id: String?,
+        @Field("lamar_mudah") lamar_mudah: String?,
+        @Field("link_lamar") link_lamar: String?
+    ): Call<Responses.ResponseLoker>?
+
+    // UPDATE LOKER
+    @FormUrlEncoded
+    @POST("loker/updateLoker.php")
+    fun updateLoker(
+        @Field("id") id: String?,
+        @Field("posisi") posisi: String?,
+        @Field("jobdesk") jobdesk: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("lokasi") lokasi: String?,
+        @Field("jenis_pekerjaan") jenis_pekerjaan: String?,
+        @Field("gaji_tersedia") gaji_tersedia: String?,
+        @Field("gaji_max") gaji_max: String?,
+        @Field("gaji_min") gaji_min: String?,
+        @Field("lamar_mudah") lamar_mudah: String?,
+        @Field("link_lamar") link_lamar: String?
+    ): Call<Responses.ResponseLoker>?
+
+    // LOKER ID
+    @GET("loker/deleteLoker.php")
+    fun deleteLoker(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseLoker>?
+
     // LOKER ID
     @GET("loker/getLokerId.php")
     fun getLokerId(
@@ -174,6 +215,31 @@ interface ApiService {
     fun getRecruiterId(
         @Query("id") id: String?
     ): Call<Responses.LoginRecruiterResponse>?
+
+    // UPDATE RECRUITER
+    @FormUrlEncoded
+    @POST("recruiter/updateRecruiter.php")
+    fun updateRecruiter(
+        @Field("id") id: String?,
+        @Field("nama") nama: String?,
+        @Field("jenis_kelamin") jenis_kelamin: String?,
+        @Field("tempat_lahir") tempat_lahir: String?,
+        @Field("tanggal_lahir") tanggal_lahir: String?,
+        @Field("telpon") telpon: String?,
+        @Field("email") email: String?,
+        @Field("motto") motto: String?,
+        @Field("lokasi") lokasi: String?
+    ): Call<Responses.ResponseRecruiter>?
+
+    //Update
+    @Multipart
+    @POST("recruiter/updatePhotoRecruiter.php")
+    fun updatePhotoRecruiter(
+        @Part("ket") ket: RequestBody?,
+        @Part("id") id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponseRecruiter>?
+
 
     //Mahasiswa
     @GET("mahasiswa/getMahasiswaId.php")

@@ -38,10 +38,10 @@
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="1"
-            tools:text="Alif Yusrika"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Alif Yusrika" />
 
         <TextView
             android:id="@+id/tv_jurusan_item_mahasiswa1"

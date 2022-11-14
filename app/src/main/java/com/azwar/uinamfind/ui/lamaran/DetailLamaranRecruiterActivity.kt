@@ -65,10 +65,10 @@ class DetailLamaranRecruiterActivity : AppCompatActivity() {
                         .setContentText("Menindaklanjutkan lamaran mahasiswa!")
                         .setConfirmButton("OK", SweetAlertDialog.OnSweetClickListener {
                             it.dismiss()
+                            startUpdateLamaran("Review")
                         })
                         .setCancelButton("Batal", SweetAlertDialog.OnSweetClickListener {
                             it.dismiss()
-                            startUpdateLamaran("Review")
                         }).show()
                 } else if (status_lamaran.equals("Review")) {
                     SweetAlertDialog(
@@ -79,10 +79,10 @@ class DetailLamaranRecruiterActivity : AppCompatActivity() {
                         .setContentText("Menindaklanjutkan lamaran mahasiswa!")
                         .setConfirmButton("OK", SweetAlertDialog.OnSweetClickListener {
                             it.dismiss()
+                            startUpdateLamaran("Finished")
                         })
                         .setCancelButton("Batal", SweetAlertDialog.OnSweetClickListener {
                             it.dismiss()
-                            startUpdateLamaran("Finished")
                         }).show()
                 } else if (status_lamaran.equals("Finished")) {
                     SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)

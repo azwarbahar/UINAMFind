@@ -33,6 +33,9 @@ class LamaranMahasiswaBaruAdapter(private val list: List<Lamaran>) :
                 var tgl = convertDate(get.created_at)
                 binding.tvTanggal.text = tgl
 
+                var status_lamaran = get.status_lamaran.toString()
+                binding.tvStatus.setText(status_lamaran)
+
                 itemView.setOnClickListener {
                     val intent = Intent(context, DetailLamaranRecruiterActivity::class.java)
                     intent.putExtra("lamaran", get)
@@ -45,7 +48,7 @@ class LamaranMahasiswaBaruAdapter(private val list: List<Lamaran>) :
         private fun convertDate(date: String?): String {
 //        2022-07-30 03:40:52
 //        val parser = SimpleDateFormat("dd-MM-yyyy")
-            val parser = SimpleDateFormat("yyyy-mm-dd HH:mm:ss")
+            val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             val formatter = SimpleDateFormat("dd MMM yyyy")
             val output = formatter.format(parser.parse(date))
             return output

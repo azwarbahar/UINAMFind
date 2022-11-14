@@ -255,6 +255,8 @@ class EditPerusahaanActivity : AppCompatActivity() {
         val dialogProgress = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
         dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
         dialogProgress.titleText = "Loading.."
+        dialogProgress.setCancelable(false)
+        dialogProgress.show()
 
         val perusahaan_id_send = RequestBody.create("text/plain".toMediaTypeOrNull(), perusahaan_id)
         val nama_send = RequestBody.create("text/plain".toMediaTypeOrNull(), nama.toString())

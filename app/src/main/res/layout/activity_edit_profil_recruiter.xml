@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundActivity"
-    tools:context=".ui.loker.TambahLokerActivity">
+    tools:context=".ui.akun.EditProfilRecruiterActivity">
 
     <RelativeLayout
         android:id="@+id/rl_toolbar"
@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/img_back"
-            android:text="Tambah Loker"
+            android:text="Edit Profil"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -47,6 +47,7 @@
             android:textColor="@color/white"
             android:textSize="14sp" />
 
+
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -55,26 +56,26 @@
         android:layout_below="@id/rl_toolbar">
 
         <RelativeLayout
+            android:paddingBottom="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="20dp">
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv1"
+                android:id="@+id/tv1_edit_profil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="* Wajib isi"
                 android:textColor="@color/grey_hint"
                 android:textSize="11sp"
                 android:textStyle="italic" />
 
             <LinearLayout
-                android:id="@+id/ll_posisi_pekerjaan"
+                android:id="@+id/ll_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv1"
+                android:layout_below="@id/tv1_edit_profil"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
@@ -83,13 +84,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Posisi pekerjaan*"
+                    android:text="Nama Lengkap*"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_posisi_pekerjaan"
+                    android:id="@+id/et_nama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"
@@ -99,57 +99,12 @@
                     android:textColor="@color/black" />
 
             </LinearLayout>
-
-            <View
-                android:id="@+id/view1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/ll_posisi_pekerjaan"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <LinearLayout
-                android:id="@+id/ll_jenis_pekerjaan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view1"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jenis pekerjaan*"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/sp_jenis_pekerjaan"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/ll_jenis_pekerjaan"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
 
             <LinearLayout
                 android:id="@+id/ll_lokasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/view2"
+                android:layout_below="@id/ll_nama"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:gravity="center_vertical"
@@ -158,13 +113,67 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lokasi pekerjaan*"
+                    android:text="Lokasi*"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp" />
 
                 <AutoCompleteTextView
-                    android:id="@+id/et_lokasi"
+                    android:id="@+id/et_lokasi_edit_profil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint=""
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jenis_kelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_lokasi"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin*"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <Spinner
+                    android:id="@+id/sp_jenis_kelamin_edit_profil"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tempat_lahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_jenis_kelamin"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tempat Lahir*"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_tempat_lahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimary"
@@ -175,240 +184,136 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/ll_lokasi"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <TextView
-                android:id="@+id/tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view3"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="20dp"
-                android:text="Salary"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <CheckBox
-                android:id="@+id/cb_salary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv2"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:text="Tampilkan rentan gaji"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:buttonTint="@color/colorPrimary" />
-
-            <LinearLayout
-                android:id="@+id/ll_min_gaji"
+            <RelativeLayout
+                android:id="@+id/ll_tanggal_lahir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cb_salary"
+                android:layout_below="@id/ll_tempat_lahir"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:layout_marginTop="16dp">
 
                 <TextView
+                    android:id="@+id/tv1_tgl_lahir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Minimal Gaji"
+                    android:text="Tanngal Lahir*"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp" />
 
                 <EditText
-                    android:id="@+id/et_min_gaji"
+                    android:id="@+id/et_tanggal_lahir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv1_tgl_lahir"
                     android:backgroundTint="@color/colorPrimary"
-                    android:hint="Rp."
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_max_gaji"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_min_gaji"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Maximal Gaji"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/et_max_gaji"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:hint="Rp."
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/ll_max_gaji"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <LinearLayout
-                android:id="@+id/ll_jobdesk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view4"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Jobdesk*"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/et_jobdesk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:gravity="top"
+                    android:drawableRight="@drawable/ic_baseline_add_24"
+                    android:focusableInTouchMode="false"
                     android:hint="Lengkapi"
-                    android:inputType="text|textMultiLine"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view5"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/ll_jobdesk"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <LinearLayout
-                android:id="@+id/ll_deskripsi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view5"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deskripsi*"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/et_deskripsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:gravity="top"
-                    android:hint="Lengkapi"
-                    android:inputType="text|textMultiLine"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view6"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/ll_deskripsi"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <TextView
-                android:id="@+id/tv3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view6"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="20dp"
-                android:text="Lamaran"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <CheckBox
-                android:id="@+id/cb_lamara_mudah"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv3"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:text="Langsung melamar di luar UNIAMFind"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:buttonTint="@color/colorPrimary" />
-
-            <LinearLayout
-                android:id="@+id/ll_link_lamaran"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cb_lamara_mudah"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Link"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/et_link_lamaran"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:hint="https://"
                     android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@color/black" />
 
+                <ImageView
+                    android:id="@+id/img_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_date_range_fill"
+                    app:tint="@color/colorPrimary" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_telpon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_tanggal_lahir"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Telpon"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_telpon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="Lengkapi"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_telpon"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email*"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="Lengkapi"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_mottto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_email"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Motto Profesional*"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/et_motto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="top"
+                    android:hint=""
+                    android:inputType="text|textMultiLine"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
 
         </RelativeLayout>
 
-
     </androidx.core.widget.NestedScrollView>
+
 </RelativeLayout>

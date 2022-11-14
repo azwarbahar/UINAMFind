@@ -1,12 +1,11 @@
 package com.azwar.uinamfind.ui.akun.adpter
 
 import android.content.Intent
+import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.Lamaran
@@ -15,8 +14,8 @@ import com.azwar.uinamfind.data.models.Perusahaan
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ItemLokerRecruiterBinding
-import com.azwar.uinamfind.ui.lamaran.DetailLamaranRecruiterActivity
-import com.azwar.uinamfind.ui.lamaran.EditLokerActivity
+import com.azwar.uinamfind.ui.loker.DetailPostinganLokerActivity
+import com.azwar.uinamfind.ui.loker.EditLokerActivity
 import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,12 +32,18 @@ class LokerRecruiterAdapter(private val list: List<Loker>) :
             with(itemView) {
                 binding.tvJudulLokerItem.setText(get.posisi)
                 binding.tvKotaLokerItem.setText(get.lokasi)
-                binding.tvRangeGajiLokerItem.setText("Dibagikan pada " + convertDate(get.created_at))
+                binding.tvRangeGajiLokerItem.setText("Diperbarui pada " + convertDate(get.updated_at))
                 loadPerusahaan(get.perusahaan_id, binding.imgLogoKantorItemLoker)
                 loadPelamar(get.id)
 
                 binding.imgEditLoker.setOnClickListener {
                     val intent = Intent(context, EditLokerActivity::class.java)
+                    intent.putExtra("loker", get)
+                    context.startActivity(intent)
+                }
+
+                itemView.setOnClickListener {
+                    val intent = Intent(context, DetailPostinganLokerActivity::class.java)
                     intent.putExtra("loker", get)
                     context.startActivity(intent)
                 }
@@ -65,6 +70,7 @@ class LokerRecruiterAdapter(private val list: List<Loker>) :
                                 if (lamaran.size > 0) {
                                     binding.tvJumlahPelamar.text =
                                         lamaran.size.toString() + " pelamar langsung"
+
                                 } else {
                                 }
                             } else {
@@ -84,7 +90,7 @@ class LokerRecruiterAdapter(private val list: List<Loker>) :
         private fun convertDate(date: String?): String {
 //        2022-07-30 03:40:52
 //        val parser = SimpleDateFormat("dd-MM-yyyy")
-            val parser = SimpleDateFormat("yyyy-mm-dd HH:mm:ss")
+            val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             val formatter = SimpleDateFormat("dd MMM yyyy")
             val output = formatter.format(parser.parse(date))
             return output

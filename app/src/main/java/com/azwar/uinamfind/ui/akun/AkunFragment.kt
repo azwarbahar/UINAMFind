@@ -1,7 +1,10 @@
 package com.azwar.uinamfind.ui.akun
 
+import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,15 +27,19 @@ import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentAkunBinding
 import com.azwar.uinamfind.ui.akun.adpter.LamaranMahasiswaBaruAdapter
 import com.azwar.uinamfind.ui.akun.adpter.LokerRecruiterAdapter
-import com.azwar.uinamfind.ui.lamaran.EditLokerActivity
-import com.azwar.uinamfind.ui.lamaran.TambahLokerActivity
+import com.azwar.uinamfind.ui.loker.TambahLokerActivity
 import com.azwar.uinamfind.ui.perusahaan.EditPerusahaanActivity
 import com.azwar.uinamfind.ui.perusahaan.TambahPerusahaanActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.bumptech.glide.Glide
+import com.github.dhaval2404.imagepicker.ImagePicker
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -54,6 +61,9 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var id: String = ""
 
     private lateinit var swipe_akun: SwipeRefreshLayout
+
+    private val PROFILE_IMAGE_REQ_CODE = 101
+    private val HEADER_IMAGE_REQ_CODE = 102
 
     companion object {
         fun newInstance() = AkunFragment()
@@ -109,8 +119,143 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             startActivity(intent)
         }
 
+        binding.rlEditProfilRecruiter.setOnClickListener {
+            val intent = Intent(context, EditProfilRecruiterActivity::class.java)
+            intent.putExtra("recruiter", recruiter)
+            startActivity(intent)
+        }
+
+        binding.rlPengaturanRecruiter.setOnClickListener {
+            val intent = Intent(context, PengaturanRecruiterActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.imgPhotoRecruiter.setOnClickListener {
+            val pilihan = arrayOf(
+                "Ganti Gambar",
+                "Lihat Gambar"
+            )
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Opsi")
+            builder.setItems(pilihan) { dialog, which ->
+                when (which) {
+                    0 -> openImagePicker(PROFILE_IMAGE_REQ_CODE)
+                    1 -> openPreviewImage("Profil")
+                }
+            }
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+        binding.imgHeaderRecruiter.setOnClickListener {
+            val pilihan = arrayOf(
+                "Ganti Gambar",
+                "Lihat Gambar"
+            )
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Opsi")
+            builder.setItems(pilihan) { dialog, which ->
+                when (which) {
+                    0 -> openImagePicker(HEADER_IMAGE_REQ_CODE)
+                    1 -> openPreviewImage("Profil")
+                }
+            }
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+
 
         return binding.root
+    }
+
+    private fun openPreviewImage(s: String) {
+
+    }
+
+    private fun openImagePicker(s: Int) {
+        if (s == HEADER_IMAGE_REQ_CODE) {
+            ImagePicker.with(this)
+                .galleryOnly()
+                .crop()
+                .compress(1024)
+                .maxResultSize(620, 620)
+                .start(HEADER_IMAGE_REQ_CODE)
+        } else {
+            ImagePicker.with(this)
+                .galleryOnly()
+                .cropSquare()
+                .compress(1024)
+                .maxResultSize(620, 620)
+                .start(PROFILE_IMAGE_REQ_CODE)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            val uri: Uri = data?.data!!
+            if (requestCode == PROFILE_IMAGE_REQ_CODE) {
+                binding.imgPhotoRecruiter.setImageURI(null)
+                binding.imgPhotoRecruiter.setImageURI(uri)
+                startUploadPhoto("Profil", uri)
+            } else if (requestCode == HEADER_IMAGE_REQ_CODE) {
+                startUploadPhoto("Header", uri)
+                binding.imgHeaderRecruiter.setImageURI(null)
+                binding.imgHeaderRecruiter.setImageURI(uri)
+            }
+        }
+    }
+
+    private fun startUploadPhoto(ket: String, uri: Uri) {
+
+        val dialogProgress = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
+        dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
+        dialogProgress.titleText = "Loading.."
+        dialogProgress.setCancelable(false)
+        dialogProgress.show()
+
+        val file = File(uri.path)
+        val foto = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+        val foto_send = MultipartBody.Part.createFormData("foto", file.name, foto)
+        val keterangan = RequestBody.create("text/plain".toMediaTypeOrNull(), ket)
+        val user_id = RequestBody.create("text/plain".toMediaTypeOrNull(), id)
+
+        ApiClient.instances.updatePhotoRecruiter(keterangan, user_id, foto_send)
+            ?.enqueue(object : Callback<Responses.ResponseRecruiter> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseRecruiter>,
+                    response: Response<Responses.ResponseRecruiter>
+                ) {
+                    dialogProgress.dismiss()
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    if (response.isSuccessful) {
+                        if (kode.equals("1")) {
+                            Toast.makeText(activity, "Success upload photo!", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+
+                            Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    } else {
+                        Toast.makeText(activity, pesanRespon, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+
+                override fun onFailure(call: Call<Responses.ResponseRecruiter>, t: Throwable) {
+                    Toast.makeText(activity, t.message, Toast.LENGTH_SHORT)
+                        .show()
+
+                    dialogProgress.dismiss()
+                }
+
+            })
+
     }
 
     private fun loadLamaranBaru(id: String) {

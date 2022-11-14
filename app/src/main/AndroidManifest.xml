@@ -16,16 +16,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.akun.PengaturanRecruiterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.akun.EditProfilRecruiterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.loker.DetailPostinganLokerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.perusahaan.EditPerusahaanActivity"
             android:exported="false" />
         <activity
             android:name=".ui.perusahaan.TambahPerusahaanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.lamaran.TambahLokerActivity"
+            android:name=".ui.loker.TambahLokerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.lamaran.EditLokerActivity"
+            android:name=".ui.loker.EditLokerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.lamaran.DetailLamaranRecruiterActivity"
