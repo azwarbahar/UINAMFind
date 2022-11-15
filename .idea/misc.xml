@@ -12,7 +12,7 @@
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_lamaran_recruiter.xml" value="0.33" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_lembaga.xml" value="0.13697916666666668" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_loker.xml" value="0.18" />
-        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_postingan_loker.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_postingan_loker.xml" value="0.18" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_loker.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_organisasi_mahasiswa.xml" value="0.13697916666666668" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_pengalaman_mahasiswa.xml" value="0.20677083333333332" />
@@ -30,6 +30,7 @@
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_pengaturan_recruiter.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_tambah_loker.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_tambah_perusahaan.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_ubah_password_recruiter.xml" value="0.20677083333333332" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_akun.xml" value="0.18" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_anggota_lembaga.xml" value="0.16" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_home.xml" value="0.12083333333333333" />

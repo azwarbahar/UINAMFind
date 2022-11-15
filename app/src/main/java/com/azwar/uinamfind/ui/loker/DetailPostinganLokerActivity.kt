@@ -1,5 +1,6 @@
 package com.azwar.uinamfind.ui.loker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -60,6 +61,19 @@ class DetailPostinganLokerActivity : AppCompatActivity(), SwipeRefreshLayout.OnR
         })
 
         binding.imgBack.setOnClickListener { finish() }
+
+        binding.imgShare.setOnClickListener {
+
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Hi, ada loker nih " + loker.posisi.toString() + ",  ayo cek di :\n" +
+                        "https://uinamfind.com/loker/" + loker.slug.toString()
+            )
+            intent.type = "text/plain"
+            startActivity(Intent.createChooser(intent, null))
+        }
 
     }
 

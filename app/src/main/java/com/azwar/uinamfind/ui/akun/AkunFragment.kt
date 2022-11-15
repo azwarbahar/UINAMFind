@@ -164,8 +164,6 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             dialog.show()
         }
 
-
-
         return binding.root
     }
 

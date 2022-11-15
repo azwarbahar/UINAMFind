@@ -240,6 +240,14 @@ interface ApiService {
         @Part foto: MultipartBody.Part?
     ): Call<Responses.ResponseRecruiter>?
 
+    //Update Password Recruiter
+    @GET("recruiter/updatePasswordRecruiter.php")
+    fun updatePasswordRecruiter(
+        @Query("id") id: String?,
+        @Query("password_lama") password_lama: String?,
+        @Query("password_baru") password_baru: String?
+    ): Call<Responses.ResponseRecruiter>?
+
 
     //Mahasiswa
     @GET("mahasiswa/getMahasiswaId.php")

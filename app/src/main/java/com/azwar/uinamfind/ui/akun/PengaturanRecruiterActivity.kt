@@ -34,6 +34,11 @@ class PengaturanRecruiterActivity : AppCompatActivity() {
 
         binding.tvPerangkat.setText(device)
 
+        binding.rlGantiPassword.setOnClickListener {
+            val intent = Intent(this, UbahPasswordRecruiterActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.rlKeluar.setOnClickListener {
 
             SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
