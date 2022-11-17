@@ -37,11 +37,11 @@ class LembagaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
         binding.imgBackLembaga.setOnClickListener {
             finish()
         }
-
-        binding.imgSearchLembaga.setOnClickListener {
-            var intent_search = Intent(this, SearchLembagaActivity::class.java)
-            startActivity(intent_search)
-        }
+//
+//        binding.imgSearchLembaga.setOnClickListener {
+//            var intent_search = Intent(this, SearchLembagaActivity::class.java)
+//            startActivity(intent_search)
+//        }
 
     }
 

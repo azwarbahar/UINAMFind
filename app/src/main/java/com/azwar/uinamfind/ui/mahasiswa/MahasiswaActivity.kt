@@ -1,6 +1,7 @@
 package com.azwar.uinamfind.ui.mahasiswa
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,6 +23,7 @@ import retrofit2.Response
 class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var sharedPref: PreferencesHelper
     private var id: String = ""
+    private var role: String = ""
     private var fakultas: String = ""
 
     private lateinit var binding: ActivityMahasiswaBinding
@@ -39,6 +41,7 @@ class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
 
         sharedPref = PreferencesHelper(this)
         id = sharedPref.getString(Constanta.ID_USER).toString()
+        role = sharedPref.getString(Constanta.ROLE).toString()
         fakultas = sharedPref.getString(Constanta.FAKULTAS_USER).toString()
 
         binding.imgBackMahasiswa.setOnClickListener {
@@ -56,10 +59,18 @@ class MahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListe
             loadData()
         })
 
+        if (role.equals("recruiter")) {
+            binding.tv1Mahasiswa.visibility = View.GONE
+            binding.tvLihatLainnyaSefakultas.visibility = View.GONE
+            binding.cvSefakultas.visibility = View.GONE
+        }
+
     }
 
     private fun loadData() {
-        mahasiswaSefakultas()
+        if (role.equals("user")) {
+            mahasiswaSefakultas()
+        }
         mahasiswaData()
     }
 

@@ -81,6 +81,20 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponseMagang(
+        val `magang_data`: List<Magang>?,
+        val `result_magang`: Magang?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseBeasiswa(
+        val `beasiswa_data`: List<Beasiswa>?,
+        val `result_beasiswa`: Beasiswa?,
+        val kode: String?,
+        val pesan: String?
+    )
+
     data class ResponseLamaran(
         val `lamaran_data`: List<Lamaran>?,
         val `result_lamaran`: Lamaran?,

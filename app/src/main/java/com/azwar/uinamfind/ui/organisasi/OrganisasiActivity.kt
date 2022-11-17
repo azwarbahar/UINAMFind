@@ -42,10 +42,10 @@ class OrganisasiActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshList
             loadDataOrganisasi()
         })
 
-        binding.imgSearchOrganisasi.setOnClickListener {
-            val intent_search_organisasi = Intent(this, SearchOrganisasiActivity::class.java)
-            startActivity(intent_search_organisasi)
-        }
+//        binding.imgSearchOrganisasi.setOnClickListener {
+//            val intent_search_organisasi = Intent(this, SearchOrganisasiActivity::class.java)
+//            startActivity(intent_search_organisasi)
+//        }
 
         binding.imgBackOrganisasi.setOnClickListener {
             finish()

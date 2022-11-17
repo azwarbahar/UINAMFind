@@ -93,6 +93,26 @@ interface ApiService {
         @Field("status_lamaran") status_lamaran: String?
     ): Call<Responses.ResponseLamaran>?
 
+    // MAGANG
+    @GET("magang/getMagang.php")
+    fun getMagang(): Call<Responses.ResponseMagang>?
+
+    // MAGANG ID
+    @GET("magang/getMagangId.php")
+    fun getMagangId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMagang>?
+
+
+    // BEASISWA
+    @GET("beasiswa/getBeasiswa.php")
+    fun getBeasiswa(): Call<Responses.ResponseBeasiswa>?
+
+    // BEASISWA ID
+    @GET("beasiswa/getBeasiswaId.php")
+    fun getBeasiswaId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseBeasiswa>?
 
     // LOKER
     @GET("loker/getLoker.php")

@@ -35,14 +35,14 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/img_search_organisasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginHorizontal="16dp"
-            android:src="@drawable/ic_search_alt" />
+<!--        <ImageView-->
+<!--            android:id="@+id/img_search_organisasi"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginHorizontal="16dp"-->
+<!--            android:src="@drawable/ic_search_alt" />-->
 
     </RelativeLayout>
 

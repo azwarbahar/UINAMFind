@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 
 
@@ -61,6 +63,20 @@ class DetailLokerActivity : AppCompatActivity() {
             }
         }
 
+        binding.fabShareDetailLoker.setOnClickListener {
+
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Hi, ada loker nih " + loker.posisi.toString() + ",  ayo cek di :\n" +
+                        "https://uinamfind.com/loker/" + loker.slug.toString()
+            )
+            intent.type = "text/plain"
+            startActivity(Intent.createChooser(intent, null))
+        }
+
+
     }
 
     private fun initData(loker: Loker) {
@@ -70,7 +86,11 @@ class DetailLokerActivity : AppCompatActivity() {
         binding.tvJenisDetailLoker.setText(loker.jenis_pekerjaan)
         var gaji_tercantum = loker.gaji_tersedia
         if (gaji_tercantum.equals("Ya")) {
-            binding.tvRangeGajiDetailLoker.setText(loker.gaji_min + " - " + loker.gaji_max)
+            binding.tvRangeGajiDetailLoker.setText(
+                moneyFormatConvert(loker.gaji_min.toString()) + " - " + moneyFormatConvert(
+                    loker.gaji_max.toString()
+                )
+            )
         } else {
             binding.tvRangeGajiDetailLoker.setText("Salary tidak dicantumkan")
         }
@@ -86,6 +106,12 @@ class DetailLokerActivity : AppCompatActivity() {
         }
         link_lamar = loker.link_lamar!!
         loadPerusahaan(loker.perusahaan_id)
+    }
+
+    private fun moneyFormatConvert(value: String): String? {
+        val nilai = value.toDouble()
+        val formatter: NumberFormat = DecimalFormat("#,###")
+        return formatter.format(nilai)
     }
 
     private fun convertDate(date: String?): String {
@@ -112,10 +138,10 @@ class DetailLokerActivity : AppCompatActivity() {
                     var foto_perusahaan = perusahaan.foto
                     if (foto_perusahaan != null) {
                         Glide.with(this@DetailLokerActivity)
-                            .load(BuildConfig.BASE_URL + "/upload/perusahaan/" +foto_perusahaan)
+                            .load(BuildConfig.BASE_URL + "/upload/perusahaan/" + foto_perusahaan)
                             .into(binding.imgLogoKantorDetailLoker)
                         Glide.with(this@DetailLokerActivity)
-                            .load(BuildConfig.BASE_URL + "/upload/perusahaan/" +foto_perusahaan)
+                            .load(BuildConfig.BASE_URL + "/upload/perusahaan/" + foto_perusahaan)
                             .into(binding.imgLogoPerusahaanDetailLoker)
                     }
                     binding.tvNamaKantorDetailLoker.setText(perusahaan.nama)

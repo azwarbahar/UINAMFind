@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.data.models.Beasiswa
 import com.azwar.uinamfind.databinding.FragmentHomeBinding
-import com.azwar.uinamfind.data.models.BeasiswaModel
 import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
     lateinit var loker: List<Loker>
 
     lateinit var beasiswaTerbaruAdapter: BeasiswaTerbaruAdapter
-    lateinit var beasiswaModel: List<BeasiswaModel>
+    lateinit var beasiswa: List<Beasiswa>
 
     private lateinit var cardMahasiswaAdapter: CardMahasiswaAdapter
     private lateinit var mahasiswa: List<User>
@@ -84,6 +84,36 @@ class HomeFragment : Fragment() {
             bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
             val intent_lembaga = Intent(context, LembagaActivity::class.java)
             startActivity(intent_lembaga)
+        }
+
+        homeBinding.rlOrganisasiBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, OrganisasiActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.rlUkmBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, UKMActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.rlMagangBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, MagangActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.rlBeasiswaBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, BeasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.rlLokerBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, LokerActivity::class.java)
+            startActivity(intent)
         }
 
         homeBinding.llMenuLainnyaHome.setOnClickListener {
@@ -161,13 +191,6 @@ class HomeFragment : Fragment() {
         }
 
 
-        // List Beasiswa Terbaru
-        val linearManagerBeasiswaTerbaru: RecyclerView.LayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        homeBinding.rvBeasiswaTerbaruHome.layoutManager = linearManagerBeasiswaTerbaru
-        beasiswaTerbaruAdapter = BeasiswaTerbaruAdapter()
-        homeBinding.rvBeasiswaTerbaruHome.adapter = beasiswaTerbaruAdapter
-
         loadData()
 
         return homeBinding.root
@@ -177,6 +200,40 @@ class HomeFragment : Fragment() {
 //        checkProfil(id)
         loadMahasiswaNewUPdate()
         loadRekomendasiLoker()
+        loadBeasiswaTerbaru()
+
+    }
+
+    private fun loadBeasiswaTerbaru() {
+
+        ApiClient.instances.getBeasiswa()?.enqueue(object : Callback<Responses.ResponseBeasiswa> {
+            override fun onResponse(
+                call: Call<Responses.ResponseBeasiswa>,
+                response: Response<Responses.ResponseBeasiswa>
+            ) {
+                if (response.isSuccessful) {
+                    val pesanRespon = response.message()
+                    val message = response.body()?.pesan
+                    val kode = response.body()?.kode
+                    beasiswa = response.body()?.beasiswa_data!!
+
+                    // List Beasiswa Terbaru
+                    val linearManagerBeasiswaTerbaru: RecyclerView.LayoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    homeBinding.rvBeasiswaTerbaruHome.layoutManager = linearManagerBeasiswaTerbaru
+                    beasiswaTerbaruAdapter = BeasiswaTerbaruAdapter(beasiswa)
+                    homeBinding.rvBeasiswaTerbaruHome.adapter = beasiswaTerbaruAdapter
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<Responses.ResponseBeasiswa>, t: Throwable) {
+                // do something
+            }
+
+        })
+
 
     }
 

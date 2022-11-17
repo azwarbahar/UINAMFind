@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.databinding.ActivityPengaturanRecruiterBinding
+import com.azwar.uinamfind.ui.MasukActivity
 
 class PengaturanRecruiterActivity : AppCompatActivity() {
 
@@ -50,7 +51,7 @@ class PengaturanRecruiterActivity : AppCompatActivity() {
                     sweetAlertDialog.dismiss()
 
                     sharedPref.logout()
-                    val intent = Intent(this, PengaturanRecruiterActivity::class.java)
+                    val intent = Intent(this, MasukActivity::class.java)
                     startActivity(intent)
                     finish()
 

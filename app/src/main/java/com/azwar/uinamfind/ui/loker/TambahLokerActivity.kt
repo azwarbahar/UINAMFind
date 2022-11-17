@@ -36,7 +36,7 @@ class TambahLokerActivity : AppCompatActivity() {
     private var jenis_pekerjaan: String = ""
     private var lokasi_pilih: String = ""
     private var gaji_tersedia: String = "Tidak"
-    private var lamar_mudah: String = "Tidak"
+    private var lamar_mudah: String = "Ya"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,10 +61,10 @@ class TambahLokerActivity : AppCompatActivity() {
         binding.cbLamaraMudah.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 linkTrue()
-                lamar_mudah = "Ya"
+                lamar_mudah = "Tidak"
             } else {
                 linkFalse()
-                lamar_mudah = "Tidak"
+                lamar_mudah = "Ya"
             }
         }
 
@@ -96,7 +96,7 @@ class TambahLokerActivity : AppCompatActivity() {
             isAllClear = true
         }
         var link_lamar = ""
-        if (lamar_mudah.equals("Ya")) {
+        if (lamar_mudah.equals("Tidak")) {
             link_lamar = binding.etLinkLamaran.text.toString()
         } else {
             isAllClear = true
@@ -153,7 +153,7 @@ class TambahLokerActivity : AppCompatActivity() {
                 isAllClear = true
             }
         }
-        if (lamar_mudah.equals("Ya")) {
+        if (lamar_mudah.equals("Tidak")) {
             if (link_lamar.equals("")) {
                 binding.etLinkLamaran.error = "Lengkapi"
                 binding.etLinkLamaran.requestFocus()

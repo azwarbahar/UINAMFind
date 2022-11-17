@@ -34,7 +34,7 @@ class EditLokerActivity : AppCompatActivity() {
     private var jenis_pekerjaan: String = ""
     private var lokasi_pilih: String = ""
     private var gaji_tersedia: String = "Tidak"
-    private var lamar_mudah: String = "Tidak"
+    private var lamar_mudah: String = "Ya"
 
 
     private lateinit var binding: ActivityEditLokerBinding
@@ -61,10 +61,10 @@ class EditLokerActivity : AppCompatActivity() {
         binding.cbLamaraMudah.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 linkTrue()
-                lamar_mudah = "Ya"
+                lamar_mudah = "Tidak"
             } else {
                 linkFalse()
-                lamar_mudah = "Tidak"
+                lamar_mudah = "Ya"
             }
         }
 
@@ -182,7 +182,7 @@ class EditLokerActivity : AppCompatActivity() {
             isAllClear = true
         }
         var link_lamar = ""
-        if (lamar_mudah.equals("Ya")) {
+        if (lamar_mudah.equals("Tidak")) {
             link_lamar = binding.etLinkLamaran.text.toString()
         } else {
             isAllClear = true
@@ -239,7 +239,7 @@ class EditLokerActivity : AppCompatActivity() {
                 isAllClear = true
             }
         }
-        if (lamar_mudah.equals("Ya")) {
+        if (lamar_mudah.equals("Tidak")) {
             if (link_lamar.equals("")) {
                 binding.etLinkLamaran.error = "Lengkapi"
                 binding.etLinkLamaran.requestFocus()
@@ -502,13 +502,13 @@ class EditLokerActivity : AppCompatActivity() {
             binding.cbSalary.isChecked = false
         }
 
-        if (loker.lamar_mudah.equals("Ya")) {
-            lamar_mudah = "Ya"
+        if (loker.lamar_mudah.equals("Tidak")) {
+            lamar_mudah = "Tidak"
             binding.cbLamaraMudah.isChecked = true
             binding.etLinkLamaran.setText(loker.link_lamar)
         } else {
             binding.cbLamaraMudah.isChecked = false
-            lamar_mudah = "Tidak"
+            lamar_mudah = "Ya"
         }
 
 
