@@ -90,6 +90,7 @@ class EditPerusahaanActivity : AppCompatActivity() {
 
         if (nama.isEmpty()) {
             binding.etNamaPerusahaan.error = "Lengkapi"
+            binding.etNamaPerusahaan.focusable
         } else if (!imgExists) {
             SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("Logo Perusahaan")

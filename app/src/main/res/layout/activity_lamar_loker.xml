@@ -339,7 +339,7 @@
                                 android:textStyle="bold" />
 
                             <EditText
-                                android:id="@+id/et_alamat_edit_profilpesan"
+                                android:id="@+id/et_pesan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/colorPrimary"

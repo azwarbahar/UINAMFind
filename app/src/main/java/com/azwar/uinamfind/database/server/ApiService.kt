@@ -86,12 +86,42 @@ interface ApiService {
         @Query("loker_id") loker_id: String?
     ): Call<Responses.ResponseLamaran>?
 
+    // LAMARAN Mahasiswa ID
+    @GET("lamaran/getLamaranMahasiswaId.php")
+    fun getLamaranMahasiswaId(
+        @Query("mahasiswa_id") mahasiswa_id: String?,
+        @Query("loker_id") loker_id: String?
+    ): Call<Responses.ResponseLamaran>?
+
     @FormUrlEncoded
     @POST("lamaran/updateLamaranStatus.php")
     fun updateLamaranStatus(
         @Field("lamaran_id") lamaran_id: String?,
         @Field("status_lamaran") status_lamaran: String?
     ): Call<Responses.ResponseLamaran>?
+
+
+    //Update
+//    @Multipart
+//    @POST("recruiter/updatePhotoRecruiter.php")
+//    fun updatePhotoRecruiter(
+//        @Part("ket") ket: RequestBody?,
+//        @Part("id") id: RequestBody?,
+//        @Part foto: MultipartBody.Part?
+//    ): Call<Responses.ResponseRecruiter>?
+//
+    @Multipart
+    @POST("lamaran/addLamaran.php")
+    fun addLamaran(
+        @Part("loker_id") loker_id: RequestBody?,
+        @Part("recruiter_id") recruiter_id: RequestBody?,
+        @Part("mahasiswa_id") mahasiswa_id: RequestBody?,
+        @Part("pesan") pesan: RequestBody?,
+        @Part dokumen_lamaran: MultipartBody.Part?,
+        @Part("telpon_pelamar") telpon_pelamar: RequestBody?,
+        @Part("email_pelamar") email_pelamar: RequestBody?
+    ): Call<Responses.ResponseLamaran>?
+
 
     // MAGANG
     @GET("magang/getMagang.php")

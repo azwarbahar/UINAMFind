@@ -1,17 +1,27 @@
 package com.azwar.uinamfind.ui.loker
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.data.models.Lamaran
 import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.Perusahaan
 import com.azwar.uinamfind.data.response.Responses
+import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityDetailLokerBinding
+import com.azwar.uinamfind.ui.akun.adpter.LamaranMahasiswaBaruAdapter
+import com.azwar.uinamfind.utils.Constanta
 import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,13 +38,30 @@ class DetailLokerActivity : AppCompatActivity() {
     private var link_lamar = ""
     private lateinit var loker: Loker
 
+    private lateinit var sharedPref: PreferencesHelper
+    private var id: String = ""
+    private var recruiter_id: String = ""
+    private var role: String = ""
+
+    private var alreadyLamaran = false
+    private lateinit var lamarans: List<Lamaran>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailLokerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPref = PreferencesHelper(this)
+        recruiter_id = sharedPref.getString(Constanta.ID_RECRUITER).toString()
+        id = sharedPref.getString(Constanta.ID_USER).toString()
+        role = sharedPref.getString(Constanta.ROLE).toString()
+
         loker = intent.getParcelableExtra("loker")!!
         initData(loker)
+
+        if (role.equals("user")) {
+            loadPelamar(id, loker.id.toString())
+        }
 
         val toolbar_loker_detail = binding.toolbarLokerDetail
         setSupportActionBar(toolbar_loker_detail)
@@ -45,21 +72,34 @@ class DetailLokerActivity : AppCompatActivity() {
 
         binding.rlBrnLamar.setOnClickListener {
 
-            if (lamar_mudah.equals("Ya")) {
-                val intent = Intent(this, LamarLokerActivity::class.java)
-                intent.putExtra("loker", loker)
-                startActivity(intent)
-            } else {
-                if (link_lamar.equals("-") || link_lamar.equals("")) {
-                    Toast.makeText(this, "Link tidak terdeteksi", Toast.LENGTH_SHORT)
-                } else {
-                    val defaultBrowser = Intent.makeMainSelectorActivity(
-                        Intent.ACTION_MAIN,
-                        Intent.CATEGORY_APP_BROWSER
-                    )
-                    defaultBrowser.data = Uri.parse(link_lamar)
-                    startActivity(defaultBrowser)
+            if (role.equals("user")) {
+                if (!alreadyLamaran) {
+                    if (lamar_mudah.equals("Ya")) {
+                        val intent = Intent(this, LamarLokerActivity::class.java)
+                        intent.putExtra("loker", loker)
+                        startActivity(intent)
+                    } else {
+                        if (link_lamar.equals("-") || link_lamar.equals("")) {
+                            Toast.makeText(this, "Link tidak terdeteksi", Toast.LENGTH_SHORT)
+                        } else {
+                            val defaultBrowser = Intent.makeMainSelectorActivity(
+                                Intent.ACTION_MAIN,
+                                Intent.CATEGORY_APP_BROWSER
+                            )
+                            defaultBrowser.data = Uri.parse(link_lamar)
+                            startActivity(defaultBrowser)
+                        }
+                    }
                 }
+
+            } else {
+                SweetAlertDialog(
+                    this,
+                    SweetAlertDialog.ERROR_TYPE
+                )
+                    .setTitleText("Maaf..")
+                    .setContentText("Akses tidak diizinkan!")
+                    .show()
             }
         }
 
@@ -157,6 +197,76 @@ class DetailLokerActivity : AppCompatActivity() {
         })
     }
 
+    private fun onLamaranReady() {
+        binding.tvBtnLamarLoker.setText("Selesai Melamar")
+        binding.tvBtnLamarLoker.setTextColor(ContextCompat.getColor(this, R.color.grey));
+        binding.rlBrnLamar.setBackground(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.bg_grey_trans_corner
+            )
+        );
+    }
+
+    private fun onLamaranNoReady() {
+        binding.tvBtnLamarLoker.setText("Lamar Sekarang")
+        binding.tvBtnLamarLoker.setTextColor(ContextCompat.getColor(this, R.color.white));
+        binding.rlBrnLamar.setBackground(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.bg_primary_corner_16
+            )
+        );
+    }
+
+    private fun loadPelamar(mahasiswa_id: String?, loker_id: String?) {
+
+        // show progress loading
+        val dialogProgress = SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+        dialogProgress.progressHelper.barColor = Color.parseColor("#A5DC86")
+        dialogProgress.titleText = "Loading.."
+        dialogProgress.setCancelable(false)
+        dialogProgress.show()
+
+        ApiClient.instances.getLamaranMahasiswaId(mahasiswa_id, loker_id)
+            ?.enqueue(object : Callback<Responses.ResponseLamaran> {
+                override fun onResponse(
+                    call: Call<Responses.ResponseLamaran>,
+                    response: Response<Responses.ResponseLamaran>
+                ) {
+                    dialogProgress.dismiss()
+                    if (response.isSuccessful) {
+                        val pesanRespon = response.message()
+                        val message = response.body()?.pesan
+                        val kode = response.body()?.kode
+
+                        if (kode.equals("1")) {
+                            lamarans = response.body()?.lamaran_data!!
+                            if (lamarans.size > 0) {
+                                alreadyLamaran = true
+                                onLamaranReady()
+                            } else {
+                                alreadyLamaran = false
+                                onLamaranNoReady()
+                            }
+                        } else {
+                            alreadyLamaran = false
+                            onLamaranNoReady()
+                        }
+                    } else {
+                        alreadyLamaran = false
+                        onLamaranNoReady()
+                    }
+                }
+
+                override fun onFailure(call: Call<Responses.ResponseLamaran>, t: Throwable) {
+                    dialogProgress.dismiss()
+                    alreadyLamaran = false
+                    onLamaranNoReady()
+                }
+            })
+
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
