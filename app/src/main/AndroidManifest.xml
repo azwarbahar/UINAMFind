@@ -16,6 +16,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.saya.sosmed.ListSosmedMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.sosmed.EditSosmedMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.sosmed.AddSosmedMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.DataAkunActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lamaran.LamaranSayaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.saya.UbahPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.akun.UbahPasswordRecruiterActivity"
             android:exported="false" />
         <activity

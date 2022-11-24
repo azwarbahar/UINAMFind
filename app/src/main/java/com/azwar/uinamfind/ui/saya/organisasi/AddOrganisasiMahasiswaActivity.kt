@@ -67,12 +67,12 @@ class AddOrganisasiMahasiswaActivity : AppCompatActivity() {
         val nama_organisasi = binding.etNamaOrganisasi.text
         val jabatan = binding.etPosisiOrganisasi.text
         val tgl_mulai = binding.etTanggalMulaiAddOrganisasi.text
-        var tgl_berakhir = binding.etTanggalBerakhirAddOrganisasi.text
+        var tgl_berakhir = binding.etTanggalBerakhirAddOrganisasi.text.toString()
         val deskripsi = binding.etDeskripsiOrganisasi.text
         var berjalan = "Berjalan"
         if (binding.cbMasihMenjadiAnggota.isChecked) {
             berjalan = "Berjalan"
-            tgl_berakhir = null
+            tgl_berakhir = ""
         } else {
             berjalan = "Berakhir"
         }
@@ -97,7 +97,21 @@ class AddOrganisasiMahasiswaActivity : AppCompatActivity() {
                 binding.etTanggalMulaiAddOrganisasi.error = "Lengkapi"
             }
             tgl_berakhir.isEmpty() -> {
-                binding.etTanggalBerakhirAddOrganisasi.error = "Lengkapi"
+                if (berjalan.equals("Berakhir")) {
+                    binding.etTanggalBerakhirAddOrganisasi.error = "Lengkapi"
+                } else {
+                    startAddData(
+                        nama_organisasi,
+                        jabatan,
+                        tgl_mulai,
+                        tgl_berakhir,
+                        deskripsi,
+                        berjalan,
+                        internal,
+                        organisasi_id,
+                        id
+                    )
+                }
             }
             else -> {
                 startAddData(
@@ -121,7 +135,7 @@ class AddOrganisasiMahasiswaActivity : AppCompatActivity() {
         namaOrganisasi: Editable?,
         jabatan: Editable?,
         tglMulai: Editable?,
-        tglBerakhir: Editable?,
+        tglBerakhir: String,
         deskripsi: Editable?,
         berjalan: String?,
         internal: String?,

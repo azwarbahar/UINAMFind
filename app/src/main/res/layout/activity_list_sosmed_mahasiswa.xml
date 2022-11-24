@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundActivity"
-    tools:context=".ui.organisasi.OrganisasiActivity">
+    tools:context=".ui.saya.sosmed.ListSosmedMahasiswaActivity">
 
     <RelativeLayout
-        android:id="@+id/rl_toolbar_organisasi"
+        android:id="@+id/rl_toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
@@ -16,7 +16,7 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:id="@+id/img_back_organisasi"
+            android:id="@+id/img_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -25,41 +25,49 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/tv_toolbar_organisasi"
+            android:id="@+id/tv_toolbar_keahlian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/img_back_organisasi"
-            android:text="Organisasi dan Komunitas"
+            android:layout_toRightOf="@id/img_back"
+            android:text="Sosial Media"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/img_search_organisasi"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_alignParentRight="true"-->
-        <!--            android:layout_centerVertical="true"-->
-        <!--            android:layout_marginHorizontal="16dp"-->
-        <!--            android:src="@drawable/ic_search_alt" />-->
+        <ImageView
+            android:id="@+id/img_add_sosmed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/ic_baseline_add_24" />
 
     </RelativeLayout>
 
+    <include
+        android:id="@+id/continer_empty"
+        layout="@layout/layout_data_kosong"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/rl_toolbar"
+        android:layout_marginTop="30dp" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_organisasi"
+        android:id="@+id/swipe_sosmed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rl_toolbar_organisasi">
+        android:layout_below="@id/rl_toolbar">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_organisasi"
+            android:id="@+id/rv_sosmed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rl_toolbar_organisasi"
-            android:layout_marginTop="5dp"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_organisasi" />
+            android:layout_marginTop="6dp"
+            tools:listitem="@layout/item_sosmed" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </RelativeLayout>

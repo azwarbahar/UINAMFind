@@ -21,11 +21,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.data.models.Sosmed
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentSayaBinding
+import com.azwar.uinamfind.ui.lembaga.adapter.SosmedLembagaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.KeahlianMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.PendidikanMahasiswaAdapter
@@ -38,6 +40,8 @@ import com.azwar.uinamfind.ui.saya.pendidikan.AddPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pendidikan.ListPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.sosmed.AddSosmedMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.sosmed.ListSosmedMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
@@ -67,11 +71,14 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     // models
     private lateinit var user: User
 
+    private lateinit var sosmedList: List<Sosmed>
+
     // adapter
     private lateinit var organisasiMahasiswaAdapter: OrganisasiMahasiswaAdapter
     private lateinit var pengalamanMahasiswaAdapter: PengalamanMahasiswaAdapter
     private lateinit var keahlianMahasiswaAdapter: KeahlianMahasiswaAdapter
     private lateinit var pendidikanMahasiswaAdapter: PendidikanMahasiswaAdapter
+    private lateinit var sosmedLembagaAdapter: SosmedLembagaAdapter
 
     private var id: String = ""
     private var tentang_user: String = ""
@@ -101,6 +108,16 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         sayaBinding.rlEditProfilDetailMahasiswa.setOnClickListener {
             val intent_edit_profil = Intent(context, EditProfilMahasiswaActivity::class.java)
             startActivity(intent_edit_profil)
+        }
+
+        //Sosmed
+        sayaBinding.imgAddSosmed.setOnClickListener {
+            val intent = Intent(context, AddSosmedMahasiswaActivity::class.java)
+            startActivity(intent)
+        }
+        sayaBinding.imgEditSosmed.setOnClickListener {
+            val intent = Intent(context, ListSosmedMahasiswaActivity::class.java)
+            startActivity(intent)
         }
 
         //organisasi
@@ -219,6 +236,35 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         return sayaBinding.root
     }
 
+    private fun setSosmed(id: String?, kategori: String) {
+
+        ApiClient.instances.getSosmedKategori(id, kategori)?.enqueue(object :
+            Callback<Responses.ResponseSosmed> {
+            override fun onResponse(
+                call: Call<Responses.ResponseSosmed>,
+                response: Response<Responses.ResponseSosmed>
+            ) {
+                if (response.isSuccessful) {
+                    sosmedList = response.body()?.sosmed_data!!
+                    val rv_sosmed = sayaBinding.rvSosmed
+                    rv_sosmed.layoutManager =
+                        LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                    sosmedLembagaAdapter = SosmedLembagaAdapter(sosmedList)
+                    rv_sosmed.adapter = sosmedLembagaAdapter
+                } else {
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<Responses.ResponseSosmed>, t: Throwable) {
+
+            }
+
+        })
+
+    }
+
     private fun openPreviewImage(s: String) {
 
     }
@@ -320,6 +366,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         loadDataPengalaman(id)
         loadDataKeahlian(id)
         loadDataPendidikan(id)
+        setSosmed(id, "Mahasiswa")
     }
 
     private fun loadDataPendidikan(id: String) {
@@ -599,7 +646,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         var foto = user.foto
         if (foto !== null) {
             Glide.with(this)
-                .load(BuildConfig.BASE_URL + "/upload/photo/" + foto)
+                .load(BuildConfig.BASE_URL + "upload/photo/" + foto)
                 .into(sayaBinding.imgPhotoCardDetailMahasiswa)
         } else {
 
@@ -608,7 +655,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         val sampul = user.foto_sampul
         if (sampul !== null) {
             Glide.with(this)
-                .load(BuildConfig.BASE_URL + "/upload/photo/" + sampul)
+                .load(BuildConfig.BASE_URL + "upload/photo/" + sampul)
                 .into(sayaBinding.imgHeaderCardDetailMahasiswa)
         } else {
 

@@ -25,6 +25,7 @@ import com.azwar.uinamfind.ui.lembaga.LembagaActivity
 import com.azwar.uinamfind.ui.loker.LokerActivity
 import com.azwar.uinamfind.ui.magang.MagangActivity
 import com.azwar.uinamfind.ui.mahasiswa.MahasiswaActivity
+import com.azwar.uinamfind.ui.notifikasi.NotifikasiActivity
 import com.azwar.uinamfind.ui.organisasi.OrganisasiActivity
 import com.azwar.uinamfind.ui.pencarian.SearchHomeActivity
 import com.azwar.uinamfind.ui.ukm.UKMActivity
@@ -118,9 +119,6 @@ class HomeFragment : Fragment() {
 
         homeBinding.llMenuLainnyaHome.setOnClickListener {
 
-//            MenuHomeBottomSheetDialogFragment().apply {
-//                show(parentFragmentManager, "TAG")
-//            }
             val state =
                 if (bottomSheetBehaviorMenuLainnya.state == BottomSheetBehavior.STATE_EXPANDED)
                     BottomSheetBehavior.STATE_COLLAPSED
@@ -187,6 +185,11 @@ class HomeFragment : Fragment() {
 
         homeBinding.tvLihatSemuaRekomendasiLoker.setOnClickListener {
             val intent = Intent(context, LokerActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.rlNotif.setOnClickListener {
+            val intent = Intent(context, NotifikasiActivity::class.java)
             startActivity(intent)
         }
 

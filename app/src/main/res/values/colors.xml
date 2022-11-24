@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="red">#F30000</color>
     <color name="blackTrans_20">#33000000</color>
     <color name="blackTrans_30">#4D000000</color>
     <color name="white_trans_40">#66FFFFFF</color>

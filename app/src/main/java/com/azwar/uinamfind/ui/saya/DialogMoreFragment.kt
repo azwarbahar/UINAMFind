@@ -10,6 +10,7 @@ import android.view.View
 import android.view.View.MeasureSpec
 import android.view.ViewGroup
 import android.widget.Toast
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
@@ -91,7 +92,7 @@ class DialogMoreFragment() : BottomSheetDialogFragment() {
             intent.action = Intent.ACTION_SEND
             intent.putExtra(
                 Intent.EXTRA_TEXT, "Hi, Cek profil saya di UINAM Find dengan Link :\n" +
-                        "https://uinamfind.com/" + username
+                        "https://uinamfind.com/" + username + "\n\nDownload Aplikasi UINAMFind : http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "/"
             )
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, null))

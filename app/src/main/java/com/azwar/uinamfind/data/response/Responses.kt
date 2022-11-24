@@ -37,6 +37,13 @@ class Responses {
         val pesan: String?
     )
 
+    data class ResponseInformasi(
+        val `informasi_data`: List<Informasi>?,
+        val `result_informasi`: Informasi?,
+        val kode: String?,
+        val pesan: String?
+    )
+
     data class ResponseRecruiter(
         val `recruiter_data`: List<Recruiter>?,
         val `result_recruiter`: Recruiter?,

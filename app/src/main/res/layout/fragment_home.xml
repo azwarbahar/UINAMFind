@@ -37,13 +37,13 @@
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_chat_fill" />
 
-                <ImageView
-                    android:id="@+id/img_circle_message"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/circle_red" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/img_circle_message"-->
+<!--                    android:layout_width="8dp"-->
+<!--                    android:layout_height="8dp"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:src="@drawable/circle_red" />-->
 
             </RelativeLayout>
 
@@ -61,13 +61,13 @@
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_bell_fill" />
 
-                <ImageView
-                    android:id="@+id/img_circle_notif"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/circle_red" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/img_circle_notif"-->
+<!--                    android:layout_width="8dp"-->
+<!--                    android:layout_height="8dp"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    android:src="@drawable/circle_red" />-->
 
             </RelativeLayout>
 

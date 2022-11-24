@@ -50,6 +50,30 @@ interface ApiService {
         @Query("kategori") kategori: String?
     ): Call<Responses.ResponseSosmed>?
 
+    //add
+    @FormUrlEncoded
+    @POST("sosmed/addSosmed.php")
+    fun addSosmed(
+        @Field("nama_sosmed") nama_sosmed: String?,
+        @Field("kategori") kategori: String?,
+        @Field("from_id") from_id: String?,
+        @Field("url_sosmed") url_sosmed: String?
+    ): Call<Responses.ResponseSosmed>?
+
+    //delete
+    @GET("sosmed/deleteSosmed.php")
+    fun deleteSosmed(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseSosmed>?
+
+    //update
+    @FormUrlEncoded
+    @POST("sosmed/updateSosmed.php")
+    fun updateSosmed(
+        @Field("id") id: String?,
+        @Field("url_sosmed") url_sosmed: String?
+    ): Call<Responses.ResponseSosmed>?
+
 
     // LEMBAGA
     @GET("lembaga/getLembagaId.php")
@@ -91,6 +115,12 @@ interface ApiService {
     fun getLamaranMahasiswaId(
         @Query("mahasiswa_id") mahasiswa_id: String?,
         @Query("loker_id") loker_id: String?
+    ): Call<Responses.ResponseLamaran>?
+
+    // LAMARAN Mahasiswa
+    @GET("lamaran/getLamaranMahasiswa.php")
+    fun getLamaranMahasiswa(
+        @Query("mahasiswa_id") mahasiswa_id: String?
     ): Call<Responses.ResponseLamaran>?
 
     @FormUrlEncoded
@@ -299,10 +329,32 @@ interface ApiService {
     ): Call<Responses.ResponseRecruiter>?
 
 
+    //INFORMASI
+    @GET("informasi/getInformasi.php")
+    fun getInformasi(
+        @Query("role") role: String?
+    ): Call<Responses.ResponseInformasi>?
+
+
     //Mahasiswa
     @GET("mahasiswa/getMahasiswaId.php")
     fun getMahasiswaID(
         @Query("id") id: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
+    //Update Password MAHASISWA
+    @GET("mahasiswa/updatePasswordMahasiswa.php")
+    fun updatePasswordMahasiswa(
+        @Query("id") id: String?,
+        @Query("password_lama") password_lama: String?,
+        @Query("password_baru") password_baru: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
+    // mahasiswa USERNAME
+    @GET("mahasiswa/getMahasiswaUsername.php")
+    fun getMahasiswaUsername(
+        @Query("id") id: String?,
+        @Query("username") username: String?
     ): Call<Responses.ResponseMahasiswa>?
 
     // mahasiswa se fakultas
@@ -328,6 +380,16 @@ interface ApiService {
     fun checkProfilMahasiswa(
         @Query("id") id: String?
     ): Call<Responses.ResponseCheckProfilMahasiswa>?
+
+    //update
+    @FormUrlEncoded
+    @POST("mahasiswa/updateAkunMahasiswa.php")
+    fun updateAkunMahasiswa(
+        @Field("id") id: String?,
+        @Field("username") username: String?,
+        @Field("email") email: String?,
+        @Field("telpon") telpon: String?
+    ): Call<Responses.ResponseMahasiswa>?
 
     //update
     @FormUrlEncoded

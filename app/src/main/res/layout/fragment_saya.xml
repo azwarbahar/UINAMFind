@@ -612,6 +612,67 @@
 
                         </androidx.cardview.widget.CardView>
 
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_sosmed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cv_pendidikan_detail_mahasiswa"
+                            android:layout_marginTop="16dp"
+                            app:cardElevation="6dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white">
+
+                                <ImageView
+                                    android:id="@+id/img_edit_sosmed"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginVertical="10dp"
+                                    android:layout_marginRight="12dp"
+                                    android:src="@drawable/ic_baseline_edit_24"
+                                    app:tint="@color/grey" />
+
+                                <ImageView
+                                    android:id="@+id/img_add_sosmed"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_marginVertical="10dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_toLeftOf="@id/img_edit_sosmed"
+                                    android:src="@drawable/ic_baseline_add_24"
+                                    app:tint="@color/grey" />
+
+                                <TextView
+                                    android:id="@+id/tv1_sosmed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Media Sosial"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_sosmed"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv1_sosmed"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:clipToPadding="false"
+                                    android:paddingLeft="16dp"
+                                    tools:itemCount="1"
+                                    tools:listitem="@layout/item_icon_sosmed" />
+
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
 
                     </RelativeLayout>
 
