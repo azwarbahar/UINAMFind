@@ -1,9 +1,8 @@
-package com.azwar.uinamfind.ui.saya.sosmed
+package com.azwar.uinamfind.ui.sosmed
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.azwar.uinamfind.data.models.Sosmed
 import com.azwar.uinamfind.data.response.Responses
@@ -19,6 +18,7 @@ class EditSosmedMahasiswaActivity : AppCompatActivity() {
     private var sosmed_id: String = ""
     private lateinit var sharedPref: PreferencesHelper
     private var id: String = ""
+    private var kategori: String = ""
 
     private lateinit var binding: ActivityEditSosmedMahasiswaBinding
 

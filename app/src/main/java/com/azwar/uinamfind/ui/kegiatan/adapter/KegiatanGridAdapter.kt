@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.Kegiatan
 import com.azwar.uinamfind.databinding.ItemKegiatanBinding
 import com.azwar.uinamfind.ui.kegiatan.DetailKegiatanActivity
@@ -22,12 +23,12 @@ class KegiatanGridAdapter(private val list: List<Kegiatan>) :
                 var tanggal = get.tanggal
                 binding.tvTanggalKegiatan.setText(tempat + " - " + tanggal)
 
-                var foto = get.foto
-                if (foto.equals("-")) {
+                var foto = get.foto.toString()
+                if (foto.equals("") || foto.equals("null")) {
 
                 } else {
                     Glide.with(this)
-                        .load(foto)
+                        .load(BuildConfig.BASE_URL + "upload/photo/" + foto)
                         .into(binding.imgPhotoKegiatan)
                 }
 

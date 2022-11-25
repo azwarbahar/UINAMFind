@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundActivity"
-    tools:context=".ui.saya.sosmed.AddSosmedMahasiswaActivity">
+    tools:context=".ui.sosmed.AddSosmedMahasiswaActivity">
 
     <RelativeLayout
         android:id="@+id/rl_toolbar"

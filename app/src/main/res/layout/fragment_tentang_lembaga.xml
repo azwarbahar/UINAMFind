@@ -33,18 +33,168 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="12dp"
-                        android:text="Deskripsi"
+                        android:text="Info"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/img_edit_info"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        app:tint="@color/grey_hint" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_kategori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv1"
+                        android:layout_marginHorizontal="16sp"
+                        android:layout_marginTop="16dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kategori :" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:id="@+id/tv_kategori"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="6dp"
+                            android:text="Teknologi Informasi"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_tahun_berdiri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_kategori"
+                        android:layout_marginHorizontal="16sp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tahun Berdiri :" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:id="@+id/tv_tahun_berdiri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="6dp"
+                            android:text="2022"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_kontak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_tahun_berdiri"
+                        android:layout_marginHorizontal="16sp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kontak :" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:id="@+id/tv_kontak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="6dp"
+                            android:text="081234567890"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_kontak"
+                        android:layout_marginHorizontal="16sp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email :" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:id="@+id/tv_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="6dp"
+                            android:text="abc@mail.com"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_alamat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_email"
+                        android:layout_marginHorizontal="16sp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat :" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:id="@+id/tv_alamat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="6dp"
+                            android:text="Jalan Sultan Alauddin"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_deskripsi_lembaga"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv1"
+                        android:layout_below="@id/ll_alamat"
                         android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="22dp"
                         android:layout_marginBottom="12dp"
                         android:textColor="@color/black"
                         android:textSize="14sp"
@@ -66,6 +216,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
+
+                    <ImageView
+                        android:id="@+id/img_edit_sosmed"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        app:tint="@color/grey_hint" />
+
+                    <ImageView
+                        android:id="@+id/img_add_sosmed"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_toLeftOf="@id/img_edit_sosmed"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:tint="@color/grey_hint" />
 
                     <TextView
                         android:id="@+id/tv2"
@@ -97,6 +267,7 @@
                 android:id="@+id/cv_kegiatan_lembaga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:layout_below="@id/cv_sosmed_lembaga"
                 android:layout_marginTop="16dp"
                 app:cardElevation="6dp">
@@ -105,6 +276,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
+
+                    <ImageView
+                        android:id="@+id/img_add_kegiatan"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_marginVertical="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/ic_baseline_add_24"
+                        app:tint="@color/grey_hint" />
 
                     <TextView
                         android:id="@+id/tv3"

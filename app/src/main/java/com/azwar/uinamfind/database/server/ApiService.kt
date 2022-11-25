@@ -42,6 +42,19 @@ interface ApiService {
         @Query("kategori") kategori: String?
     ): Call<Responses.ResponseKegiatan>?
 
+    @Multipart
+    @POST("kegiatan/addKegiatan.php")
+    fun addKegiatan(
+        @Part("kategori") kategori: RequestBody?,
+        @Part("nama") nama: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part("tempat") tempat: RequestBody?,
+        @Part foto: MultipartBody.Part?,
+        @Part("tanggal") tanggal: RequestBody?,
+        @Part("from_id") from_id: RequestBody?
+    ): Call<Responses.ResponseKegiatan>?
+
+
 
     // SOSMED
     @GET("sosmed/getSosmedKategori.php")
@@ -90,6 +103,29 @@ interface ApiService {
     fun getLembagaFakultas(
         @Query("fakultas") fakultas: String?
     ): Call<Responses.ResponseLembaga>?
+
+    // UPDATE LEMBAGA
+    @FormUrlEncoded
+    @POST("lembaga/updateLembaga.php")
+    fun updateLembaga(
+        @Field("id") id: String?,
+        @Field("nama") nama: String?,
+        @Field("alamat_sekretariat") alamat_sekretariat: String?,
+        @Field("kontak") kontak: String?,
+        @Field("email") email: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("tahun_berdiri") tahun_berdiri: String?
+    ): Call<Responses.ResponseLembaga>?
+
+    //Update
+    @Multipart
+    @POST("lembaga/updatePhotoLembaga.php")
+    fun updatePhotoLembaga(
+        @Part("id") id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponseLembaga>?
+
+
 
     // LAMARAN
     @GET("lamaran/getLamaranStatusRecruiterId.php")
@@ -418,6 +454,13 @@ interface ApiService {
     @POST("mahasiswa/updateTentangSaya.php")
     fun updateTentangSaya(
         @Field("tentang_user") tentang_user: String?,
+        @Field("id") id: String?
+    ): Call<Responses.ResponseMahasiswa>?
+
+    @FormUrlEncoded
+    @POST("mahasiswa/updateKelulusanMahasiswa.php")
+    fun updateKelulusanMahasiswa(
+        @Field("status_kemahasiswaan") status_kemahasiswaan: String?,
         @Field("id") id: String?
     ): Call<Responses.ResponseMahasiswa>?
 

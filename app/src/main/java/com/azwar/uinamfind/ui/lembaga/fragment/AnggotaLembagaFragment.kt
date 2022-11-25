@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
 import com.azwar.uinamfind.data.models.*
 import com.azwar.uinamfind.data.response.Responses
@@ -33,6 +34,8 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     private lateinit var sharedPref: PreferencesHelper
     private var _binding: FragmentAnggotaLembagaBinding? = null
     private val binding get() = _binding!!
+    private var id = ""
+    private var role = ""
 
     private lateinit var listAnggota: List<Anggota>
     private lateinit var anggotaLembagaAdapter: AnggotaLembagaAdapter
@@ -52,7 +55,8 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         _binding = FragmentAnggotaLembagaBinding.inflate(inflater, container, false)
         val view = binding.root
         sharedPref = PreferencesHelper(context)
-        var id = sharedPref.getString(Constanta.ID_USER).toString()
+        id = sharedPref.getString(Constanta.ID_USER).toString()
+        role = sharedPref.getString(Constanta.ROLE).toString()
         val json = sharedPref.getString(Constanta.OBJECT_SELECTED)
         val kategori_objek = sharedPref.getString(Constanta.KEY_OBJECT_SELECTED)
         val gson = Gson()
@@ -83,7 +87,14 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         })
 
         binding.rlAdmin.setOnClickListener {
-            if (!id.equals(user.id)) {
+            if (role.equals("user")) {
+                if (!id.equals(user.id.toString())) {
+                    val intent_detail_mahasiswa =
+                        Intent(context, DetailMahasiswaActivity::class.java)
+                    intent_detail_mahasiswa.putExtra("mahasiswa", user)
+                    startActivity(intent_detail_mahasiswa)
+                }
+            } else {
                 val intent_detail_mahasiswa =
                     Intent(context, DetailMahasiswaActivity::class.java)
                 intent_detail_mahasiswa.putExtra("mahasiswa", user)
@@ -92,7 +103,12 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         }
 
         binding.imgChat.setOnClickListener {
-            if (!id.equals(user.id)) {
+            if (role.equals("user")) {
+                if (!id.equals(user.id.toString())) {
+                    val intent_room_chat = Intent(context, RoomChatActivity::class.java)
+                    startActivity(intent_room_chat)
+                }
+            } else {
                 val intent_room_chat = Intent(context, RoomChatActivity::class.java)
                 startActivity(intent_room_chat)
             }
@@ -104,13 +120,13 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     }
 
     private fun setDataLembaga(lembaga: LembagaKampus) {
-        loadUser(lembaga.admin)
-        loadAnggota("Lembaga", lembaga.id, lembaga.admin)
+        loadUser(lembaga.admin.toString())
+        loadAnggota("Lembaga", lembaga.id.toString(), lembaga.admin.toString())
     }
 
     private fun setDataOrganisasi(organisasi: Organisasi) {
-        loadUser(organisasi.admin)
-        loadAnggota("Organisasi", organisasi.id, organisasi.admin)
+        loadUser(organisasi.admin.toString())
+        loadAnggota("Organisasi", organisasi.id.toString(), organisasi.admin.toString())
     }
 
     private fun setDataUkm(ukm: Ukm) {
@@ -197,7 +213,7 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
                         if (foto.equals("-") || foto.equals("null")) {
                         } else {
                             Glide.with(this@AnggotaLembagaFragment)
-                                .load(foto)
+                                .load(BuildConfig.BASE_URL + "upload/photo/" + foto)
                                 .into(binding.imgPhotoUser)
                         }
                     } else {

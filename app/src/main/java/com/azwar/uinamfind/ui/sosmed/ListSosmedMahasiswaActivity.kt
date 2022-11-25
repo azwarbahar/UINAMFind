@@ -1,4 +1,4 @@
-package com.azwar.uinamfind.ui.saya.sosmed
+package com.azwar.uinamfind.ui.sosmed
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,10 +15,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityListSosmedMahasiswaBinding
-import com.azwar.uinamfind.ui.lembaga.adapter.SosmedLembagaAdapter
-import com.azwar.uinamfind.ui.saya.adapter.ListKeahlianMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.ListSosmedMahasiswaAdapter
-import com.azwar.uinamfind.ui.saya.keahlian.AddKeahlianMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import retrofit2.Call
@@ -28,6 +25,7 @@ import retrofit2.Response
 class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var sharedPref: PreferencesHelper
     private var id: String = ""
+    private var kategori: String = ""
 
     private lateinit var listSosmedMahasiswaAdapter: ListSosmedMahasiswaAdapter
 
@@ -41,6 +39,16 @@ class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRe
         setContentView(binding.root)
         sharedPref = PreferencesHelper(this)
         id = sharedPref.getString(Constanta.ID_USER).toString()
+        kategori = intent.getStringExtra("kategori").toString()
+        if (kategori.equals("Lembaga")) {
+            id = intent.getStringExtra("id").toString()
+        } else if (kategori.equals("Organisasi")) {
+            id = intent.getStringExtra("id").toString()
+        } else if (kategori.equals("UKM")) {
+            id = intent.getStringExtra("id").toString()
+        } else if (kategori.equals("Mahasiswa")) {
+            id = sharedPref.getString(Constanta.ID_USER).toString()
+        }
 
         binding.continerEmpty.root.visibility = View.GONE
         swipe_sosmed = binding.swipeSosmed
@@ -52,10 +60,12 @@ class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRe
             android.R.color.holo_green_dark
         )
         swipe_sosmed.post(Runnable {
-            laodDataSosmed(id, "Mahasiswa")
+            laodDataSosmed(id, kategori)
         })
         binding.imgAddSosmed.setOnClickListener {
             val intent = Intent(this, AddSosmedMahasiswaActivity::class.java)
+            intent.putExtra("kategori", kategori)
+            intent.putExtra("id", id)
             startActivity(intent)
         }
 
@@ -102,13 +112,13 @@ class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRe
                             binding.continerEmpty.root.visibility = View.VISIBLE
                             binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
                             val rv_org = binding.rvSosmed
-                            rv_org.visibility = View.VISIBLE
+                            rv_org.visibility = View.GONE
                         }
                     } else {
                         binding.continerEmpty.root.visibility = View.VISIBLE
                         binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
                         val rv_org = binding.rvSosmed
-                        rv_org.visibility = View.VISIBLE
+                        rv_org.visibility = View.GONE
                         Toast.makeText(
                             this@ListSosmedMahasiswaActivity,
                             message,
@@ -119,7 +129,7 @@ class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRe
                     binding.continerEmpty.root.visibility = View.VISIBLE
                     binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
                     val rv_org = binding.rvSosmed
-                    rv_org.visibility = View.VISIBLE
+                    rv_org.visibility = View.GONE
                     Toast.makeText(
                         this@ListSosmedMahasiswaActivity,
                         "Server Tidak Merespon",
@@ -135,7 +145,7 @@ class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRe
                 binding.continerEmpty.root.visibility = View.VISIBLE
                 binding.continerEmpty.tvMessageEmptyData.text = "Belum ada data"
                 val rv_org = binding.rvSosmed
-                rv_org.visibility = View.VISIBLE
+                rv_org.visibility = View.GONE
                 swipe_sosmed.isRefreshing = false
                 Toast.makeText(
                     this@ListSosmedMahasiswaActivity,
@@ -149,10 +159,10 @@ class ListSosmedMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRe
 
     override fun onResume() {
         super.onResume()
-        laodDataSosmed(id, "Mahasiswa")
+        laodDataSosmed(id, kategori)
     }
 
     override fun onRefresh() {
-        laodDataSosmed(id, "Mahasiswa")
+        laodDataSosmed(id, kategori)
     }
 }

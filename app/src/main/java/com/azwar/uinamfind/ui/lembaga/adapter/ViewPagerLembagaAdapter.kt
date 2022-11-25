@@ -22,8 +22,7 @@ class ViewPagerLembagaAdapter(fragmentManager: FragmentManager, lifecycle: Lifec
         when (position) {
             0 -> return TentangLembagaFragment()
             1 -> return AnggotaLembagaFragment()
-            2 -> return FotoLembagaFragment()
         }
-        return PengaturanLembagaFragment()
+        return FotoLembagaFragment()
     }
 }

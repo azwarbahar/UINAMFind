@@ -24,8 +24,7 @@ class DetailOrganisasiActivity : AppCompatActivity() {
     val tabArray = arrayOf(
         "Tentang",
         "Anggota",
-        "Foto",
-        "Pengaturan"
+        "Foto"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +68,7 @@ class DetailOrganisasiActivity : AppCompatActivity() {
         val viewPager = binding.viewPagerOrganisasi
         val tabLayout = binding.tabLayoutOrganisasi
 
-        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 4)
+        val adapter = ViewPagerLembagaAdapter(supportFragmentManager, lifecycle, 3)
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->

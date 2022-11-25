@@ -16,13 +16,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".ui.saya.sosmed.ListSosmedMahasiswaActivity"
+            android:name=".ui.kegiatan.AddKegiatanActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.saya.sosmed.EditSosmedMahasiswaActivity"
+            android:name=".ui.lembaga.EditLembagaActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.saya.sosmed.AddSosmedMahasiswaActivity"
+            android:name=".ui.sosmed.ListSosmedMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.sosmed.EditSosmedMahasiswaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.sosmed.AddSosmedMahasiswaActivity"
             android:exported="false" />
         <activity
             android:name=".ui.saya.DataAkunActivity"

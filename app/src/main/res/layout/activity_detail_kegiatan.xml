@@ -56,7 +56,9 @@
                     android:id="@+id/img_photo_kegiatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:background="@color/white2"
+                    android:maxHeight="250dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/header_lembaga_default" />
 

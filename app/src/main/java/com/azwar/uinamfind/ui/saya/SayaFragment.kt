@@ -40,15 +40,14 @@ import com.azwar.uinamfind.ui.saya.pendidikan.AddPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pendidikan.ListPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
-import com.azwar.uinamfind.ui.saya.sosmed.AddSosmedMahasiswaActivity
-import com.azwar.uinamfind.ui.saya.sosmed.ListSosmedMahasiswaActivity
+import com.azwar.uinamfind.ui.sosmed.AddSosmedMahasiswaActivity
+import com.azwar.uinamfind.ui.sosmed.ListSosmedMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -113,10 +112,12 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         //Sosmed
         sayaBinding.imgAddSosmed.setOnClickListener {
             val intent = Intent(context, AddSosmedMahasiswaActivity::class.java)
+            intent.putExtra("kategori", "Mahasiswa")
             startActivity(intent)
         }
         sayaBinding.imgEditSosmed.setOnClickListener {
             val intent = Intent(context, ListSosmedMahasiswaActivity::class.java)
+            intent.putExtra("kategori", "Mahasiswa")
             startActivity(intent)
         }
 

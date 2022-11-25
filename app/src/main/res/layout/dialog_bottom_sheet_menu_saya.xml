@@ -82,38 +82,38 @@
 
     </LinearLayout>
 
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/ll_simpan_card_dialog"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/ll_edit_profil_dialog"-->
-    <!--        android:layout_marginHorizontal="16dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:gravity="center_vertical"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:paddingVertical="5dp">-->
+    <LinearLayout
+        android:id="@+id/ll_cv_online"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_edit_profil_dialog"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp">
 
-    <!--        <ImageView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:src="@drawable/ic_baseline_contact_emergency_24"-->
-    <!--            app:tint="@color/grey" />-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_contact_emergency_24"
+            app:tint="@color/grey" />
 
-    <!--        <TextView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginHorizontal="16dp"-->
-    <!--            android:text="Unduh Card Profil"-->
-    <!--            android:textColor="@color/grey"-->
-    <!--            android:textStyle="bold" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="Lihat CV online saya"
+            android:textColor="@color/grey"
+            android:textStyle="bold" />
 
-    <!--    </LinearLayout>-->
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_share_profile_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_edit_profil_dialog"
+        android:layout_below="@id/ll_cv_online"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical"

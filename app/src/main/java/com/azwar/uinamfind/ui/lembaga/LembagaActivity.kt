@@ -48,7 +48,7 @@ class LembagaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
     private fun initData() {
 
         val listLembaga = arrayOf(
-            "Universitas", "Syariah dan Hukum", "Tarbiah dan Keguruan",
+            "Universitas", "Syariah dan Hukum", "Tarbiyah dan Keguruan",
             "Ushuluddin dan Filsafat", "Adab dan Humaniora", "Dakwah dan Komunikasi",
             "Sains dan Teknologi", "Kedokteran dan Ilmu Kesehatan", "Ekonomi dan Bisnis"
         )

@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.azwar.uinamfind.data.models.Sosmed
-import com.azwar.uinamfind.databinding.ItemPengalamanMahasiswaEditBinding
 import com.azwar.uinamfind.databinding.ItemSosmedBinding
-import com.azwar.uinamfind.ui.saya.pengalaman.EditPengalamanMahasiswaActivity
-import com.azwar.uinamfind.ui.saya.sosmed.EditSosmedMahasiswaActivity
+import com.azwar.uinamfind.ui.sosmed.EditSosmedMahasiswaActivity
 
 class ListSosmedMahasiswaAdapter(private var list: List<Sosmed>) :
     RecyclerView.Adapter<ListSosmedMahasiswaAdapter.MyHolderView>() {

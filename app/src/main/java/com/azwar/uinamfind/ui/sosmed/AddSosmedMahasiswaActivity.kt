@@ -1,4 +1,4 @@
-package com.azwar.uinamfind.ui.saya.sosmed
+package com.azwar.uinamfind.ui.sosmed
 
 import android.R
 import android.graphics.Color
@@ -21,6 +21,7 @@ class AddSosmedMahasiswaActivity : AppCompatActivity() {
     private lateinit var sharedPref: PreferencesHelper
     private var id: String = ""
     private var nama_sosmed: String = ""
+    private var kategori: String = ""
 
     private lateinit var binding: ActivityAddSosmedMahasiswaBinding
 
@@ -30,6 +31,17 @@ class AddSosmedMahasiswaActivity : AppCompatActivity() {
         setContentView(binding.root)
         sharedPref = PreferencesHelper(this)
         id = sharedPref.getString(Constanta.ID_USER).toString()
+        kategori = intent.getStringExtra("kategori").toString()
+        if (kategori.equals("Lembaga")) {
+            id = intent.getStringExtra("id").toString()
+        } else if (kategori.equals("Organisasi")) {
+            id = intent.getStringExtra("id").toString()
+        } else if (kategori.equals("UKM")) {
+            id = intent.getStringExtra("id").toString()
+        } else if (kategori.equals("Mahasiswa")) {
+            id = sharedPref.getString(Constanta.ID_USER).toString()
+        }
+
         setupSpinner()
 
         binding.imgBack.setOnClickListener { finish() }
@@ -45,7 +57,6 @@ class AddSosmedMahasiswaActivity : AppCompatActivity() {
         if (url_sosmed.isEmpty()) {
             binding.etUrlSosmed.error = "Lengkapi"
         } else {
-            var kategori = "Mahasiswa"
             startAddData(nama_sosmed, kategori, id, url_sosmed.toString())
         }
     }

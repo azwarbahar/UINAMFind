@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.LembagaKampus
 import com.azwar.uinamfind.databinding.ItemLembagaBinding
 import com.azwar.uinamfind.ui.lembaga.DetailLembagaActivity
@@ -22,13 +23,13 @@ class LembagaAdapter(private val list: List<LembagaKampus>) :
                 binding.tvNamaLembaga.setText(get.nama)
 
                 val foto = get.foto.toString()
-                if (foto.equals("-") || foto.equals("null")) {
+                if (foto.equals("") || foto.equals("null")) {
                 } else {
                     Glide.with(this)
-                        .load(Constanta.URL_PHOTO + "" + foto)
+                        .load(BuildConfig.BASE_URL + "upload/photo/" + foto)
                         .into(binding.imgPhotoItemLembaga)
                     Glide.with(this)
-                        .load(foto)
+                        .load(BuildConfig.BASE_URL + "upload/photo/" +foto)
                         .into(binding.imgHeaderItemLembaga)
                 }
                 itemView.setOnClickListener {

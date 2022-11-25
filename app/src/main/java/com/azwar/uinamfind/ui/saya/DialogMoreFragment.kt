@@ -3,6 +3,7 @@ package com.azwar.uinamfind.ui.saya
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
@@ -49,7 +50,7 @@ class DialogMoreFragment() : BottomSheetDialogFragment() {
 //        val cv_card_mahasiswa = view.cv_card_mahasiswa
         val pengaturan = view.ll_pengaturan_dialog
         val edit = view.ll_edit_profil_dialog
-//        val unduh_card = view.ll_simpan_card_dialog
+        val cv_online = view.ll_cv_online
         val bagikan = view.ll_share_profile_dialog
 
 //        onChooseReasonListener = (parentFragment as OnChooseReasonListener?)!!
@@ -92,11 +93,21 @@ class DialogMoreFragment() : BottomSheetDialogFragment() {
             intent.action = Intent.ACTION_SEND
             intent.putExtra(
                 Intent.EXTRA_TEXT, "Hi, Cek profil saya di UINAM Find dengan Link :\n" +
-                        "https://uinamfind.com/" + username + "\n\nDownload Aplikasi UINAMFind : http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "/"
+                        "https://uinamfind.com/" + username + "\n\n\nDownload Aplikasi UINAMFind : http://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "/"
             )
             intent.type = "text/plain"
             startActivity(Intent.createChooser(intent, null))
         }
+
+        cv_online.setOnClickListener {
+            val defaultBrowser = Intent.makeMainSelectorActivity(
+                Intent.ACTION_MAIN,
+                Intent.CATEGORY_APP_BROWSER
+            )
+            defaultBrowser.data = Uri.parse("https://uinamfind.com/$username")
+            startActivity(defaultBrowser)
+        }
+
         loadDataSaya(id)
         return view
     }
