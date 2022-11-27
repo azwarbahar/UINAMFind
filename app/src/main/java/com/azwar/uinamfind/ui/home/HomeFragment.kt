@@ -18,6 +18,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.ui.beasiswa.BeasiswaActivity
+import com.azwar.uinamfind.ui.chat.ChatActivity
 import com.azwar.uinamfind.ui.home.adapter.BeasiswaTerbaruAdapter
 import com.azwar.uinamfind.ui.home.adapter.CardMahasiswaAdapter
 import com.azwar.uinamfind.ui.home.adapter.LokerHomeAdapter
@@ -108,6 +109,11 @@ class HomeFragment : Fragment() {
         homeBinding.rlBeasiswaBottomSheetMenuHome.setOnClickListener {
             bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
             val intent = Intent(context, BeasiswaActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.rlPesan.setOnClickListener {
+            val intent = Intent(context, ChatActivity::class.java)
             startActivity(intent)
         }
 

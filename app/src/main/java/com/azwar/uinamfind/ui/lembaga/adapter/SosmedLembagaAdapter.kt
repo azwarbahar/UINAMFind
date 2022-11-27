@@ -28,7 +28,7 @@ class SosmedLembagaAdapter(private val list: List<Sosmed>) :
                     setImageSosmed(nama, link_sosmed, 0, itemView)
                 } else if (nama.equals("Instagram")) {
                     setImageSosmed(nama, link_sosmed, 1, itemView)
-                } else if (nama.equals("WhatsApp")) {
+                } else if (nama.equals("Whatsapp")) {
                     setImageSosmed(nama, link_sosmed, 2, itemView)
                 } else if (nama.equals("Twitter")) {
                     setImageSosmed(nama, link_sosmed, 3, itemView)

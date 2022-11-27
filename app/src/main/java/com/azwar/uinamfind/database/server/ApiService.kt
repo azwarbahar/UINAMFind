@@ -9,6 +9,27 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    // CHATTING
+    @GET("chatting/getRoomChat.php")
+    fun getRoomChat(
+        @Query("from_user") from_user: String?
+    ): Call<Responses.ResponseChatting>?
+
+    @GET("chatting/getChat.php")
+    fun getChat(
+        @Query("from_user") from_user: String?,
+        @Query("to_user") to_user: String?
+    ): Call<Responses.ResponseChatting>?
+
+    @FormUrlEncoded
+    @POST("chatting/addChat.php")
+    fun addChat(
+        @Field("pesan") pesan: String?,
+        @Field("from_user") from_user: String?,
+        @Field("to_user") to_user: String?,
+        @Field("tipe_chat") tipe_chat: String?
+    ): Call<Responses.ResponseChatting>?
+
     // FOTO
     @GET("foto/getFoto.php")
     fun getFoto(
@@ -29,10 +50,60 @@ interface ApiService {
     @GET("organisasi/getOrganisasi.php")
     fun getOrganisasi(): Call<Responses.ResponseOrganisasi>?
 
+    @GET("organisasi/getOrganisasiId.php")
+    fun getOrganisasiId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseOrganisasi>?
+
+    @FormUrlEncoded
+    @POST("organisasi/updateOrganisasi.php")
+    fun updateOrganisasi(
+        @Field("id") id: String?,
+        @Field("nama_organisasi") nama_organisasi: String?,
+        @Field("kategori") kategori: String?,
+        @Field("tahun_berdiri") tahun_berdiri: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("kontak") kontak: String?,
+        @Field("email") email: String?,
+        @Field("alamat") alamat: String?
+    ): Call<Responses.ResponseOrganisasi>?
+
+    @Multipart
+    @POST("organisasi/updatePhotoOrganisasi.php")
+    fun updatePhotoOrganisasi(
+        @Part("id") id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponseOrganisasi>?
+
 
     // UKM
     @GET("ukm/getUkm.php")
-    fun getUkm(): Call<Responses.ResponseOrganisasi>?
+    fun getUkm(): Call<Responses.ResponseUkm>?
+
+    @GET("ukm/getUkmId.php")
+    fun getUkmId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseUkm>?
+
+    @Multipart
+    @POST("ukm/updatePhotoUkm.php")
+    fun updatePhotoUkm(
+        @Part("id") id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponseUkm>?
+
+    @FormUrlEncoded
+    @POST("ukm/updateUkm.php")
+    fun updateUkm(
+        @Field("id") id: String?,
+        @Field("nama_ukm") nama_ukm: String?,
+        @Field("kategori") kategori: String?,
+        @Field("tahun_berdiri") tahun_berdiri: String?,
+        @Field("deskripsi") deskripsi: String?,
+        @Field("kontak") kontak: String?,
+        @Field("email") email: String?,
+        @Field("alamat") alamat: String?
+    ): Call<Responses.ResponseUkm>?
 
 
     // KEGIATAN
@@ -53,7 +124,6 @@ interface ApiService {
         @Part("tanggal") tanggal: RequestBody?,
         @Part("from_id") from_id: RequestBody?
     ): Call<Responses.ResponseKegiatan>?
-
 
 
     // SOSMED
@@ -124,7 +194,6 @@ interface ApiService {
         @Part("id") id: RequestBody?,
         @Part foto: MultipartBody.Part?
     ): Call<Responses.ResponseLembaga>?
-
 
 
     // LAMARAN

@@ -20,8 +20,10 @@ import com.azwar.uinamfind.ui.kegiatan.AddKegiatanActivity
 import com.azwar.uinamfind.ui.kegiatan.adapter.KegiatanGridAdapter
 import com.azwar.uinamfind.ui.lembaga.EditLembagaActivity
 import com.azwar.uinamfind.ui.lembaga.adapter.SosmedLembagaAdapter
+import com.azwar.uinamfind.ui.organisasi.EditOrganisasiActivity
 import com.azwar.uinamfind.ui.sosmed.AddSosmedMahasiswaActivity
 import com.azwar.uinamfind.ui.sosmed.ListSosmedMahasiswaActivity
+import com.azwar.uinamfind.ui.ukm.EditUkmActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.MyTextViewDesc
 import com.bumptech.glide.Glide
@@ -35,8 +37,8 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     private lateinit var sharedPref: PreferencesHelper
     private var _binding: FragmentTentangLembagaBinding? = null
     private val binding get() = _binding!!
-    private var id:String = ""
-    private var role:String = ""
+    private var id: String = ""
+    private var role: String = ""
 
     private lateinit var user: User
 
@@ -139,11 +141,20 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         }
 
         binding.imgEditInfo.setOnClickListener {
-            val intent = Intent(context, EditLembagaActivity::class.java)
-            intent.putExtra("lembaga", lembaga)
-            startActivity(intent)
+            if (kategori_objek.equals("Lembaga")) {
+                val intent = Intent(context, EditLembagaActivity::class.java)
+                intent.putExtra("lembaga", lembaga)
+                startActivity(intent)
+            } else if (kategori_objek.equals("Organisasi")) {
+                val intent = Intent(context, EditOrganisasiActivity::class.java)
+                intent.putExtra("organisasi", organisasi)
+                startActivity(intent)
+            } else if (kategori_objek.equals("UKM")) {
+                val intent = Intent(context, EditUkmActivity::class.java)
+                intent.putExtra("ukm", ukm)
+                startActivity(intent)
+            }
         }
-
 
         return view
     }
@@ -266,6 +277,46 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
 //                    }
         }
 
+
+        binding.llKategori.visibility = View.VISIBLE
+
+
+        var kategori = organisasi.kategori.toString()
+        if (kategori.equals("") || kategori.equals("null")) {
+            binding.tvTahunBerdiri.setText("-")
+        } else {
+            binding.tvTahunBerdiri.setText(kategori)
+        }
+
+
+        var thn_berdiri = organisasi.tahun_berdiri.toString()
+        if (thn_berdiri.equals("") || thn_berdiri.equals("null")) {
+            binding.tvTahunBerdiri.setText("-")
+        } else {
+            binding.tvTahunBerdiri.setText(thn_berdiri)
+        }
+
+        var kontak = organisasi.kontak.toString()
+        if (kontak.equals("") || kontak.equals("null")) {
+            binding.tvKontak.setText("-")
+        } else {
+            binding.tvKontak.setText(kontak)
+        }
+
+        var email = organisasi.email.toString()
+        if (email.equals("") || email.equals("null")) {
+            binding.tvEmail.setText("-")
+        } else {
+            binding.tvEmail.setText(email)
+        }
+
+        var alamat = organisasi.alamat.toString()
+        if (alamat.equals("") || alamat.equals("null")) {
+            binding.tvAlamat.setText("-")
+        } else {
+            binding.tvAlamat.setText(alamat)
+        }
+
         val id = organisasi.id
         if (kategori_objek != null) {
             setSosmed(id, kategori_objek)
@@ -302,21 +353,64 @@ class TentangLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         }
 
 
-//        var deskripsi = ukm.deskripsi
-//        var tv_desc = binding.tvDeskripsiLembaga
-//        if (deskripsi.equals("-") || deskripsi == null) {
-//            tv_desc.text = deskripsi
-//        } else {
-//            tv_desc.text = deskripsi
-////                    if (binding.tvDescItemPengalamanMahasiswa.lineCount > 2) {
-//            val myTextViewDesc = MyTextViewDesc()
-//            myTextViewDesc.makeTextViewResizable(tv_desc, 5, ".. Lihat lengkap", true)
-////                    }
-//        }
-//
-//        val id = organisasi.id
-//        setSosmed(id, "Organisasi")
-//        setKegiatan(id, "Organisasi")
+        var deskripsi = ukm.deskripsi.toString()
+        var tv_desc = binding.tvDeskripsiLembaga
+        if (deskripsi.equals("-") || deskripsi.equals("null")) {
+            tv_desc.text = deskripsi
+        } else {
+            tv_desc.text = deskripsi
+//                    if (binding.tvDescItemPengalamanMahasiswa.lineCount > 2) {
+            val myTextViewDesc = MyTextViewDesc()
+            myTextViewDesc.makeTextViewResizable(tv_desc, 2, ".. Lihat lengkap", true)
+//                    }
+        }
+
+
+        binding.llKategori.visibility = View.VISIBLE
+
+
+        var kategori = ukm.kategori.toString()
+        if (kategori.equals("") || kategori.equals("null")) {
+            binding.tvTahunBerdiri.setText("-")
+        } else {
+            binding.tvTahunBerdiri.setText(kategori)
+        }
+
+
+        var thn_berdiri = ukm.tahun_berdiri.toString()
+        if (thn_berdiri.equals("") || thn_berdiri.equals("null")) {
+            binding.tvTahunBerdiri.setText("-")
+        } else {
+            binding.tvTahunBerdiri.setText(thn_berdiri)
+        }
+
+        var kontak = ukm.kontak.toString()
+        if (kontak.equals("") || kontak.equals("null")) {
+            binding.tvKontak.setText("-")
+        } else {
+            binding.tvKontak.setText(kontak)
+        }
+
+        var email = ukm.email.toString()
+        if (email.equals("") || email.equals("null")) {
+            binding.tvEmail.setText("-")
+        } else {
+            binding.tvEmail.setText(email)
+        }
+
+        var alamat = ukm.alamat.toString()
+        if (alamat.equals("") || alamat.equals("null")) {
+            binding.tvAlamat.setText("-")
+        } else {
+            binding.tvAlamat.setText(alamat)
+        }
+
+        val id = ukm.id
+        if (kategori_objek != null) {
+            setSosmed(id, kategori_objek)
+            setKegiatan(id, kategori_objek)
+        }
+
     }
 
     private fun loadUser(userId: String?) {

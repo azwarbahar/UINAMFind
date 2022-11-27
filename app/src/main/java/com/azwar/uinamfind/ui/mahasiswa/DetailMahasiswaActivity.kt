@@ -1,6 +1,7 @@
 package com.azwar.uinamfind.ui.mahasiswa
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.graphics.Color
@@ -19,14 +20,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.R
+import com.azwar.uinamfind.data.models.Sosmed
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
+import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityDetailMahasiswaBinding
+import com.azwar.uinamfind.ui.chat.RoomChatActivity
+import com.azwar.uinamfind.ui.lembaga.adapter.SosmedLembagaAdapter
+import com.azwar.uinamfind.ui.saya.DialogMoreFragment
 import com.azwar.uinamfind.ui.saya.adapter.KeahlianMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.PendidikanMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.PengalamanMahasiswaAdapter
+import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import com.bumptech.glide.Glide
 import retrofit2.Call
@@ -41,15 +48,22 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
 
     private lateinit var binding: ActivityDetailMahasiswaBinding
 
+    private lateinit var sharedPref: PreferencesHelper
+
     // adapter
     private lateinit var organisasiMahasiswaAdapter: OrganisasiMahasiswaAdapter
     private lateinit var pengalamanMahasiswaAdapter: PengalamanMahasiswaAdapter
     private lateinit var keahlianMahasiswaAdapter: KeahlianMahasiswaAdapter
     private lateinit var pendidikanMahasiswaAdapter: PendidikanMahasiswaAdapter
+    private lateinit var sosmedLembagaAdapter: SosmedLembagaAdapter
+
+    private lateinit var sosmedList: List<Sosmed>
 
     private lateinit var swipe_detail: SwipeRefreshLayout
 
     private lateinit var mahasiswa: User
+
+    private var user_id: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,8 +71,10 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         binding = ActivityDetailMahasiswaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPref = PreferencesHelper(this)
+
+
         mahasiswa = intent.getParcelableExtra("mahasiswa")!!
-        initData(mahasiswa)
 
         binding.cvCardDetailMahasiswa.setOnClickListener {
             binding.cvCardDetailMahasiswa.setDrawingCacheEnabled(true)
@@ -77,12 +93,28 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
             android.R.color.holo_orange_dark,
             android.R.color.holo_green_dark
         )
+        swipe_detail.post(Runnable {
+            initData(mahasiswa)
+        })
+
+        binding.imgMoreDetailMahasiswa.setOnClickListener {
+            showDialogMore()
+        }
+
+        binding.rlKirimPesanDetailMahasiswa.setOnClickListener {
+            val intent_room_chat = Intent(this, RoomChatActivity::class.java)
+            intent_room_chat.putExtra("mahasiswa", mahasiswa)
+            startActivity(intent_room_chat)
+        }
 
         binding.imgBackDetailMahasiswa.setOnClickListener { finish() }
 
     }
 
     private fun initData(user: User) {
+
+        user_id = user.id.toString()
+        sharedPref.put(Constanta.USER_ID_DETAIL, user_id)
 
         val lable = user.status_kemahasiswaan
         if (lable.equals("Lulus")) {
@@ -166,6 +198,41 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         loadDataPengalaman(user.id.toString())
         loadDataKeahlian(user.id.toString())
         loadDataPendidikan(user.id.toString())
+        setSosmed(user.id.toString(), "Mahasiswa")
+
+    }
+
+    private fun showDialogMore() {
+        var dialogMoreMahasiswaFragment = DialogMoreMahasiswaFragment()
+        dialogMoreMahasiswaFragment.show(this.getSupportFragmentManager(), "")
+    }
+
+    private fun setSosmed(id: String?, kategori: String) {
+
+        ApiClient.instances.getSosmedKategori(id, kategori)?.enqueue(object :
+            Callback<Responses.ResponseSosmed> {
+            override fun onResponse(
+                call: Call<Responses.ResponseSosmed>,
+                response: Response<Responses.ResponseSosmed>
+            ) {
+                if (response.isSuccessful) {
+                    sosmedList = response.body()?.sosmed_data!!
+                    val rv_sosmed = binding.rvSosmed
+                    rv_sosmed.layoutManager =
+                        LinearLayoutManager(this@DetailMahasiswaActivity, LinearLayoutManager.HORIZONTAL, false)
+                    sosmedLembagaAdapter = SosmedLembagaAdapter(sosmedList)
+                    rv_sosmed.adapter = sosmedLembagaAdapter
+                } else {
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<Responses.ResponseSosmed>, t: Throwable) {
+
+            }
+
+        })
 
     }
 

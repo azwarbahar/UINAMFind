@@ -4,6 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Organisasi(
+    val kontak: String?,
+    val email: String?,
+    val alamat: String?,
     val admin: String?,
     val created_at: String?,
     val deskripsi: String?,
@@ -29,11 +32,17 @@ data class Organisasi(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(kontak)
+        parcel.writeString(email)
+        parcel.writeString(alamat)
         parcel.writeString(admin)
         parcel.writeString(created_at)
         parcel.writeString(deskripsi)

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/ukm_cover" />
+        android:src="@drawable/lembaga_default" />
 
     <View
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
         android:maxLines="2"
         android:text="Seni Budaya eSA"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

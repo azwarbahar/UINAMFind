@@ -105,12 +105,16 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
         binding.imgChat.setOnClickListener {
             if (role.equals("user")) {
                 if (!id.equals(user.id.toString())) {
+
                     val intent_room_chat = Intent(context, RoomChatActivity::class.java)
+                    intent_room_chat.putExtra("mahasiswa", user)
                     startActivity(intent_room_chat)
+//                    val intent_room_chat = Intent(context, RoomChatActivity::class.java)
+//                    startActivity(intent_room_chat)
                 }
             } else {
-                val intent_room_chat = Intent(context, RoomChatActivity::class.java)
-                startActivity(intent_room_chat)
+//                val intent_room_chat = Intent(context, RoomChatActivity::class.java)
+//                startActivity(intent_room_chat)
             }
         }
 
@@ -130,8 +134,8 @@ class AnggotaLembagaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener 
     }
 
     private fun setDataUkm(ukm: Ukm) {
-//        loadUser(organisasi.admin)
-//        loadAnggota("Organisasi", organisasi.id, organisasi.admin)
+        loadUser(ukm.admin.toString())
+        loadAnggota("UKM", ukm.id.toString(), ukm.admin.toString())
     }
 
     private fun loadAnggota(kategori: String, from_id: String?, user_id: String?) {

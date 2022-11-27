@@ -61,6 +61,7 @@ class OrganisasiActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshList
                 call: Call<Responses.ResponseOrganisasi>,
                 response: Response<Responses.ResponseOrganisasi>
             ) {
+                swipe_organisasi.isRefreshing = false
                 if (response.isSuccessful) {
                     listOrganisasi = response.body()?.organisasi_data!!
                     binding.rvOrganisasi.layoutManager =
@@ -74,7 +75,7 @@ class OrganisasiActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshList
             }
 
             override fun onFailure(call: Call<Responses.ResponseOrganisasi>, t: Throwable) {
-
+                swipe_organisasi.isRefreshing = false
             }
 
         })

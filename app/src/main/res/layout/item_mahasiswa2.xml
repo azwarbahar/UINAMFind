@@ -30,8 +30,8 @@
 
         <RelativeLayout
             android:id="@+id/rl_photo_item_mahasiswa2"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_below="@id/img_header_item_mahasiswa2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="-40dp"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                app:cardCornerRadius="35dp">
+                app:cardCornerRadius="40dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"

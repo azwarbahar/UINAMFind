@@ -30,6 +30,15 @@ class Responses {
         val organisasi: Int?
     )
 
+    data class ResponseChatting(
+        val `room_data`: List<RoomChat>?,
+        val `result_room`: RoomChat?,
+        val `chat_data`: List<Chatting>?,
+        val `result_chat`: Chatting?,
+        val kode: String?,
+        val pesan: String?
+    )
+
     data class ResponseMahasiswa(
         val `mahasiswa_data`: List<User>?,
         val `result_mahasiswa`: User?,

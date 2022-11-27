@@ -51,7 +51,6 @@ class LamaranSayaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshLis
         )
         swipe_refresh.post(Runnable {
             loadLamaran()
-
         })
 
     }

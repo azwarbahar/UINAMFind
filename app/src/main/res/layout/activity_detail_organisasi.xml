@@ -7,7 +7,6 @@
     android:background="@color/colorBackgroundActivity"
     tools:context=".ui.organisasi.DetailOrganisasiActivity">
 
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/continer_organisasi_detail"
         android:layout_width="match_parent"

@@ -67,7 +67,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tidak ada Informasi"
+                        android:text="Tidak ada lamaran"
                         android:textColor="@color/grey_hint"
                         android:textSize="16sp"
                         android:textStyle="bold" />

@@ -79,6 +79,7 @@ class MahasiswaGridAdapter(private val list: List<User>) :
 
                 binding.tvPesanItemMahasiswa2.setOnClickListener {
                     val intent_room_chat = Intent(context, RoomChatActivity::class.java)
+                    intent_room_chat.putExtra("mahasiswa", get)
                     context.startActivity(intent_room_chat)
                 }
 

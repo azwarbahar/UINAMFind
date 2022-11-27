@@ -69,6 +69,7 @@ class MahasiswaHorizontalAdapter(private val list: List<User>) :
 
                 itemMahasiswa1Binding.rlPesanItemMahasiswa.setOnClickListener {
                     val intent_room_chat = Intent(context, RoomChatActivity::class.java)
+                    intent_room_chat.putExtra("mahasiswa", get)
                     context.startActivity(intent_room_chat)
                 }
 

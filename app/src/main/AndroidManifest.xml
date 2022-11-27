@@ -16,6 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.ukm.EditUkmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.organisasi.EditOrganisasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.kegiatan.AddKegiatanActivity"
             android:exported="false" />
         <activity

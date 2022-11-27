@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:hint="Lengkapi"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textStyle="bold" />

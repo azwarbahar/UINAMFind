@@ -7,4 +7,70 @@
     android:background="@color/colorBackgroundActivity"
     tools:context=".ui.chat.RoomChatActivity">
 
+    <RelativeLayout
+        android:id="@+id/rl_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:tint="@color/white" />
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_img_photo"
+            android:layout_width="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/img_back"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circle_primary_trans_10">
+
+                <ImageView
+                    android:id="@+id/img_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_man_photo_default" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_userame"
+            android:paddingVertical="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="16dp"
+            android:layout_toRightOf="@id/cv_img_photo"
+            android:text="Username"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <com.fasilthottathil.simplechatview.widget.SimpleChatView
+        android:id="@+id/continer_chat"
+        android:layout_width="match_parent"
+        app:hint="Ketik pesan.."
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_toolbar"
+        app:sendButtonColor="@color/colorPrimary" />
+
+
 </RelativeLayout>

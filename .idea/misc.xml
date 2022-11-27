@@ -11,23 +11,29 @@
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_add_pengalaman_mahasiswa.xml" value="0.20677083333333332" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_add_sosmed_mahasiswa.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_beasiswa.xml" value="0.22" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_chat.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_daftar_tamu.xml" value="0.25" />
-        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_data_akun.xml" value="0.33" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_data_akun.xml" value="0.2" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_kegiatan.xml" value="0.16973065412569474" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_lamaran_recruiter.xml" value="0.33" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_lembaga.xml" value="0.13697916666666668" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_loker.xml" value="0.18" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_magang.xml" value="0.20677083333333332" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_mahasiswa.xml" value="0.16973065412569474" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_organisasi.xml" value="0.12954253954681488" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_postingan_loker.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_detail_ukm.xml" value="0.12954253954681488" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_keahlian_mahasiswa.xml" value="0.16973065412569474" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_lembaga.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_loker.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_organisasi.xml" value="0.33" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_organisasi_mahasiswa.xml" value="0.13697916666666668" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_pengalaman_mahasiswa.xml" value="0.20677083333333332" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_perusahaan.xml" value="0.2" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_profil_mahasiswa.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_profil_recruiter.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_sosmed_mahasiswa.xml" value="0.22" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_edit_ukm.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_lamar_loker.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_lamaran_saya.xml" value="0.2" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_lembaga.xml" value="0.20677083333333332" />
@@ -45,11 +51,13 @@
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_organisasi.xml" value="0.20677083333333332" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_pengaturan.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_pengaturan_recruiter.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_room_chat.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_tambah_loker.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_tambah_perusahaan.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_ubah_password.xml" value="0.20677083333333332" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_ubah_password_recruiter.xml" value="0.20677083333333332" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/activity_ukm.xml" value="0.20677083333333332" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/dialog_bottom_sheet_menu_mahasiswa.xml" value="0.16973065412569474" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/dialog_bottom_sheet_menu_saya.xml" value="0.16973065412569474" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_akun.xml" value="0.18" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/fragment_anggota_lembaga.xml" value="0.16" />
@@ -60,7 +68,8 @@
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_anggota.xml" value="0.1" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_beasiswa.xml" value="0.67" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_beasiswa_terbaru_home.xml" value="0.33" />
-        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_card_mahasiswa.xml" value="0.20677083333333332" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_card_mahasiswa.xml" value="0.22" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_chatting.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_icon_sosmed.xml" value="0.16973065412569474" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_informasi.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_keahlian_mahasiswa_edit.xml" value="0.16973065412569474" />
@@ -72,10 +81,12 @@
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_loker_recruiter.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_magang_terbaru.xml" value="0.22" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_mahasiswa1.xml" value="0.20677083333333332" />
-        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_mahasiswa2.xml" value="0.20677083333333332" />
-        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_organisasi.xml" value="0.22" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_mahasiswa2.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_organisasi.xml" value="0.25" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_organisasi_mahasiswa.xml" value="0.18958333333333333" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_pengalaman.xml" value="0.16973065412569474" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_sosmed.xml" value="0.25" />
+        <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/layout/item_ukm.xml" value="0.12954253954681488" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/menu/bottom_nav_menu.xml" value="0.203125" />
         <entry key="..\:/ProjectAndroidStudio/UINAMFind/app/src/main/res/menu/bottom_nav_menu_recruiter.xml" value="0.203125" />
         <entry key="..\:/Users/Hilda/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/select_dialog_item.xml" value="0.17222222222222222" />

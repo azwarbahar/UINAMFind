@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.Organisasi
 import com.azwar.uinamfind.databinding.ItemOrganisasiBinding
 import com.azwar.uinamfind.ui.organisasi.DetailOrganisasiActivity
@@ -21,10 +22,10 @@ class OrganisasiAdapter(private var list: List<Organisasi>) :
                 binding.tvJenisItemOrganisasi.setText(get.kategori)
 
                 val foto = get.foto.toString()
-                if (foto.equals("-") || foto.equals("null")) {
+                if (foto.equals("") || foto.equals("null")) {
                 } else {
                     Glide.with(this)
-                        .load(foto)
+                        .load(BuildConfig.BASE_URL + "upload/photo/" + foto)
                         .into(binding.imgPhotoItemOrganisasi)
                 }
 
