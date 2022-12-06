@@ -27,6 +27,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentSayaBinding
+import com.azwar.uinamfind.ui.ShowPhotoActivity
 import com.azwar.uinamfind.ui.lembaga.adapter.SosmedLembagaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.KeahlianMahasiswaAdapter
 import com.azwar.uinamfind.ui.saya.adapter.OrganisasiMahasiswaAdapter
@@ -40,9 +41,9 @@ import com.azwar.uinamfind.ui.saya.pendidikan.AddPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pendidikan.ListPendidikanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.AddPengalamanMahasiswaActivity
 import com.azwar.uinamfind.ui.saya.pengalaman.ListPengalamanMahasiswaActivity
+import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.ui.sosmed.AddSosmedMahasiswaActivity
 import com.azwar.uinamfind.ui.sosmed.ListSosmedMahasiswaActivity
-import com.azwar.uinamfind.ui.saya.tentang.EditTentangMahasiswaActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.azwar.uinamfind.utils.ui.DividerItemDecorator
 import com.bumptech.glide.Glide
@@ -81,6 +82,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private var id: String = ""
     private var tentang_user: String = ""
+    private var username: String = ""
 
     private lateinit var dialogProgress: SweetAlertDialog
 
@@ -234,6 +236,20 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             dialog.show()
         }
 
+        sayaBinding.imgCloseLihatCv.setOnClickListener {
+            sayaBinding.llLihatCvOnline.visibility = View.GONE
+        }
+
+        sayaBinding.llLihatCvOnline.setOnClickListener {
+
+            val defaultBrowser = Intent.makeMainSelectorActivity(
+                Intent.ACTION_MAIN,
+                Intent.CATEGORY_APP_BROWSER
+            )
+            defaultBrowser.data = Uri.parse("https://uinamfind.com/$username")
+            startActivity(defaultBrowser)
+        }
+
         return sayaBinding.root
     }
 
@@ -268,6 +284,22 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun openPreviewImage(s: String) {
 
+        var foto = user.foto
+        var header = user.foto_sampul
+        if (s.equals("Profil")) {
+            var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + foto
+
+            val intent = Intent(context, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        } else {
+            var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + header
+
+            val intent = Intent(context, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        }
+
     }
 
     private fun openImagePicker(s: Int) {
@@ -275,15 +307,15 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             ImagePicker.with(this)
                 .galleryOnly()
                 .crop()
-                .compress(1024)
-                .maxResultSize(620, 620)
+                .compress(2048)
+                .maxResultSize(1000, 1000)
                 .start(HEADER_IMAGE_REQ_CODE)
         } else {
             ImagePicker.with(this)
                 .galleryOnly()
                 .cropSquare()
-                .compress(1024)
-                .maxResultSize(620, 620)
+                .compress(2048)
+                .maxResultSize(1000, 1000)
                 .start(PROFILE_IMAGE_REQ_CODE)
         }
     }
@@ -597,7 +629,7 @@ class SayaFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         // username
         var text_username = sayaBinding.tvToolbarSaya
-        var username = user.username
+        username = user.username.toString()
         if (username == null) {
             text_username.text = nim
         } else {

@@ -12,6 +12,7 @@ class Responses {
     )
 
     data class LoginRecruiterResponse(
+        val `recruiter_data`: List<Recruiter>,
         val `data`: Recruiter,
         val `result_recruiter`: Recruiter,
         val kode: String,
@@ -28,6 +29,18 @@ class Responses {
         val keahlian: Int?,
         val pengalaman: Int?,
         val organisasi: Int?
+    )
+
+    data class ResponseSearch(
+        val `search_mahasiswa_data`: List<SearchMahasiswa>?,
+        val `search_loker_data`: List<Loker>?,
+        val `search_beasiswa_data`: List<Beasiswa>?,
+        val `search_magang_data`: List<Magang>?,
+        val `search_lembaga_data`: List<LembagaKampus>?,
+        val `search_ukm_data`: List<Ukm>?,
+        val `search_organisasi_data`: List<Organisasi>?,
+        val kode: String?,
+        val pesan: String?
     )
 
     data class ResponseChatting(
@@ -156,6 +169,13 @@ class Responses {
     data class ResponseUkm(
         val `ukm_data`: List<Ukm>?,
         val `result_ukm`: Ukm?,
+        val kode: String?,
+        val pesan: String?
+    )
+
+    data class ResponseMarket(
+        val `market_data`: List<Market>?,
+        val `result_market`: Market?,
         val kode: String?,
         val pesan: String?
     )

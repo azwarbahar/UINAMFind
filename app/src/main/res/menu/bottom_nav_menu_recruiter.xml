@@ -16,10 +16,10 @@
     <!--        android:icon="@drawable/ic_menu_book"-->
     <!--        android:title="Bacaan" />-->
 
-    <item
-        android:id="@+id/tokoActivity"
-        android:icon="@drawable/ic_shop"
-        android:title="Market" />
+<!--    <item-->
+<!--        android:id="@+id/tokoActivity"-->
+<!--        android:icon="@drawable/ic_shop"-->
+<!--        android:title="Market" />-->
 
 
     <item

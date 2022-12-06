@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.TypedValue
@@ -26,6 +27,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityDetailMahasiswaBinding
+import com.azwar.uinamfind.ui.ShowPhotoActivity
 import com.azwar.uinamfind.ui.chat.RoomChatActivity
 import com.azwar.uinamfind.ui.lembaga.adapter.SosmedLembagaAdapter
 import com.azwar.uinamfind.ui.saya.DialogMoreFragment
@@ -64,6 +66,9 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
     private lateinit var mahasiswa: User
 
     private var user_id: String = ""
+    private var role: String = ""
+    private var id: String = ""
+    private var username: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,16 +77,18 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         setContentView(binding.root)
 
         sharedPref = PreferencesHelper(this)
+        id = sharedPref.getString(Constanta.ID_USER).toString()
+        role = sharedPref.getString(Constanta.ROLE).toString()
 
 
         mahasiswa = intent.getParcelableExtra("mahasiswa")!!
 
-        binding.cvCardDetailMahasiswa.setOnClickListener {
-            binding.cvCardDetailMahasiswa.setDrawingCacheEnabled(true)
-            val b: Bitmap = binding.cvCardDetailMahasiswa.getDrawingCache()
-            SaveImage(b)
-            b.compress(CompressFormat.JPEG, 100, FileOutputStream("/some/location/image.jpg"))
-        }
+//        binding.cvCardDetailMahasiswa.setOnClickListener {
+//            binding.cvCardDetailMahasiswa.setDrawingCacheEnabled(true)
+//            val b: Bitmap = binding.cvCardDetailMahasiswa.getDrawingCache()
+//            SaveImage(b)
+//            b.compress(CompressFormat.JPEG, 100, FileOutputStream("/some/location/image.jpg"))
+//        }
 
         binding.imgBaclLogoCard.alpha = 0.3f
 
@@ -102,12 +109,53 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
         }
 
         binding.rlKirimPesanDetailMahasiswa.setOnClickListener {
-            val intent_room_chat = Intent(this, RoomChatActivity::class.java)
-            intent_room_chat.putExtra("mahasiswa", mahasiswa)
-            startActivity(intent_room_chat)
+
+            if (role.equals("user")) {
+                if (id.equals(user_id)) {
+
+                } else {
+                    val intent_room_chat = Intent(this, RoomChatActivity::class.java)
+                    intent_room_chat.putExtra("mahasiswa", mahasiswa)
+                    startActivity(intent_room_chat)
+                }
+            } else {
+
+            }
+
         }
 
         binding.imgBackDetailMahasiswa.setOnClickListener { finish() }
+
+
+        binding.imgCloseLihatCv.setOnClickListener {
+            binding.llLihatCvOnline.visibility = View.GONE
+        }
+
+        binding.llLihatCvOnline.setOnClickListener {
+
+            val defaultBrowser = Intent.makeMainSelectorActivity(
+                Intent.ACTION_MAIN,
+                Intent.CATEGORY_APP_BROWSER
+            )
+            defaultBrowser.data = Uri.parse("https://uinamfind.com/$username")
+            startActivity(defaultBrowser)
+        }
+
+        binding.imgPhotoCardDetailMahasiswa.setOnClickListener {
+            var foto = mahasiswa.foto
+            var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + foto
+            val intent = Intent(this, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        }
+
+        binding.imgHeaderCardDetailMahasiswa.setOnClickListener {
+            var foto = mahasiswa.foto_sampul
+            var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + foto
+            val intent = Intent(this, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        }
 
     }
 
@@ -127,7 +175,7 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
 
         // username
         var text_username = binding.tvToolbarDetailMahasiswa
-        var username = user.username
+        username = user.username.toString()
         if (username == null) {
             text_username.text = nim
         } else {
@@ -219,7 +267,11 @@ class DetailMahasiswaActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefres
                     sosmedList = response.body()?.sosmed_data!!
                     val rv_sosmed = binding.rvSosmed
                     rv_sosmed.layoutManager =
-                        LinearLayoutManager(this@DetailMahasiswaActivity, LinearLayoutManager.HORIZONTAL, false)
+                        LinearLayoutManager(
+                            this@DetailMahasiswaActivity,
+                            LinearLayoutManager.HORIZONTAL,
+                            false
+                        )
                     sosmedLembagaAdapter = SosmedLembagaAdapter(sosmedList)
                     rv_sosmed.adapter = sosmedLembagaAdapter
                 } else {

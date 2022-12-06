@@ -11,6 +11,7 @@ import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityLoginMahasiswaBinding
 import com.azwar.uinamfind.ui.MainActivity
+import com.azwar.uinamfind.ui.bantuan.BantuanActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -54,6 +55,10 @@ class LoginMahasiswaActivity : AppCompatActivity() {
 //            startActivity(inten_main)
         }
 
+        loginMahasiswaBinding.tvBantuan.setOnClickListener {
+            val intent = Intent(this, BantuanActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -81,6 +86,7 @@ class LoginMahasiswaActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         if (kode.equals("1")) {
                             setLoginSuccess(role!!, data!!)
+                            updateStausUser(data)
                         } else {
 
                             SweetAlertDialog(
@@ -109,6 +115,11 @@ class LoginMahasiswaActivity : AppCompatActivity() {
                 }
 
             })
+
+    }
+
+    private fun updateStausUser(data: User) {
+
 
     }
 

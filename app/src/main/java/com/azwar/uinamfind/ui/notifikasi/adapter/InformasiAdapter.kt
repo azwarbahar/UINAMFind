@@ -1,10 +1,13 @@
 package com.azwar.uinamfind.ui.notifikasi.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.azwar.uinamfind.BuildConfig
 import com.azwar.uinamfind.data.models.Informasi
 import com.azwar.uinamfind.databinding.ItemInformasiBinding
+import com.azwar.uinamfind.ui.ShowPhotoActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
@@ -30,6 +33,14 @@ class InformasiAdapter(private var list: List<Informasi>) :
                 Glide.with(context)
                     .load(Constanta.URL_PHOTO + "informasi/" + get.gambar.toString())
                     .into(binding.imgInformasi)
+
+                binding.imgInformasi.setOnClickListener {
+
+                    var foto_intent = Constanta.URL_PHOTO + "informasi/" + get.gambar.toString()
+                    val intent = Intent(context, ShowPhotoActivity::class.java)
+                    intent.putExtra("foto", foto_intent)
+                    context.startActivity(intent)
+                }
 
             }
         }

@@ -237,11 +237,61 @@
 
                         </LinearLayout>
 
+                        <RelativeLayout
+                            android:id="@+id/ll_lihat_cv_online"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ll1_detail_mahasiswa"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/bg_primary_trans_corner_8"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="16dp">
+
+                            <ImageView
+                                android:id="@+id/img_lihat_cv1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_baseline_contact_emergency_24"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:id="@+id/tv_lihat_cv1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="12dp"
+                                android:layout_toRightOf="@id/img_lihat_cv1"
+                                android:text="CV Online Saya"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="12dp"
+                                android:layout_toRightOf="@id/tv_lihat_cv1"
+                                android:text="Lihat"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold|italic" />
+
+                            <ImageView
+                                android:id="@+id/img_close_lihat_cv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_baseline_close_24"
+                                app:tint="@color/grey_hint" />
+
+                        </RelativeLayout>
+
                         <LinearLayout
                             android:id="@+id/ll2_detail_mahasiswa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/ll1_detail_mahasiswa"
+                            android:layout_below="@id/ll_lihat_cv_online"
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginTop="16dp"
                             android:gravity="center_vertical"

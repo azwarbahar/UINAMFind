@@ -13,6 +13,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityLoginTamuBinding
+import com.azwar.uinamfind.ui.bantuan.BantuanActivity
 import com.azwar.uinamfind.utils.Constanta
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login_mahasiswa.*
@@ -58,6 +59,11 @@ class LoginTamuActivity : AppCompatActivity() {
         binding.rlBtnDaftarTamu.setOnClickListener {
             val inten_main = Intent(this, DaftarTamuActivity::class.java)
             startActivity(inten_main)
+        }
+
+        binding.tvBantuan.setOnClickListener {
+            val intent = Intent(this, BantuanActivity::class.java)
+            startActivity(intent)
         }
     }
 

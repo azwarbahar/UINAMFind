@@ -9,6 +9,42 @@ import retrofit2.http.*
 
 interface ApiService {
 
+    // SEARCH
+    @GET("pencarian/getMahasiswaQuery.php")
+    fun getMahasiswaQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
+    @GET("pencarian/getLokerQuery.php")
+    fun getLokerQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
+    @GET("pencarian/getBeasiswaQuery.php")
+    fun getBeasiswaQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
+    @GET("pencarian/getMagangQuery.php")
+    fun getMagangQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
+    @GET("pencarian/getLembagaQuery.php")
+    fun getLembagaQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
+    @GET("pencarian/getUkmQuery.php")
+    fun getUkmQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
+    @GET("pencarian/getOrganisasiQuery.php")
+    fun getOrganisasiQuery(
+        @Query("query") query: String?
+    ): Call<Responses.ResponseSearch>?
+
     // CHATTING
     @GET("chatting/getRoomChat.php")
     fun getRoomChat(
@@ -75,6 +111,41 @@ interface ApiService {
         @Part foto: MultipartBody.Part?
     ): Call<Responses.ResponseOrganisasi>?
 
+
+    // MARKET
+    @GET("market/getMarket.php")
+    fun getMarket(): Call<Responses.ResponseMarket>?
+
+    // MARKET Detail
+    @GET("market/getMarketDetail.php")
+    fun getMarketDetail(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMarket>?
+
+    // MARKET ID
+    @GET("market/getMarketId.php")
+    fun getMarketId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMarket>?
+
+    // MARKET PENJUAL
+    @GET("market/getMarketPenjualId.php")
+    fun getMarketPenjualId(
+        @Query("id") id: String?
+    ): Call<Responses.ResponseMarket>?
+
+    @Multipart
+    @POST("market/addMarket.php")
+    fun addMarket(
+        @Part("judul") judul: RequestBody?,
+        @Part("harga") harga: RequestBody?,
+        @Part("satuan") satuan: RequestBody?,
+        @Part("lokasi") lokasi: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part foto: MultipartBody.Part?,
+        @Part("nomor_wa") nomor_wa: RequestBody?,
+        @Part("penjual_id") penjual_id: RequestBody?
+    ): Call<Responses.ResponseMarket>?
 
     // UKM
     @GET("ukm/getUkm.php")
@@ -381,6 +452,29 @@ interface ApiService {
         @Part foto: MultipartBody.Part?
     ): Call<Responses.ResponsePerusahaan>?
 
+    // ADD PERUSAHAAN
+    @Multipart
+    @POST("perusahaan/addPerusahaan.php")
+    fun addPerusahaan(
+        @Part("nama") nama: RequestBody?,
+        @Part("url_profil") url_profil: RequestBody?,
+        @Part("industri") industri: RequestBody?,
+        @Part("ukuran_kariawan") ukuran_kariawan: RequestBody?,
+        @Part("telpon") telpon: RequestBody?,
+        @Part("email") email: RequestBody?,
+        @Part("tahun_berdiri") tahun_berdiri: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part("alamat") alamat: RequestBody?,
+        @Part("lokasi") lokasi: RequestBody?,
+        @Part("recruiter_id") recruiter_id: RequestBody?,
+        @Part foto: MultipartBody.Part?
+    ): Call<Responses.ResponsePerusahaan>?
+
+
+    @GET("checkPassword.php")
+    fun checkPassword(
+        @Query("id") id: String?
+    ): Call<Responses.LoginUserResponse>?
 
     @GET("login.php")
     fun login(
@@ -400,6 +494,21 @@ interface ApiService {
     fun getRecruiterId(
         @Query("id") id: String?
     ): Call<Responses.LoginRecruiterResponse>?
+
+    //Recruiter ID
+    @GET("recruiter/checkEmailRecruiter.php")
+    fun checkEmailRecruiter(
+        @Query("email") email: String?
+    ): Call<Responses.ResponseRecruiter>?
+
+    // UPDATE RECRUITER
+    @FormUrlEncoded
+    @POST("recruiter/registRecruiter.php")
+    fun registRecruiter(
+        @Field("nama") nama: String?,
+        @Field("email") email: String?,
+        @Field("password") password: String?
+    ): Call<Responses.ResponseRecruiter>?
 
     // UPDATE RECRUITER
     @FormUrlEncoded

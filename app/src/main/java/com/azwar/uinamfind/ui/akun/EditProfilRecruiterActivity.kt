@@ -149,16 +149,40 @@ class EditProfilRecruiterActivity : AppCompatActivity() {
 
     private fun initData(recruiter: Recruiter) {
         id = recruiter.id.toString()
-        binding.etNama.setText(recruiter.nama.toString())
-        binding.etNama.setText(recruiter.nama.toString())
-        setupSpinnerInit(recruiter.jenis_kelamin.toString())
-        binding.etTempatLahir.setText(recruiter.tempat_lahir.toString())
-        binding.etTanggalLahir.setText(recruiter.tanggal_lahir.toString())
-        binding.etTelpon.setText(recruiter.telpon.toString())
-        binding.etEmail.setText(recruiter.email.toString())
-        binding.etMotto.setText(recruiter.motto.toString())
-        setupAutoCompletLokasi(recruiter.lokasi.toString())
 
+        var nama = recruiter.nama
+        if (nama != null) {
+            binding.etNama.setText(nama)
+        }
+
+        var tempat_lahir = recruiter.tempat_lahir
+        if (tempat_lahir != null) {
+            binding.etTempatLahir.setText(tempat_lahir)
+        }
+
+        var tanggal_lahir = recruiter.tanggal_lahir
+        if (tanggal_lahir != null) {
+            binding.etTanggalLahir.setText(tanggal_lahir)
+        }
+
+        var telpon = recruiter.telpon
+        if (telpon != null) {
+            binding.etTelpon.setText(telpon)
+        }
+
+        var email = recruiter.email
+        if (email != null) {
+            binding.etEmail.setText(email)
+        }
+
+        var motto = recruiter.motto
+        if (motto != null) {
+            binding.etMotto.setText(motto)
+        }
+
+        setupAutoCompletLokasi(recruiter.lokasi)
+
+        setupSpinnerInit(recruiter.jenis_kelamin.toString())
 
     }
 
@@ -222,7 +246,7 @@ class EditProfilRecruiterActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupAutoCompletLokasi(lokasi: String) {
+    private fun setupAutoCompletLokasi(lokasi: String?) {
         val ac_lokasi = binding.etLokasiEditProfil
         var nama_lokasi = resources.getStringArray(com.azwar.uinamfind.R.array.nama_lokasi)
         val adapter: ArrayAdapter<*> =

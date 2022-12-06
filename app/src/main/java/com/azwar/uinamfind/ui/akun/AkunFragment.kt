@@ -25,6 +25,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.FragmentAkunBinding
+import com.azwar.uinamfind.ui.ShowPhotoActivity
 import com.azwar.uinamfind.ui.akun.adpter.LamaranMahasiswaBaruAdapter
 import com.azwar.uinamfind.ui.akun.adpter.LokerRecruiterAdapter
 import com.azwar.uinamfind.ui.loker.TambahLokerActivity
@@ -59,6 +60,7 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var lamaranMahasiswaBaruAdapter: LamaranMahasiswaBaruAdapter
 
     private var id: String = ""
+    private var isPerusahaanReady = false
 
     private lateinit var swipe_akun: SwipeRefreshLayout
 
@@ -104,8 +106,16 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         })
 
         binding.imgAddLoker.setOnClickListener {
-            val intent = Intent(context, TambahLokerActivity::class.java)
-            startActivity(intent)
+            if (isPerusahaanReady) {
+                val intent = Intent(context, TambahLokerActivity::class.java)
+                startActivity(intent)
+            } else {
+
+                SweetAlertDialog(activity, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Uups..")
+                    .setContentText("Anda belum mengatur data perusahaan!")
+                    .show()
+            }
         }
 
         binding.imgEditPerusahaan.setOnClickListener {
@@ -157,7 +167,7 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             builder.setItems(pilihan) { dialog, which ->
                 when (which) {
                     0 -> openImagePicker(HEADER_IMAGE_REQ_CODE)
-                    1 -> openPreviewImage("Profil")
+                    1 -> openPreviewImage("Header")
                 }
             }
             val dialog = builder.create()
@@ -168,6 +178,21 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun openPreviewImage(s: String) {
+        var foto = recruiter.foto
+        var header = recruiter.foto_sampul
+        if (s.equals("Profil")) {
+            var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + foto
+
+            val intent = Intent(context, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        } else {
+            var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + header
+
+            val intent = Intent(context, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        }
 
     }
 
@@ -469,6 +494,15 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         }
 
+        binding.imgPerusahaanRecruiter.setOnClickListener {
+            if (foto !== null) {
+                var foto_intent = BuildConfig.BASE_URL + "upload/perusahaan/" + foto
+                val intent = Intent(context, ShowPhotoActivity::class.java)
+                intent.putExtra("foto", foto_intent)
+                startActivity(intent)
+            }
+        }
+
     }
 
     private fun initDataAkun(recruiter: Recruiter) {
@@ -478,8 +512,17 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         var lokasi = recruiter.lokasi.toString()
 
         binding.tvNamaRecruiter.text = nama
-        binding.tvMottoRecruiter.text = motto
-        binding.tvLokasi.text = lokasi + ", Indonesia"
+        if (motto.equals("") || motto.equals("null")) {
+            binding.tvMottoRecruiter.text = "-"
+        } else {
+            binding.tvMottoRecruiter.text = motto
+        }
+
+        if (lokasi.equals("") || lokasi.equals("null")) {
+            binding.tvLokasi.text = "Indonesia"
+        } else {
+            binding.tvLokasi.text = lokasi + ", Indonesia"
+        }
 
 
         var foto = recruiter.foto
@@ -503,9 +546,11 @@ class AkunFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         var perusahaan_id = recruiter.id_perusahaan
         if (perusahaan_id == null || perusahaan_id.equals("")) {
+            isPerusahaanReady = false
             binding.tvBelumDiaturPerusahaan.visibility = View.VISIBLE
             binding.rlPerusahaan.visibility = View.GONE
         } else {
+            isPerusahaanReady = true
             binding.tvBelumDiaturPerusahaan.visibility = View.GONE
             binding.rlPerusahaan.visibility = View.VISIBLE
             loadPerusahaan(perusahaan_id)

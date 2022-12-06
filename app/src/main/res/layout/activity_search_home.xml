@@ -9,7 +9,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinator1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -32,79 +32,35 @@
                     android:id="@+id/searchView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/colorPrimary"
+                    app:type="card"
+                    app:voiceSearch="true" />
             </FrameLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout_pencarian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorBackgroundActivity"
+                app:tabContentStart="30dp"
                 app:tabGravity="start"
                 app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorFullWidth="false"
                 app:tabInlineLabel="true"
                 app:tabMode="scrollable"
-                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_mahasiswa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mahasiswa" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_loker"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/loker" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_beasiswa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/beasiswa" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_magang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/magang" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_lembaga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lembaga" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_ukm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ukm" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_organisasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/organisasi" />
-
-            </com.google.android.material.tabs.TabLayout>
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
         </com.google.android.material.appbar.AppBarLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/coordinator1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dvdsfsdf" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager_aktivitas"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_pencarian"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white" />

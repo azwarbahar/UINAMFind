@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_login"
         android:layout_marginHorizontal="16dp"
-        android:text="Sebagai Mahasiswa/Alumni"
+        android:text="Sebagai Recruiter"
         android:textColor="@color/white"
         android:textSize="10sp" />
 
@@ -117,14 +117,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tv_lupa_password_login_tamu"
+        android:id="@+id/tv_bantuan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/til_password_login_tamu"
         android:layout_alignParentRight="true"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
-        android:text="Lupa Password ?"
+        android:text="Bantuan ?"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -132,7 +132,7 @@
         android:id="@+id/rl_btn_masuk_tamu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_lupa_password_login_tamu"
+        android:layout_below="@id/tv_bantuan"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"

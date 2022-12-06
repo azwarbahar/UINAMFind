@@ -113,4 +113,7 @@ dependencies {
     //SimpleChatView
     implementation 'com.github.fasilthottathil:SimpleChatView:1.0.0'
 
+    // animation Lottie
+    implementation "com.airbnb.android:lottie:5.0.3"
+
 }

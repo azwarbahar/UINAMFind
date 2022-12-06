@@ -20,6 +20,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityDetailLokerBinding
+import com.azwar.uinamfind.ui.ShowPhotoActivity
 import com.azwar.uinamfind.ui.akun.adpter.LamaranMahasiswaBaruAdapter
 import com.azwar.uinamfind.utils.Constanta
 import com.bumptech.glide.Glide
@@ -45,6 +46,8 @@ class DetailLokerActivity : AppCompatActivity() {
 
     private var alreadyLamaran = false
     private lateinit var lamarans: List<Lamaran>
+
+    private lateinit var perusahaan: Perusahaan
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,6 +119,22 @@ class DetailLokerActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(intent, null))
         }
 
+        binding.imgLogoKantorDetailLoker.setOnClickListener {
+            var foto = perusahaan.foto
+            var foto_intent = BuildConfig.BASE_URL + "upload/perusahaan/" + foto
+            val intent = Intent(this, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        }
+
+        binding.imgLogoPerusahaanDetailLoker.setOnClickListener {
+            var foto = perusahaan.foto
+            var foto_intent = BuildConfig.BASE_URL + "upload/perusahaan/" + foto
+            val intent = Intent(this, ShowPhotoActivity::class.java)
+            intent.putExtra("foto", foto_intent)
+            startActivity(intent)
+        }
+
 
     }
 
@@ -174,7 +193,7 @@ class DetailLokerActivity : AppCompatActivity() {
                     val pesanRespon = response.message()
                     val message = response.body()?.pesan
                     val kode = response.body()?.kode
-                    val perusahaan: Perusahaan = response.body()?.result_perusahaan!!
+                    perusahaan = response.body()?.result_perusahaan!!
                     var foto_perusahaan = perusahaan.foto
                     if (foto_perusahaan != null) {
                         Glide.with(this@DetailLokerActivity)

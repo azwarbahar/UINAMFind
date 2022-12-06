@@ -16,6 +16,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".ui.ShowPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.EditMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.RiwayatMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.TambahMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.market.DetailMarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.bantuan.BantuanActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ukm.EditUkmActivity"
             android:exported="false" />
         <activity

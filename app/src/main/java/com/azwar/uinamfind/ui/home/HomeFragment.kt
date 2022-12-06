@@ -10,18 +10,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cn.pedant.SweetAlert.SweetAlertDialog
 import com.azwar.uinamfind.data.models.Beasiswa
-import com.azwar.uinamfind.databinding.FragmentHomeBinding
 import com.azwar.uinamfind.data.models.Loker
 import com.azwar.uinamfind.data.models.User
 import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
+import com.azwar.uinamfind.databinding.FragmentHomeBinding
+import com.azwar.uinamfind.ui.bantuan.BantuanActivity
 import com.azwar.uinamfind.ui.beasiswa.BeasiswaActivity
 import com.azwar.uinamfind.ui.chat.ChatActivity
 import com.azwar.uinamfind.ui.home.adapter.BeasiswaTerbaruAdapter
 import com.azwar.uinamfind.ui.home.adapter.CardMahasiswaAdapter
 import com.azwar.uinamfind.ui.home.adapter.LokerHomeAdapter
+import com.azwar.uinamfind.ui.lamaran.LamaranSayaActivity
 import com.azwar.uinamfind.ui.lembaga.LembagaActivity
 import com.azwar.uinamfind.ui.loker.LokerActivity
 import com.azwar.uinamfind.ui.magang.MagangActivity
@@ -123,8 +126,19 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        homeBinding.llMenuLainnyaHome.setOnClickListener {
+        homeBinding.rlLamaranSayaBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, LamaranSayaActivity::class.java)
+            startActivity(intent)
+        }
 
+        homeBinding.rlBantuanBottomSheetMenuHome.setOnClickListener {
+            bottomSheetBehaviorMenuLainnya.setState(BottomSheetBehavior.STATE_HIDDEN)
+            val intent = Intent(context, BantuanActivity::class.java)
+            startActivity(intent)
+        }
+
+        homeBinding.llMenuLainnyaHome.setOnClickListener {
             val state =
                 if (bottomSheetBehaviorMenuLainnya.state == BottomSheetBehavior.STATE_EXPANDED)
                     BottomSheetBehavior.STATE_COLLAPSED
@@ -242,8 +256,6 @@ class HomeFragment : Fragment() {
             }
 
         })
-
-
     }
 
     private fun loadRekomendasiLoker() {

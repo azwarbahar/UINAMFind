@@ -17,6 +17,7 @@ import com.azwar.uinamfind.data.response.Responses
 import com.azwar.uinamfind.database.local.PreferencesHelper
 import com.azwar.uinamfind.database.server.ApiClient
 import com.azwar.uinamfind.databinding.ActivityDetailUkmBinding
+import com.azwar.uinamfind.ui.ShowPhotoActivity
 import com.azwar.uinamfind.ui.lembaga.adapter.ViewPagerLembagaAdapter
 import com.azwar.uinamfind.utils.Constanta
 import com.bumptech.glide.Glide
@@ -102,7 +103,11 @@ class DetailUkmActivity : AppCompatActivity() {
     }
 
     private fun openPreviewImage(s: String) {
-
+        var foto = ukm.foto
+        var foto_intent = BuildConfig.BASE_URL + "upload/photo/" + foto
+        val intent = Intent(this, ShowPhotoActivity::class.java)
+        intent.putExtra("foto", foto_intent)
+        startActivity(intent)
     }
 
     private fun openImagePicker(s: Int) {

@@ -48,7 +48,7 @@ class LokerActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener 
 
     private fun loadData() {
 
-        ApiClient.instances.getLoker("Home")?.enqueue(object : Callback<Responses.ResponseLoker> {
+        ApiClient.instances.getLoker("dsa")?.enqueue(object : Callback<Responses.ResponseLoker> {
             override fun onResponse(
                 call: Call<Responses.ResponseLoker>,
                 response: Response<Responses.ResponseLoker>
