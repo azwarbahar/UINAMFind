@@ -1,2 +1,2 @@
 # UINAMFind
-Bismillah S.Kom tahun 2022
+Bismillah S.Kom tahun 2023
